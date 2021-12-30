@@ -1,0 +1,45 @@
+cirr tests.fraig/sim01.aag
+cirp -fl
+cirr tests.fraig/sim02.aag -r
+cirp -fl
+cirr tests.fraig/sim03.aag -r
+cirp -fl
+cirr tests.fraig/sim04.aag -r
+cirp
+cirp -fl
+cirr tests.fraig/sim05.aag -r
+cirp
+cirp -fl
+cirr tests.fraig/sim06.aag -r
+cirp -fl
+cirr tests.fraig/sim07.aag -r
+cirp -fl
+cirr tests.fraig/sim01.aag -r
+cirp
+cirp -fl
+cirr tests.fraig/sim08.aag -r
+cirp
+cirp -fl
+cirr tests.fraig/sim09.aag -r
+cirp -fl
+cirr tests.fraig/sim10.aag -r
+cirp
+cirp -fl
+cirr tests.fraig/sim11.aag -r
+cirp -n
+cirp -fl
+cirr tests.fraig/sim12.aag -r
+cirp -fl
+cirr tests.fraig/sim13.aag -r
+cirp -n
+cirp -fl
+cirr tests.fraig/sim14.aag -r
+cirp -fl
+cirp -n
+cirr tests.fraig/sim15.aag -r
+cirp -fl
+cirp -n
+cirr tests.fraig/sim01.aag -r
+cirp -n
+cirp -fl
+q -f

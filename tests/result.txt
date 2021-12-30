@@ -1,0 +1,22 @@
+cir> cirr tests/ex01.aag
+
+cir> cirrar
+Begin SATRar Process
+1. Find MA for w_t and g_d
+
+  Decide w_t(12, 13)
+  MA(w_t)
+  level  1:  6
+  level  2: !11
+  level  3:  1  2  10
+  level  4: !4 !8
+  level  5: !7 !9  12 !13  14 !16
+
+  For each g_d belonging w_t's dominators
+    MA(g_d=13)
+    level  1:  6
+    level  2: !11
+    level  3:  1  2  10
+    level  4:  7 !12  13 !14  16
+
+cir> q -f
