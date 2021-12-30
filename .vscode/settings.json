@@ -11,6 +11,7 @@
       "type_traits": "cpp",
       "utility": "cpp",
       "unordered_map": "cpp",
-      "iostream": "cpp"
+      "iostream": "cpp",
+      "map": "cpp"
    }
 }

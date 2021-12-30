@@ -6,17 +6,25 @@ Begin SATRar Process
 
   Decide w_t(12, 13)
   MA(w_t)
+Dominators: 13 14 7 16
   level  1:  6
   level  2: !11
   level  3:  1  2  10
-  level  4: !4 !8
-  level  5: !7 !9  12 !13  14 !16
+  level  4: !4 !7 !8 !9  12 !13  14 !16
 
   For each g_d belonging w_t's dominators
     MA(g_d=13)
+Dominators: 14 7 16
     level  1:  6
     level  2: !11
-    level  3:  1  2  10
-    level  4:  7 !12  13 !14  16
+    level  3:  1  2  7  10 !12  13 !14  16
+
+    MA(g_d=14)
+    level  1:  6
+    level  2: !11
+
+    MA(g_d=7)
+    level  1:  6
+
 
 cir> q -f

@@ -191,7 +191,7 @@ Var Solver::newVar() {
     assigns     .push(toInt(l_Undef));
     level       .push(-1);
     trail_pos   .push(-1);
-    IsDominator .push(0);
+    c_IsExcluded .push(0);
     activity    .push(0);
     order       .newVar();
     analyze_seen.push(0);
@@ -217,7 +217,7 @@ void Solver::cancelUntil(int level) {
         trail_lim.shrink(trail_lim.size() - level);
         qhead = trail.size(); 
     }
-    resetConflictVar();
+    conflict_var = -1;
 }
 
 //=================================================================================================
@@ -471,7 +471,7 @@ bool Solver::enqueue(Lit p, Clause* from)
         trail_pos[x] = trail.size();
         reason   [x] = from;
         trail.push(p);
-        if ((c_solver != 0) && (IsDominator[x] == 0) && (c_solver->assigns[x] != assigns[x])) {
+        if ((c_solver != 0) && (c_IsExcluded[x] == 0) && (c_solver->assigns[x] != assigns[x])) {
             conflict_var = x;
             return false;
         }
@@ -890,6 +890,27 @@ bool Solver::oneStepMA(const vec<Lit>& assumps, bool init=1)
         return true;
     }
     else {
-        cancelUntil(decisionLevel()-1);
+        cancelUntil(decisionLevel()-2);
+        Lit p = assumps.last();
+        assert(var(p) < nVars());
+        if (!assume(p)){
+            if (reason[var(p)] != NULL){
+                analyzeFinal(reason[var(p)], true);
+                conflict.push(~p);
+            }else{
+                assert(proof == NULL || unit_id[var(p)] != ClauseId_NULL);   // (this is the pre-condition above)
+                conflict.clear();
+                conflict.push(~p);
+                if (proof != NULL) conflict_id = unit_id[var(p)];
+            }
+            cancelUntil(0);
+            return false; }
+        Clause* confl = propagate();
+        if (confl != NULL){
+            analyzeFinal(confl), assert(conflict.size() > 0);
+            cancelUntil(0);
+            return false;
+        }
+        return true;
     }
 }

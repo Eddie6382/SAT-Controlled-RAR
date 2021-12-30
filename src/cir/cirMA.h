@@ -4,6 +4,7 @@
 #include <vector>
 #include <unordered_map>
 #include <iostream>
+#include <deque>
 #include "cirGate.h"
 #include "cirMgr.h"
 #include "Solver.h"
@@ -22,26 +23,23 @@ public:
    };
    ~CirMA() { if (_solver) delete _solver; }
 
-   void setCounterpartSolver(CirMA* cir_wt) { 
-      _solver->setCounterpartSolver(cir_wt->_solver, cir_wt->_dominators, cir_wt->_gid2Var);
+   void setCounterpartSolver(CirMA* cir_wt, unsigned w_t) { 
+      _solver->setCounterpartSolver(cir_wt->_solver, w_t, cir_wt->_dominators, cir_wt->_gid2Var);
    }
    int computeSATMA(unsigned, unsigned, bool);
 
 // print (debug)
    void printPath();
-   void printSATMA(int);
+   void printSATMA(unsigned, unsigned);
    void printMA();
    void printDominators();
 
 // Iterate
-   inline const IdList& getDominators() { return _dominators; }
    inline size_t nDominators() { return _dominators.size(); }
 
-// handmake MA
-   int computeMA(unsigned, unsigned);
-
+   deque<unsigned> _dominators;
 private:
-// handmake MA
+// MA
    void findDominators(unsigned, unsigned, unordered_map<unsigned, unsigned>&);
    void DFS(unsigned, unsigned, IdList&);
    bool redundancyCheck(unsigned, bool);
@@ -117,11 +115,12 @@ private:
    Solver            *_solver;   // Pointer to a Minisat solver
    Var               _curVar;    // Variable currently
    vec<Lit>          _assump;    // Assumption List for assumption solve
-   // dominators
+
+   // for dominators
    vector<IdList> _allpaths;
-   IdList _dominators;
 
    unordered_map<unsigned, Var> _gid2Var;
+
 };
 
 #endif // CIR_MA_H

@@ -7,6 +7,7 @@
 #include <map>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 #include "cirMgr.h"
 #include "cirGate.h"
 #include "cirMA.h"   // define all the classes used in function SATRar
@@ -63,14 +64,16 @@ int
 CirMA::computeSATMA(unsigned g1, unsigned g2=0, bool init=true)
 {
    if (init) {
+      unordered_map<unsigned, unsigned> _nodeAppear;
+
+   // Compute and assign SA0 gate and its dominators, use partial _MA as assumptions
       _vecMA.clear();
       _vecMA.push_back(make_pair(g1, true));
-      unordered_map<unsigned, unsigned> _nodeAppear;
-   // Compute and assign Dominator, use partial _MA as assumptions
       if (g2 != 0)
          findDominators(g1, g2, _nodeAppear);
       else
          findDominators(0, g1, _nodeAppear);
+      // printDominators();
 
       for (auto node: _dominators) {
          CirGate *g = _mgr->getGate(node);
@@ -93,155 +96,38 @@ CirMA::computeSATMA(unsigned g1, unsigned g2=0, bool init=true)
       _solver->oneStepMA(_assump, init);
    }
    else {
+      assert(g2 == 0);
+      _assump.pop(); _assump.pop();
+      assumeProperty(_gid2Var[g1], true);
       _solver->oneStepMA(_assump, init);
    }
 
    return 0;
 }
 
-int
-CirMA::computeMA(unsigned g1, unsigned g2=0) 
-{
-   _MA.clear();
-   _MA[g1] = true;
-   unordered_map<unsigned, unsigned> _nodeAppear;
-   
-// Compute and assign Dominator
-   if (g2 != 0)
-      findDominators(g1, g2, _nodeAppear);
-   else
-      findDominators(0, g1, _nodeAppear);
-
-
-   for (auto node: _dominators) {
-      CirGate *g = _mgr->getGate(node);
-      if (g->getType() == AIG_GATE) {
-         unsigned In0Gid = g->getIn0Gate()->getGid();
-         unsigned In1Gid = g->getIn1Gate()->getGid();
-         bool isInv0 = g->getIn0().isInv();
-         bool isInv1 = g->getIn1().isInv();
-
-         if (_nodeAppear.find(In0Gid) == _nodeAppear.end())
-            if (redundancyCheck(In0Gid, (isInv0 != 1))) return (int)In0Gid ;
-         if (_nodeAppear.find(In1Gid) == _nodeAppear.end())
-            if (redundancyCheck(In1Gid, (isInv1 != 1))) return (int)In1Gid;
-      }
-   }
-// Iterately calculate sensitivity and propagativity
-   size_t preMAsize = _MA.size();
-   
-   do {
-      // sentivity
-      deque<unsigned> Q;
-      for (auto it: _MA) { 
-         // only when an aig having "1's" can its input be forced assigned
-         // Q is a subset of MA
-         if (it.second)
-            Q.push_back(it.first); 
-      }
-      vector<bool> IsVisit (_mgr->getNumTots(), false);
-
-      while (!Q.empty()) {
-         CirGate *g = _mgr->getGate(Q.front()); // g must has value 1
-         Q.pop_front();
-         if ((g->getType() == PI_GATE) || (g->getType() == CONST_GATE)) continue;
-         vector<unsigned> ins = {g->getIn0Gate()->getGid(), g->getIn1Gate()->getGid()};
-         vector<bool> isInvs = {g->getIn0().isInv(), g->getIn1().isInv()};
-         for (size_t i=0; i<ins.size(); ++i) {
-            // update Q
-            if (!IsVisit[ins[i]]) {
-               IsVisit[ins[i]] = true;
-               if (isInvs[i] != 1) Q.push_back(ins[i]);  
-            }
-            // update M, and check if there is conflict
-            if (redundancyCheck(ins[i], (isInvs[i] != 1)))
-               return (int)ins[i];
-         }
-      }
-
-      // propagativity
-      for (auto it: _MA) {
-         // Every element sholud be added, ga
-         // It depends on fanout gate type and phase
-         Q.push_back(it.first);
-      }
-      IsVisit.clear();
-      for (size_t i=0; i<_mgr->getNumTots(); ++i) IsVisit.push_back(false);
-
-      while (!Q.empty()) {
-         unsigned gid = Q.front();
-         Q.pop_front();
-         GateList& fanouts = _mgr->getFanouts(gid);
-         size_t nFanouts = fanouts.size();
-         for (size_t i=0; i<nFanouts; ++i) {
-            CirGate *fanout = fanouts[i];
-            if (fanout->getType() == PO_GATE) continue;
-            CirGateV in0 = fanout->getIn0();
-            CirGateV in1 = fanout->getIn1();
-            assert (in0.gate() != 0);
-            bool fanoutInv = false;
-            bool anotherInv;
-            CirGate* anotherGate;
-            // decide whether v's In0 or in1 conntects to u
-            if (in0.gate() == _mgr->getGate(gid)) {
-               fanoutInv = in0.isInv();
-               anotherInv = in1.isInv();
-               anotherGate = in1.gate();
-            }
-            else {
-               assert (in1.gate() == _mgr->getGate(gid));
-               fanoutInv = in1.isInv();
-               anotherInv = in0.isInv();
-               anotherGate = in0.gate();
-            }
-            
-            // two case for a AND gate to progate
-            // 1. both input having assigned already;  2. only one input, and is assigned 0
-            bool canProp = false;
-            if (_MA.find(anotherGate->getGid()) != _MA.end())
-               canProp = true;
-            else
-               canProp = (_MA[gid] == fanoutInv);
-
-            // update Q
-            if (!IsVisit[fanout->getGid()]) {
-               IsVisit[fanout->getGid()] = true;
-               if (canProp) Q.push_back(fanout->getGid());
-            }
-            // update M
-            if (canProp) {
-               bool value = (_MA.find(anotherGate->getGid()) != _MA.end()) ? \
-                  (bool)((_MA[anotherGate->getGid()]!=anotherInv) & (_MA[gid]!=fanoutInv)) : 0;
-               if (redundancyCheck(fanout->getGid(), value)) {
-                  printMA();
-                  return (int)fanout->getGid();
-               }
-            }
-         }
-      }
-      preMAsize = _MA.size();
-   } while (preMAsize < _MA.size());
-
-   printMA();
-   return -1;
-}
-
+/*_________________________________________________________________________________________________
+|  Description:
+|    compute MA using Minisat solver
+|  
+|  Input:
+|    unsigned g0, src. If both are specified, MA(w_t) is calculated and src is included in dominators
+|                     If g0 not specified, find dominators of g_d, src is not included
+|    bool init, whether find new set of dominators
+|________________________________________________________________________________________________@*/
 void
 CirMA::findDominators(unsigned g0, unsigned src, unordered_map<unsigned, unsigned>& _nodeAppear)
 {
    _allpaths.clear();
    _nodeAppear.clear();
    _dominators.clear();
-   if (g0 != 0) {
-      _nodeAppear[g0] = 1;
-      _dominators.push_back(g0);
-   }
+   if (g0 != 0) { _nodeAppear[g0] = 1; }
+   else { _nodeAppear[src] = 1; }
 
    unsigned dst;
    for (unsigned i = 0, n = _mgr->getNumPOs(); i < n; ++i) {
       dst = _mgr->getPo(i)->getGid();
       IdList path;
-      path.push_back(src);
+      if (g0 != 0) { path.push_back(src); }
       DFS(src, dst, path);
    }
 
@@ -287,10 +173,12 @@ CirMA::printPath()
 }
 
 /*
-   print MA in decision order
+print MA in decision order
+   (unsigned) gid:     Target gate ID to compute MA
+   (unsigned) tabsize: Indent
 */
 void
-CirMA::printSATMA(int tabsize)
+CirMA::printSATMA(unsigned gid, unsigned tabsize)
 {
    map<int, vector<size_t> > decisionMA;
    for (size_t i=0; i<_mgr->getNumTots(); ++i) {  // iterate gate gid
@@ -305,10 +193,15 @@ CirMA::printSATMA(int tabsize)
       }
    }
    string tab = string(tabsize, ' ');
+   unordered_set<unsigned> t;
+   t.insert(gid);
+   for (auto it: _dominators)
+      t.insert(it);
    
    for (auto it: decisionMA) {
-      cout << tab << "level" << setw(3) << it.first << ":";
+      cout << tab << "level" << setw(3) << it.first << ": ";
       for (auto i: it.second) {
+         if (t.find(i) != t.end()) continue;
          char neg = (_solver->value(_gid2Var[i])==l_True?' ': \
                 (_solver->value(_gid2Var[i])==l_False?'!':'X'));
          cout << " " << neg << i;
