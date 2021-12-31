@@ -25,17 +25,17 @@ void CirMgr::SATRar()
    pair<unsigned, unsigned> w_t = make_pair(12, 13);
 
    cout << "  Decide w_t(" << w_t.first << ", " << w_t.second << ")\n  MA(w_t)\n";
-   MAw_t.computeSATMA(w_t.first, w_t.second, true);
+   MAw_t.computeSATMA(w_t.first, w_t.second, 1, 0);
    MAw_t.printSATMA(w_t.first, 2);
    MAg_d.setCounterpartSolver(&MAw_t, w_t.first);
-   cout << "\n  For each g_d belonging w_t's dominators\n";
+   cout << "\n  For each g_d belonging w_t's dominators (i=k down to 0)\n";
 
    int i = 0;
    unsigned gid = w_t.second;
    do {
    // only backtrack to level 𝑖 to find MAs. If no conflict, generate 𝑀𝐴(𝑔_𝑑𝑖)
       cout << "    MA(g_d = " << gid << ")\n";
-      MAg_d.computeSATMA(gid, 0, (i == 0));
+      MAg_d.computeSATMA(gid, 0, (i == 0), (i == 0));
       MAg_d.printSATMA(gid, 4);
       cout << endl;
 
@@ -44,6 +44,6 @@ void CirMgr::SATRar()
       ++i;
 
    // 2-way RAR
-   
+
    } while (!MAg_d._dominators.empty());
 }

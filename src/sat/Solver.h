@@ -110,8 +110,6 @@ protected:
     const vector<unsigned> *c_ptrDominators;
     Var conflict_var;
     vec<int> c_IsExcluded;
-    
-    Clause *stepPropagate();
 
     // Activity:
     //

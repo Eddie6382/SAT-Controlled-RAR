@@ -17,16 +17,17 @@ using namespace std;
 class CirMA
 {
 public:
-   CirMA(CirMgr* _cirmgr): _mgr(_cirmgr), _MA(), _solver(0) {
+   CirMA(CirMgr* _cirmgr): _mgr(_cirmgr), _solver(0), c_cirMA(0) {
       initialize();
       constructCNF();
    };
    ~CirMA() { if (_solver) delete _solver; }
 
-   void setCounterpartSolver(CirMA* cir_wt, unsigned w_t) { 
+   void setCounterpartSolver(CirMA* cir_wt, unsigned w_t) {
+      c_cirMA = cir_wt;
       _solver->setCounterpartSolver(cir_wt->_solver, w_t, cir_wt->_dominators, cir_wt->_gid2Var);
    }
-   int computeSATMA(unsigned, unsigned, bool);
+   int computeSATMA(unsigned, unsigned, bool, bool);
 
 // print (debug)
    void printPath();
@@ -53,6 +54,7 @@ private:
       _curVar = 0;
       _allpaths.clear();
       _MA.clear();
+      _vecMA.clear();
       _dominators.clear();
    }
    void initialize() {
@@ -113,6 +115,7 @@ private:
 
    // for sat solver
    Solver            *_solver;   // Pointer to a Minisat solver
+   const CirMA* c_cirMA;
    Var               _curVar;    // Variable currently
    vec<Lit>          _assump;    // Assumption List for assumption solve
 

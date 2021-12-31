@@ -93,7 +93,6 @@ class SatSolver
          _assump.push(val? Lit(prop): ~Lit(prop));
       }
       bool assumpSolve() { return _solver->solve(_assump); }
-      bool mandatoryAssign(bool init=1, int decision=-1) { return _solver->oneStepPropagate(_assump, init, decision); }
 
       // For one time proof, use "solve"
       void assertProperty(Var prop, bool val) {

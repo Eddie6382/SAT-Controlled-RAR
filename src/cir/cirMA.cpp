@@ -56,14 +56,14 @@ CirMA::constructCNF()
 |    compute MA using Minisat solver
 |  
 |  Input:
-|    unsigned g1, g2. If (g1, g2) are both specified, than MA(w_t) is calculated
-|                     If only specified g1, calculated MA(g_d)
+|    unsigned g1, g2. If (g1, g2) are both specified, than MA(w_t) is calculated, otherwise if only specified g1, calculated MA(g_d)
 |    bool init, whether find new set of dominators
+|    bool copy, whether to copy implication from pointer c_solver
 |________________________________________________________________________________________________@*/
 int
-CirMA::computeSATMA(unsigned g1, unsigned g2=0, bool init=true)
+CirMA::computeSATMA(unsigned g1, unsigned g2=0, bool init=true, bool copy=false)
 {
-   if (init) {
+   if (init && !copy) {
       unordered_map<unsigned, unsigned> _nodeAppear;
 
    // Compute and assign SA0 gate and its dominators, use partial _MA as assumptions
@@ -94,6 +94,22 @@ CirMA::computeSATMA(unsigned g1, unsigned g2=0, bool init=true)
       for (int i=_vecMA.size()-1; i>=0; --i)
          assumeProperty(_gid2Var[_vecMA[i].first], _vecMA[i].second);
       _solver->oneStepMA(_assump, init);
+   }
+   else if (init && copy) {
+      assert(c_cirMA != NULL);
+      assumeRelease();
+      for (int i=c_cirMA->_vecMA.size()-1; i>=0; --i) {
+         pair<unsigned, bool> t = c_cirMA->_vecMA[i];
+         assumeProperty(_gid2Var[t.first],t.second);
+      }
+      _assump.pop(); _assump.pop();
+      assumeProperty(_gid2Var[g1], true);
+      _solver->oneStepMA(_assump, init);
+
+      _dominators.clear();
+      for (auto it: c_cirMA->_dominators)
+         _dominators.push_back(it);
+      _dominators.pop_front();
    }
    else {
       assert(g2 == 0);
