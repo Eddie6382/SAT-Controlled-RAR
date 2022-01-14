@@ -855,7 +855,18 @@ void Solver::printStats()
     reportf("===============================\n");
 }
 
-bool Solver::oneStepMA(const vec<Lit>& assumps, bool init=1)
+/*_________________________________________________________________________________________________
+|
+|  oneStepMA : (assumps : const vec<Lit>&, init : bool)  ->  [bool]
+|  
+|  Description:
+|    For a given list of assumptions, perform propagate (no decision making) to generate mandatory assignment (MA)
+|  
+|  Input:
+|    A list of assumptions (unit clauses coded as literals). Pre-condition: The assumptions must
+|    not contain both 'x' and '~x' for any variable 'x'.
+|________________________________________________________________________________________________@*/
+Var Solver::oneStepMA(const vec<Lit>& assumps, bool init=1)
 {
     SearchParams    params(default_params);
     double  nof_conflicts = 100;
@@ -879,15 +890,15 @@ bool Solver::oneStepMA(const vec<Lit>& assumps, bool init=1)
                     if (proof != NULL) conflict_id = unit_id[var(p)];
                 }
                 cancelUntil(0);
-                return false; }
+                return conflict_var; }
             Clause* confl = propagate();
             if (confl != NULL){
                 analyzeFinal(confl), assert(conflict.size() > 0);
                 cancelUntil(0);
-                return false;
+                return conflict_var;
             }
         }
-        return true;
+        return -1;
     }
     else {
         cancelUntil(decisionLevel()-2);
@@ -911,6 +922,6 @@ bool Solver::oneStepMA(const vec<Lit>& assumps, bool init=1)
             cancelUntil(0);
             return false;
         }
-        return true;
+        return -1;
     }
 }

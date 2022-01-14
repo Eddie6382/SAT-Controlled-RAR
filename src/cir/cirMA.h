@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <unordered_map>
+#include <map>
+#include <unordered_set>
 #include <iostream>
 #include <deque>
 #include "cirGate.h"
@@ -28,12 +30,23 @@ public:
       _solver->setCounterpartSolver(cir_wt->_solver, w_t, cir_wt->_dominators, cir_wt->_gid2Var);
    }
    int computeSATMA(unsigned, unsigned, bool, bool);
+   unsigned var2Gid(Var var) {
+      unsigned gid = 0;
+      for (auto it: _gid2Var)
+         if (it.second == var)
+            gid = var;
+      return gid;
+   }
 
 // print (debug)
    void printPath();
    void printSATMA(unsigned, unsigned);
    void printMA();
    void printDominators();
+// suport
+   bool isInPhi(unsigned gid) const { return (_Phi.find(gid) != _Phi.end()); }
+   char phase(unsigned i) { return (_solver->value(_gid2Var[i])==l_True?' ': \
+                (_solver->value(_gid2Var[i])==l_False?'!':'X')); }
 
 // Iterate
    inline size_t nDominators() { return _dominators.size(); }
@@ -44,6 +57,7 @@ private:
    void findDominators(unsigned, unsigned, unordered_map<unsigned, unsigned>&);
    void DFS(unsigned, unsigned, IdList&);
    bool redundancyCheck(unsigned, bool);
+   void computePhiSet(unsigned);
 // SAT related
 //
    void reset() {
@@ -54,7 +68,7 @@ private:
       _curVar = 0;
       _allpaths.clear();
       _MA.clear();
-      _vecMA.clear();
+      _initMA.clear();
       _dominators.clear();
    }
    void initialize() {
@@ -110,8 +124,8 @@ private:
    void constructCNF();
 
    const CirMgr* _mgr;
-   unordered_map<unsigned, bool> _MA;
-   vector<pair<unsigned, bool>> _vecMA;   // k (w_t's direct fanout) --> 0 (POs)
+   unordered_map<unsigned, bool> _MA;     // These params are initial assignments of MA
+   vector<pair<unsigned, bool>> _initMA;   // k (w_t's direct fanout) --> 0 (POs)
 
    // for sat solver
    Solver            *_solver;   // Pointer to a Minisat solver
@@ -121,6 +135,10 @@ private:
 
    // for dominators
    vector<IdList> _allpaths;
+
+   // for final MA set
+   map<int, vector<size_t> > _decisionMA;
+   unordered_set<unsigned> _Phi; 
 
    unordered_map<unsigned, Var> _gid2Var;
 

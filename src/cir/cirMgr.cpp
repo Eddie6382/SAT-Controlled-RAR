@@ -315,10 +315,10 @@ CirMgr::parseHeader(ifstream& cirin)
    _poList = new CirPoGate*[_numDecl[PO]];
    // +1 for const
    unsigned numTots = getNumTots();
-   _totGateList = new CirGate*[numTots];
-   for (unsigned i = 0; i < numTots; ++i)
+   _totGateList = new CirGate*[numTots + _reserved_storage];
+   for (unsigned i = 0; i < numTots + _reserved_storage; ++i)
       _totGateList[i] = 0;
-   _fanoutInfo = new GateList[numTots];
+   _fanoutInfo = new GateList[numTots + _reserved_storage];
 
    _totGateList[0] = _const0;
 

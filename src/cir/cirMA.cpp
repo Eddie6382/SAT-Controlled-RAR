@@ -11,6 +11,7 @@
 #include "cirMgr.h"
 #include "cirGate.h"
 #include "cirMA.h"   // define all the classes used in function SATRar
+#include "cirDef.h"
 #include "Solver.h"
 
 using namespace std;
@@ -60,15 +61,17 @@ CirMA::constructCNF()
 |    bool init, whether find new set of dominators
 |    bool copy, whether to copy implication from pointer c_solver
 |________________________________________________________________________________________________@*/
-int
+Var
 CirMA::computeSATMA(unsigned g1, unsigned g2=0, bool init=true, bool copy=false)
 {
+   Var conflict_var = -1;
+
    if (init && !copy) {
       unordered_map<unsigned, unsigned> _nodeAppear;
 
    // Compute and assign SA0 gate and its dominators, use partial _MA as assumptions
-      _vecMA.clear();
-      _vecMA.push_back(make_pair(g1, true));
+      _initMA.clear();
+      _initMA.push_back(make_pair(g1, true));
       if (g2 != 0)
          findDominators(g1, g2, _nodeAppear);
       else
@@ -84,27 +87,27 @@ CirMA::computeSATMA(unsigned g1, unsigned g2=0, bool init=true, bool copy=false)
             bool isInv1 = g->getIn1().isInv();
 
             if (_nodeAppear.find(In0Gid) == _nodeAppear.end())
-               _vecMA.push_back(make_pair(In0Gid, (isInv0 != 1)));
+               _initMA.push_back(make_pair(In0Gid, (isInv0 != 1)));
             if (_nodeAppear.find(In1Gid) == _nodeAppear.end())
-               _vecMA.push_back(make_pair(In1Gid, (isInv1 != 1)));
+               _initMA.push_back(make_pair(In1Gid, (isInv1 != 1)));
          }
       }
       
       assumeRelease();
-      for (int i=_vecMA.size()-1; i>=0; --i)
-         assumeProperty(_gid2Var[_vecMA[i].first], _vecMA[i].second);
-      _solver->oneStepMA(_assump, init);
+      for (int i=_initMA.size()-1; i>=0; --i)
+         assumeProperty(_gid2Var[_initMA[i].first], _initMA[i].second);
+      conflict_var = _solver->oneStepMA(_assump, init);
    }
    else if (init && copy) {
       assert(c_cirMA != NULL);
       assumeRelease();
-      for (int i=c_cirMA->_vecMA.size()-1; i>=0; --i) {
-         pair<unsigned, bool> t = c_cirMA->_vecMA[i];
+      for (int i=c_cirMA->_initMA.size()-1; i>=0; --i) {
+         pair<unsigned, bool> t = c_cirMA->_initMA[i];
          assumeProperty(_gid2Var[t.first],t.second);
       }
       _assump.pop(); _assump.pop();
       assumeProperty(_gid2Var[g1], true);
-      _solver->oneStepMA(_assump, init);
+      conflict_var = _solver->oneStepMA(_assump, init);
 
       _dominators.clear();
       for (auto it: c_cirMA->_dominators)
@@ -115,10 +118,12 @@ CirMA::computeSATMA(unsigned g1, unsigned g2=0, bool init=true, bool copy=false)
       assert(g2 == 0);
       _assump.pop(); _assump.pop();
       assumeProperty(_gid2Var[g1], true);
-      _solver->oneStepMA(_assump, init);
+      conflict_var = _solver->oneStepMA(_assump, init);
    }
 
-   return 0;
+   computePhiSet(g1);
+
+   return conflict_var;
 }
 
 /*_________________________________________________________________________________________________
@@ -195,34 +200,47 @@ print MA in decision order
 */
 void
 CirMA::printSATMA(unsigned gid, unsigned tabsize)
-{
-   map<int, vector<size_t> > decisionMA;
-   for (size_t i=0; i<_mgr->getNumTots(); ++i) {  // iterate gate gid
-      if (_mgr->getGate(i) == 0) continue;
-      if (_solver->value(_gid2Var[i]) == l_Undef) continue;
-      int level = _solver->atLevel(_gid2Var[i]);
-      if (level != -1) {
-         if (decisionMA.find(level) == decisionMA.end())
-            decisionMA[level] = {i};
-         else
-            decisionMA[level].push_back(i);
-      }
-   }
+{  
    string tab = string(tabsize, ' ');
-   unordered_set<unsigned> t;
-   t.insert(gid);
-   for (auto it: _dominators)
-      t.insert(it);
-   
-   for (auto it: decisionMA) {
+   for (auto it: _decisionMA) {
       cout << tab << "level" << setw(3) << it.first << ": ";
       for (auto i: it.second) {
-         if (t.find(i) != t.end()) continue;
+         if (!isInPhi(i)) continue;
          char neg = (_solver->value(_gid2Var[i])==l_True?' ': \
                 (_solver->value(_gid2Var[i])==l_False?'!':'X'));
          cout << " " << neg << i;
       }
       cout << "\n";
+   }
+}
+
+void 
+CirMA::computePhiSet(unsigned gid)
+{
+   _decisionMA.clear();
+   _Phi.clear();
+   for (size_t i=0; i<_mgr->getNumTots(); ++i) {  // iterate gate gid
+      if (_mgr->getGate(i) == 0) continue;
+      if (_solver->value(_gid2Var[i]) == l_Undef) continue;
+      int level = _solver->atLevel(_gid2Var[i]);
+      if (level != -1) {
+         if (_decisionMA.find(level) == _decisionMA.end())
+            _decisionMA[level] = {i};
+         else
+            _decisionMA[level].push_back(i);
+      }
+   }
+
+   unordered_set<unsigned> t;
+   t.insert(gid);
+   for (auto it: _dominators)
+      t.insert(it);
+
+   for (auto it: _decisionMA) {
+      for (auto i: it.second) {
+         if (t.find(i) != t.end()) continue;
+         _Phi.insert(i);
+      }
    }
 }
 

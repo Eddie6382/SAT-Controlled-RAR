@@ -225,7 +225,7 @@ public:
     }
 
     // SATRAR
-    bool oneStepMA(const vec<Lit> &, bool);
+    Var oneStepMA(const vec<Lit> &, bool);
     void setCounterpartSolver(Solver *solver, unsigned w_t, deque<unsigned> &dominators, unordered_map<unsigned, Var> &gid2Var)
     {
         for (int i = 0; i < c_IsExcluded.size(); ++i)

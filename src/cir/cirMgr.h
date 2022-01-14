@@ -28,7 +28,7 @@ class CirMgr
    enum ParsePorts { VARS = 0, PI, LATCH, PO, AIG, TOT_PARSE_PORTS };
 
 public:
-   CirMgr(): _flag(0), _piList(0), _poList(0), _totGateList(0),
+   CirMgr(): _flag(0), _reserved_storage(10), _piList(0), _poList(0), _totGateList(0),
              _fanoutInfo(0), _simLog(0) { }
    ~CirMgr() { deleteCircuit(); }
 
@@ -58,6 +58,8 @@ public:
    void deleteCircuit();
    void genConnections();
    void genDfsList();
+   // Member functions about circuit fanout cone
+   void genFanoutCone(CirGate* g);
 //   void updateUndefList();
    void checkFloatList();
    void checkUnusedList();
@@ -103,6 +105,7 @@ public:
 private:
    unsigned            _numDecl[TOT_PARSE_PORTS];
    mutable unsigned    _flag;
+   unsigned            _reserved_storage;
    PiArray             _piList;
    PoArray             _poList;
    // IDs in _undefList are NOT sorted!!
