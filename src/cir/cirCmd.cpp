@@ -33,7 +33,8 @@ cout << "UNDEF: " << sizeof(CirUndefGate) << endl;
          cmdMgr->regCmd("CIRPrint", 4, new CirPrintCmd) &&
          cmdMgr->regCmd("CIRGate", 4, new CirGateCmd) &&
          cmdMgr->regCmd("CIRWrite", 4, new CirWriteCmd) &&
-         cmdMgr->regCmd("CIRRAR", 5, new CirSATRarCmd)
+         cmdMgr->regCmd("CIRRAR", 6, new CirSATRarCmd) &&
+         cmdMgr->regCmd("CIRRARWrite", 7, new CirSATRarWriteCmd)
       )) {
       cerr << "Registering \"cir\" commands fails... exiting" << endl;
       return false;
@@ -47,6 +48,7 @@ enum CirCmdState
    CIRINIT,
    CIRREAD,
    CIRSATRAR,
+   CIRSATRARWRITE,
    // dummy end
    CIRCMDTOT
 };
@@ -269,16 +271,13 @@ CirWriteCmd::exec(const string& option)
    CmdExec::lexOptions(option, options);
 
    if (options.empty())
-      cirMgr->writeAag(cout);
-   else if (myStrNCmp("-Output", options[0], 2) == 0) {
+      return CmdExec::errorOption(CMD_OPT_ILLEGAL, "Please specify output path");
+   else if (myStrNCmp("-Directory", options[0], 2) == 0) {
       if (options.size() == 1)
          return CmdExec::errorOption(CMD_OPT_MISSING, options[0]);
       if (options.size() > 2)
          return CmdExec::errorOption(CMD_OPT_EXTRA, options[2]);
-      ofstream outfile(options[1].c_str(), ios::out);
-      if (!outfile)
-         return CmdExec::errorOption(CMD_OPT_FOPEN_FAIL, options[1]);
-      cirMgr->writeAag(outfile);
+      cirMgr->SATRarWrite(options[1]);
    }
    else return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[0]);
 
@@ -299,6 +298,54 @@ CirWriteCmd::help() const
 }
 
 //----------------------------------------------------------------------
+//    CIRRARWrite
+//----------------------------------------------------------------------
+CmdExecStatus
+CirSATRarWriteCmd::exec(const string& option)
+{
+   if (!cirMgr) {
+      cerr << "Error: circuit is not yet constructed!!" << endl;
+      return CMD_EXEC_ERROR;
+   }
+   // check option
+   vector<string> options;
+   CmdExec::lexOptions(option, options);
+
+   if (options.empty())
+      return CmdExec::errorOption(CMD_OPT_ILLEGAL, "");
+   else if (myStrNCmp("-Directory", options[0], 2) == 0) {
+      if (options.size() == 1)
+         return CmdExec::errorOption(CMD_OPT_MISSING, options[0]);
+      if (options.size() > 2)
+         return CmdExec::errorOption(CMD_OPT_EXTRA, options[2]);
+   }
+   else return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[0]);
+
+   assert(curCmd != CIRINIT);
+   if (curCmd != CIRSATRAR) {
+      cerr << "Error: do \"CIRRAR\" first!!"
+           << endl;
+      return CMD_EXEC_ERROR;
+   }
+   cirMgr->SATRarWrite(options[1]);
+
+   return CMD_EXEC_DONE;
+}
+
+void
+CirSATRarWriteCmd::usage(ostream& os) const
+{
+   os << "Usage: CIRRARWrite [-Directory (path to dir)]" << endl;
+}
+
+void
+CirSATRarWriteCmd::help() const
+{
+   cout << setw(15) << left << "CIRRARWrite: "
+        << "write all replaced circuit (.aag) in target folder\n";
+}
+
+//----------------------------------------------------------------------
 //    CIRRAR
 //----------------------------------------------------------------------
 CmdExecStatus
@@ -316,7 +363,13 @@ CirSATRarCmd::exec(const string& option)
       return CmdExec::errorOption(CMD_OPT_EXTRA, options[0]);
 
    assert(curCmd != CIRINIT);
+   if (curCmd != CIRREAD) {
+      cerr << "Error: empty network, do \"CIRRead\" first!!"
+           << endl;
+      return CMD_EXEC_ERROR;
+   }
    cirMgr->SATRar();
+   curCmd = CIRSATRAR;
 
    return CMD_EXEC_DONE;
 }

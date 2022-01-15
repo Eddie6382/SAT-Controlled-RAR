@@ -19,6 +19,7 @@ using namespace std;
 // TODO: Feel free to define your own classes, variables, or functions.
 
 #include "cirDef.h"
+#include "cirMA.h"
 
 extern CirMgr *cirMgr;
 
@@ -52,6 +53,15 @@ public:
 
    // Member function about SAT-Rar
    void SATRar();
+   bool SATRarOnWt(pair<unsigned, unsigned>, int, CirMA&, CirMA&);
+   void SATRarWrite(string& );
+   void RARGateRepair(pair<BigNum, vector<unsigned>>& , string& );
+   void findGlobalDominators();
+   inline BigNum hashWtIdxGd(unsigned w_tIdx, unsigned g_d) { return (BigNum)w_tIdx * (BigNum)getNumTots() + (BigNum)g_d; }
+   inline unsigned hashToWtIdx(BigNum hashVal) { return (unsigned)(hashVal / (BigNum)getNumTots()); }
+   inline unsigned hashToGd(BigNum hashVal) { return (unsigned)(hashVal % (BigNum)getNumTots()); }
+   IdList& getDominators(unsigned i) { return _globalDominators.at(i); }
+
 
    // Member functions about circuit construction
    bool readCircuit(const string&);
@@ -59,7 +69,7 @@ public:
    void genConnections();
    void genDfsList();
    // Member functions about circuit fanout cone
-   void genFanoutCone(CirGate* g);
+   void genFanInCone(CirGate* g);
 //   void updateUndefList();
    void checkFloatList();
    void checkUnusedList();
@@ -101,6 +111,7 @@ public:
 //   bool createMiter(CirMgr*, CirMgr*);
 
    static CirGate *_const0;
+   GateList            _dfsList;
 
 private:
    unsigned            _numDecl[TOT_PARSE_PORTS];
@@ -114,11 +125,18 @@ private:
    IdList              _floatList;  // gates with fanin(s) undefined
    IdList              _unusedList; // gates defined but not used
    GateArray           _totGateList;
-   GateList            _dfsList;
    GateList           *_fanoutInfo;
    vector<IdList*>     _fecGrps;  // store litId; FECHash<GatePValue, IdList*>
 //   SimVector           _fecVector;
    ofstream           *_simLog;
+
+   // SATRar repair
+   vector<pair<BigNum, unsigned>>         _twoWayRepairList;
+   vector<pair<BigNum, vector<unsigned>>> _rarWireRePairList;
+   vector<pair<BigNum, vector<unsigned>>> _rarGateRepairList;
+   vector<pair<unsigned, unsigned>> _w_tList;
+
+   unordered_map<unsigned, vector<unsigned>>  _globalDominators;
 
    // private member functions for circuit parsing
    bool parseHeader(ifstream&);

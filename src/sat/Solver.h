@@ -91,7 +91,6 @@ protected:
     // Main internal methods:
     //
     bool assume(Lit p);
-    void cancelUntil(int level);
     void record(const vec<Lit> &clause);
 
     void analyze(Clause *confl, vec<Lit> &out_learnt, int &out_btlevel); // (bt = backtrack)
@@ -142,8 +141,6 @@ protected:
     bool locked(const Clause *c) const { return reason[var((*c)[0])] == c; }
     bool simplify(Clause *c) const;
 
-    int decisionLevel() const { return trail_lim.size(); }
-
 public:
     Solver() : ok(true), cla_inc(1), cla_decay(1), var_inc(1), var_decay(1), order(assigns, activity), qhead(0), simpDB_assigns(0), simpDB_props(0), c_solver(0), conflict_var(-1), default_params(SearchParams(0.95, 0.999, 0.02)), expensive_ccmin(2), proof(NULL), verbosity(0), progress_estimate(0), conflict_id(ClauseId_NULL)
     {
@@ -176,6 +173,8 @@ public:
     int nAssigns() { return trail.size(); }
     int nClauses() { return clauses.size(); }
     int nLearnts() { return learnts.size(); }
+    int decisionLevel() const { return trail_lim.size(); }
+    void cancelUntil(int level);
 
     // Statistics: (read-only member variable)
     //
@@ -226,6 +225,7 @@ public:
 
     // SATRAR
     Var oneStepMA(const vec<Lit> &, bool);
+    Var makeDecision(Lit);
     void setCounterpartSolver(Solver *solver, unsigned w_t, deque<unsigned> &dominators, unordered_map<unsigned, Var> &gid2Var)
     {
         for (int i = 0; i < c_IsExcluded.size(); ++i)

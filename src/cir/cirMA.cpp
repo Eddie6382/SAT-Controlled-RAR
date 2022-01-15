@@ -69,14 +69,15 @@ CirMA::computeSATMA(unsigned g1, unsigned g2=0, bool init=true, bool copy=false)
    if (init && !copy) {
       unordered_map<unsigned, unsigned> _nodeAppear;
 
-   // Compute and assign SA0 gate and its dominators, use partial _MA as assumptions
+   // Compute and assign SA0 gate and its dominators, use partial _MA as assumptions, dominators does not include source
       _initMA.clear();
       _initMA.push_back(make_pair(g1, true));
+
+      // /*
       if (g2 != 0)
          findDominators(g1, g2, _nodeAppear);
       else
          findDominators(0, g1, _nodeAppear);
-      // printDominators();
 
       for (auto node: _dominators) {
          CirGate *g = _mgr->getGate(node);
@@ -92,6 +93,30 @@ CirMA::computeSATMA(unsigned g1, unsigned g2=0, bool init=true, bool copy=false)
                _initMA.push_back(make_pair(In1Gid, (isInv1 != 1)));
          }
       }
+      // */
+
+      // for iterations
+      // _dominators.clear();
+      // unordered_set<unsigned> isDom;
+      // if (g2 != 0) {
+      //    for (auto it: _mgr->getDominators(g2))
+      //       isDom.insert(it);
+      // } else {
+      //    for (auto it: _mgr->getDominators(g1))
+      //       if (it != g1) isDom.insert(it);
+      // }
+
+      // unsigned it_g = (g2!=0) ? g2 : g1;
+      // while(1) {
+      //    GateList& fanouts = _mgr->getFanouts(it_g);
+      //    size_t nFanouts = fanouts.size();
+
+      //    if (nFanouts == 0) {
+      //       assert(_mgr->getGate(it_g)->getType() == PO_GATE);
+      //       break;
+      //    }
+      //    it_g = fanouts[0]->getGid();
+      // }
       
       assumeRelease();
       for (int i=_initMA.size()-1; i>=0; --i)
@@ -118,12 +143,27 @@ CirMA::computeSATMA(unsigned g1, unsigned g2=0, bool init=true, bool copy=false)
       assert(g2 == 0);
       _assump.pop(); _assump.pop();
       assumeProperty(_gid2Var[g1], true);
-      conflict_var = _solver->oneStepMA(_assump, init);
+      conflict_var = _solver->oneStepMA(_assump, init);   // It will cancel decision (backtrack)
    }
 
-   computePhiSet(g1);
+   computeSet(g1);
 
    return conflict_var;
+}
+
+/*_________________________________________________________________________________________________
+|  Description:
+|    make decision
+|    <NOTE> no bracktrace on deciosn level; _assump is self defined var in class MA, no need to be modified
+|  
+|  Input:
+|    unsigned gid
+|    bool phase
+|________________________________________________________________________________________________@*/
+int 
+CirMA::decisionGs(unsigned gs, bool phase) {
+   Lit lit_gs = (phase) ? Lit(_gid2Var[gs]) : ~Lit(_gid2Var[gs]);
+   return _solver->makeDecision(lit_gs);
 }
 
 /*_________________________________________________________________________________________________
@@ -215,7 +255,7 @@ CirMA::printSATMA(unsigned gid, unsigned tabsize)
 }
 
 void 
-CirMA::computePhiSet(unsigned gid)
+CirMA::computeSet(unsigned gid)
 {
    _decisionMA.clear();
    _Phi.clear();

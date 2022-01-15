@@ -20,6 +20,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include "Solver.h"
 #include "Sort.h"
 #include <cmath>
+#include <iostream>
 
 int effLimit = INT_MAX;
 
@@ -217,7 +218,6 @@ void Solver::cancelUntil(int level) {
         trail_lim.shrink(trail_lim.size() - level);
         qhead = trail.size(); 
     }
-    conflict_var = -1;
 }
 
 //=================================================================================================
@@ -915,13 +915,25 @@ Var Solver::oneStepMA(const vec<Lit>& assumps, bool init=1)
                 if (proof != NULL) conflict_id = unit_id[var(p)];
             }
             cancelUntil(0);
-            return false; }
+            return conflict_var; }
         Clause* confl = propagate();
         if (confl != NULL){
             analyzeFinal(confl), assert(conflict.size() > 0);
             cancelUntil(0);
-            return false;
+            return conflict_var;
         }
         return -1;
     }
+}
+
+Var Solver::makeDecision(Lit lit_gs) {
+    bool check = assume(lit_gs);
+    assert(check);   // gs must be assumed successfully
+    Clause* confl = propagate();
+    if (confl != NULL) {
+        // conflict at making decisons
+        analyzeFinal(confl), assert(conflict.size() > 0);
+        return conflict_var;
+    }
+    return -1;
 }

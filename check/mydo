@@ -1,0 +1,4 @@
+cirr tests/ex01.aag
+cirrar
+cirrarw -d /tmp
+q -f

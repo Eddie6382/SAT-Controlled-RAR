@@ -31,6 +31,7 @@ typedef vector<unsigned>              IdList;
 typedef CirGate**                     GateArray;
 typedef CirPiGate**                   PiArray;
 typedef CirPoGate**                   PoArray;
+typedef unsigned long                 BigNum;
 
 // For SAT-Rar
 

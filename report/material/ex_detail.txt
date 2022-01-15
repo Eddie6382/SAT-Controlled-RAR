@@ -1,0 +1,36 @@
+1. Given w_t 12
+  Decide w_t(12, 13)
+  MA(w_t)
+  level  1:   6
+  level  2:  !11
+  level  3:   1  2  10
+  level  4:  !4 !8 !9
+
+  2. For each g_d belonging w_t's dominators (i=k down to 0)
+
+    MA(g_d = 13)
+    level  1:   6
+    level  2:  !11
+    level  3:   1  2  10 !12
+    No conflict
+
+      3. Decide g_s
+        Select !8
+          conflict gid 9
+
+    MA(g_d = 14)
+    level  1:   6
+    level  2:  !11 !13
+    No conflict
+
+      3. Decide g_s
+        Select !8
+        Select  10
+
+    MA(g_d = 7)
+    level  1:   6 !14
+    No conflict
+
+      3. Decide g_s
+        Select !8
+          conflict gid 9

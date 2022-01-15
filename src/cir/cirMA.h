@@ -30,13 +30,10 @@ public:
       _solver->setCounterpartSolver(cir_wt->_solver, w_t, cir_wt->_dominators, cir_wt->_gid2Var);
    }
    int computeSATMA(unsigned, unsigned, bool, bool);
-   unsigned var2Gid(Var var) {
-      unsigned gid = 0;
-      for (auto it: _gid2Var)
-         if (it.second == var)
-            gid = var;
-      return gid;
-   }
+   int decisionGs(unsigned, bool);
+   void computeSet(unsigned);
+   void backtrace(int step) { _solver->cancelUntil(_solver->decisionLevel() - step); }
+   void resetSolver() { _solver->cancelUntil(0); }
 
 // print (debug)
    void printPath();
@@ -47,6 +44,17 @@ public:
    bool isInPhi(unsigned gid) const { return (_Phi.find(gid) != _Phi.end()); }
    char phase(unsigned i) { return (_solver->value(_gid2Var[i])==l_True?' ': \
                 (_solver->value(_gid2Var[i])==l_False?'!':'X')); }
+   bool isPos(unsigned i) { return _solver->value(_gid2Var[i])==l_True; }
+   bool isNeg(unsigned i) { return _solver->value(_gid2Var[i])==l_False; }
+   int nDecision() { return _solver->decisionLevel(); }
+   bool isDet(unsigned i) { return _solver->value(_gid2Var[i])!=l_Undef; }
+   unsigned var2Gid(Var var) {
+      unsigned gid = 0;
+      for (auto it: _gid2Var)
+         if (it.second == var)
+            gid = it.first;
+      return gid;
+   }
 
 // Iterate
    inline size_t nDominators() { return _dominators.size(); }
@@ -57,7 +65,6 @@ private:
    void findDominators(unsigned, unsigned, unordered_map<unsigned, unsigned>&);
    void DFS(unsigned, unsigned, IdList&);
    bool redundancyCheck(unsigned, bool);
-   void computePhiSet(unsigned);
 // SAT related
 //
    void reset() {
@@ -123,7 +130,7 @@ private:
 
    void constructCNF();
 
-   const CirMgr* _mgr;
+   CirMgr* _mgr;
    unordered_map<unsigned, bool> _MA;     // These params are initial assignments of MA
    vector<pair<unsigned, bool>> _initMA;   // k (w_t's direct fanout) --> 0 (POs)
 
