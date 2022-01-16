@@ -1,4 +1,3 @@
-cirr tests/ex01.aag
+cirr tests.fraig/ISCAS85/C432.aag
 cirrar
-cirrarw -d results
 q -f

@@ -471,7 +471,11 @@ bool Solver::enqueue(Lit p, Clause* from)
         trail_pos[x] = trail.size();
         reason   [x] = from;
         trail.push(p);
-        if ((c_solver != 0) && (c_IsExcluded[x] == 0) && (c_solver->assigns[x] != assigns[x])) {
+        if ((c_solver != 0) && \
+            (c_IsExcluded[x] == 0) && \
+            (toLbool(c_solver->assigns[x]) != l_Undef) && \
+            (c_solver->assigns[x] != assigns[x])) 
+        {
             conflict_var = x;
             return false;
         }
@@ -932,7 +936,8 @@ Var Solver::makeDecision(Lit lit_gs) {
     Clause* confl = propagate();
     if (confl != NULL) {
         // conflict at making decisons
-        analyzeFinal(confl), assert(conflict.size() > 0);
+        analyzeFinal(confl);
+        // assert(conflict.size() > 0);
         return conflict_var;
     }
     return -1;

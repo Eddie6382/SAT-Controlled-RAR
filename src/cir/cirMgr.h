@@ -13,6 +13,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include "cirGraph.h"
 
 using namespace std;
 
@@ -55,12 +56,17 @@ public:
    void SATRar();
    bool SATRarOnWt(pair<unsigned, unsigned>, int, CirMA&, CirMA&);
    void SATRarWrite(string& );
-   void RARGateRepair(pair<BigNum, vector<unsigned>>& , string& );
+   void SATRARRepair(pair<BigNum, vector<unsigned>>& , string& );
    void findGlobalDominators();
+   void findTransitiveClosure();
    inline BigNum hashWtIdxGd(unsigned w_tIdx, unsigned g_d) { return (BigNum)w_tIdx * (BigNum)getNumTots() + (BigNum)g_d; }
    inline unsigned hashToWtIdx(BigNum hashVal) { return (unsigned)(hashVal / (BigNum)getNumTots()); }
    inline unsigned hashToGd(BigNum hashVal) { return (unsigned)(hashVal % (BigNum)getNumTots()); }
    IdList& getDominators(unsigned i) { return _globalDominators.at(i); }
+   bool isTransitive(unsigned u, unsigned v) {
+      assert(u<getNumTots() && v<getNumTots());
+      return (_graph->isTransitive(u, v));
+   }
 
 
    // Member functions about circuit construction
@@ -129,12 +135,14 @@ private:
    vector<IdList*>     _fecGrps;  // store litId; FECHash<GatePValue, IdList*>
 //   SimVector           _fecVector;
    ofstream           *_simLog;
+   Graph*              _graph;
+   CirMA              *_MAw_t;
+   CirMA              *_MAg_d;
 
    // SATRar repair
-   vector<pair<BigNum, unsigned>>         _twoWayRepairList;
-   vector<pair<BigNum, vector<unsigned>>> _rarWireRePairList;
-   vector<pair<BigNum, vector<unsigned>>> _rarGateRepairList;
+   vector<pair<BigNum, vector<unsigned>>> _RepairList;
    vector<pair<unsigned, unsigned>> _w_tList;
+   int _repairCat[3];
 
    unordered_map<unsigned, vector<unsigned>>  _globalDominators;
 

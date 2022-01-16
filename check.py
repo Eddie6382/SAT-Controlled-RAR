@@ -50,7 +50,7 @@ def run(args):
          cmd = './cirTest -F check/mydo'
          process = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE, preexec_fn=os.setsid)
          try:
-            output, err = process.communicate(timeout=10)
+            output, err = process.communicate(timeout=600)
             if (err != b''):
                log_progress(red('ERROR: '))
             else:

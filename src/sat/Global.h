@@ -77,7 +77,10 @@ template<class T> static inline T* xrealloc(T* ptr, size_t size) {
     return tmp; }
 
 template<class T> static inline void xfree(T *ptr) {
-    if (ptr != NULL) free((void*)ptr); }
+    if (ptr != NULL) { 
+        free((void*)ptr); 
+    } 
+}
 
 
 //=================================================================================================

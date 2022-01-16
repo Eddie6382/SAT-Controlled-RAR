@@ -21,7 +21,6 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #define Solver_h
 
 #include "vector"
-#include "deque"
 #include <unordered_map>
 #include "SolverTypes.h"
 #include "VarOrder.h"
@@ -226,7 +225,7 @@ public:
     // SATRAR
     Var oneStepMA(const vec<Lit> &, bool);
     Var makeDecision(Lit);
-    void setCounterpartSolver(Solver *solver, unsigned w_t, deque<unsigned> &dominators, unordered_map<unsigned, Var> &gid2Var)
+    void setCounterpartSolver(Solver *solver, unsigned w_t, vector<unsigned> &dominators, unordered_map<unsigned, Var> &gid2Var)
     {
         for (int i = 0; i < c_IsExcluded.size(); ++i)
             c_IsExcluded[i] = 0; // reset because of new w_t

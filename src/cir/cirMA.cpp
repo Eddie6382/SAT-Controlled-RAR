@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <vector>
 #include <cassert>
-#include <deque>
 #include <map>
 #include <string>
 #include <unordered_map>
@@ -60,9 +59,10 @@ CirMA::constructCNF()
 |    unsigned g1, g2. If (g1, g2) are both specified, than MA(w_t) is calculated, otherwise if only specified g1, calculated MA(g_d)
 |    bool init, whether find new set of dominators
 |    bool copy, whether to copy implication from pointer c_solver
+|    k, from g_dk to g_d0
 |________________________________________________________________________________________________@*/
 Var
-CirMA::computeSATMA(unsigned g1, unsigned g2=0, bool init=true, bool copy=false)
+CirMA::computeSATMA(unsigned g1, unsigned g2=0, bool init=true, bool copy=false, int k=0)
 {
    Var conflict_var = -1;
 
@@ -72,13 +72,25 @@ CirMA::computeSATMA(unsigned g1, unsigned g2=0, bool init=true, bool copy=false)
    // Compute and assign SA0 gate and its dominators, use partial _MA as assumptions, dominators does not include source
       _initMA.clear();
       _initMA.push_back(make_pair(g1, true));
-
       // /*
-      if (g2 != 0)
-         findDominators(g1, g2, _nodeAppear);
-      else
-         findDominators(0, g1, _nodeAppear);
-
+      _dominators.clear();
+      unordered_set<unsigned> isDom;
+      if (g2 != 0) {
+         for (auto it: _mgr->getDominators(g2))
+            isDom.insert(it);
+      } else {
+         for (auto it: _mgr->getDominators(g1))
+            if (it != g1) isDom.insert(it);
+      }
+      unsigned it_g = (g2!=0) ? g2 : g1;
+      while(1) {
+         GateList& fanouts = _mgr->getFanouts(it_g);
+         size_t nFanouts = fanouts.size();
+         if (isDom.find(it_g) != isDom.end())
+            _dominators.push_back(it_g);
+         if (nFanouts == 0) break;
+         it_g = fanouts[0]->getGid();
+      }
       for (auto node: _dominators) {
          CirGate *g = _mgr->getGate(node);
          if (g->getType() == AIG_GATE) {
@@ -87,66 +99,53 @@ CirMA::computeSATMA(unsigned g1, unsigned g2=0, bool init=true, bool copy=false)
             bool isInv0 = g->getIn0().isInv();
             bool isInv1 = g->getIn1().isInv();
 
-            if (_nodeAppear.find(In0Gid) == _nodeAppear.end())
+            if (!_mgr->isTransitive(g1, In0Gid))
                _initMA.push_back(make_pair(In0Gid, (isInv0 != 1)));
-            if (_nodeAppear.find(In1Gid) == _nodeAppear.end())
+            if (!_mgr->isTransitive(g1, In1Gid))
                _initMA.push_back(make_pair(In1Gid, (isInv1 != 1)));
          }
       }
       // */
-
-      // for iterations
-      // _dominators.clear();
-      // unordered_set<unsigned> isDom;
-      // if (g2 != 0) {
-      //    for (auto it: _mgr->getDominators(g2))
-      //       isDom.insert(it);
-      // } else {
-      //    for (auto it: _mgr->getDominators(g1))
-      //       if (it != g1) isDom.insert(it);
-      // }
-
-      // unsigned it_g = (g2!=0) ? g2 : g1;
-      // while(1) {
-      //    GateList& fanouts = _mgr->getFanouts(it_g);
-      //    size_t nFanouts = fanouts.size();
-
-      //    if (nFanouts == 0) {
-      //       assert(_mgr->getGate(it_g)->getType() == PO_GATE);
-      //       break;
-      //    }
-      //    it_g = fanouts[0]->getGid();
-      // }
+      // printDominators();
       
       assumeRelease();
       for (int i=_initMA.size()-1; i>=0; --i)
          assumeProperty(_gid2Var[_initMA[i].first], _initMA[i].second);
       conflict_var = _solver->oneStepMA(_assump, init);
+
+      computeSet(g1, k);
    }
    else if (init && copy) {
       assert(c_cirMA != NULL);
       assumeRelease();
-      for (int i=c_cirMA->_initMA.size()-1; i>=0; --i) {
-         pair<unsigned, bool> t = c_cirMA->_initMA[i];
-         assumeProperty(_gid2Var[t.first],t.second);
+      if (c_cirMA->_initMA.size() > 2) {
+         for (int i=c_cirMA->_initMA.size()-1; i>=0; --i) {
+            pair<unsigned, bool> t = c_cirMA->_initMA[i];
+            assumeProperty(_gid2Var[t.first],t.second);
+         }
+         _assump.pop(); _assump.pop();
       }
-      _assump.pop(); _assump.pop();
       assumeProperty(_gid2Var[g1], true);
       conflict_var = _solver->oneStepMA(_assump, init);
 
       _dominators.clear();
-      for (auto it: c_cirMA->_dominators)
-         _dominators.push_back(it);
-      _dominators.pop_front();
+      if (c_cirMA->_dominators.size() > 1) {
+         for (size_t i=1; i<c_cirMA->_dominators.size(); ++i)
+            _dominators.push_back(c_cirMA->_dominators[i]);
+      }
+
+      computeSet(g1, k);
    }
    else {
-      assert(g2 == 0);
       _assump.pop(); _assump.pop();
       assumeProperty(_gid2Var[g1], true);
+      assert(_assump.size());
       conflict_var = _solver->oneStepMA(_assump, init);   // It will cancel decision (backtrack)
+
+      computeSet(g1, k);
    }
 
-   computeSet(g1);
+   
 
    return conflict_var;
 }
@@ -164,73 +163,6 @@ int
 CirMA::decisionGs(unsigned gs, bool phase) {
    Lit lit_gs = (phase) ? Lit(_gid2Var[gs]) : ~Lit(_gid2Var[gs]);
    return _solver->makeDecision(lit_gs);
-}
-
-/*_________________________________________________________________________________________________
-|  Description:
-|    compute MA using Minisat solver
-|  
-|  Input:
-|    unsigned g0, src. If both are specified, MA(w_t) is calculated and src is included in dominators
-|                     If g0 not specified, find dominators of g_d, src is not included
-|    bool init, whether find new set of dominators
-|________________________________________________________________________________________________@*/
-void
-CirMA::findDominators(unsigned g0, unsigned src, unordered_map<unsigned, unsigned>& _nodeAppear)
-{
-   _allpaths.clear();
-   _nodeAppear.clear();
-   _dominators.clear();
-   if (g0 != 0) { _nodeAppear[g0] = 1; }
-   else { _nodeAppear[src] = 1; }
-
-   unsigned dst;
-   for (unsigned i = 0, n = _mgr->getNumPOs(); i < n; ++i) {
-      dst = _mgr->getPo(i)->getGid();
-      IdList path;
-      if (g0 != 0) { path.push_back(src); }
-      DFS(src, dst, path);
-   }
-
-   for (const auto& path : _allpaths) {
-      for (const auto& node : path) {
-         if (_nodeAppear.find(node) != _nodeAppear.end())
-            _nodeAppear[node] += 1;
-         else
-            _nodeAppear[node] = 1;
-      }
-   }
-   if (!_allpaths.size()) return;
-   for (const auto& node: _allpaths[0])
-      if (_nodeAppear[node] == _allpaths.size())
-         _dominators.push_back(node);
-
-}
-
-void 
-CirMA::DFS(unsigned src, unsigned dst, IdList& path)
-{
-   if (src == dst)
-      _allpaths.push_back(path);
-   else {
-      GateList& fanouts = _mgr->getFanouts(src);
-      for (size_t i=0; i<fanouts.size(); ++i) {
-         path.push_back(fanouts[i]->getGid());
-         DFS(fanouts[i]->getGid(), dst, path);
-         path.pop_back();
-      }
-   }
-}
-
-void
-CirMA::printPath()
-{
-   for (const auto& path : _allpaths) {
-      cout << "Path : ";
-      for (const auto& node : path)
-            cout << node << " ";
-      cout << endl;
-   }
 }
 
 /*
@@ -255,7 +187,7 @@ CirMA::printSATMA(unsigned gid, unsigned tabsize)
 }
 
 void 
-CirMA::computeSet(unsigned gid)
+CirMA::computeSet(unsigned gid, int k=0)
 {
    _decisionMA.clear();
    _Phi.clear();
@@ -273,8 +205,8 @@ CirMA::computeSet(unsigned gid)
 
    unordered_set<unsigned> t;
    t.insert(gid);
-   for (auto it: _dominators)
-      t.insert(it);
+   for (; k<_dominators.size(); ++k)
+      t.insert(_dominators[k]);
 
    for (auto it: _decisionMA) {
       for (auto i: it.second) {
@@ -306,19 +238,4 @@ CirMA::printMA()
    for (auto it: temp)
       cout << setw(3) << it;
    cout <<"\n";
-}
-
-bool
-CirMA::redundancyCheck(unsigned gid, bool value)
-{
-   if (_MA.find(gid) == _MA.end()) {
-      _MA[gid] = value;
-      return false;
-   }
-   else {
-      if (_MA[gid] != value)
-         return true;
-      else
-         return false;
-   }
 }

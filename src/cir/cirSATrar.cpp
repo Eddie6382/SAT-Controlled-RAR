@@ -14,26 +14,41 @@
 #include "cirMA.h" // define all the classes used in function SATRar
 #include "cirDef.h"
 #include "Solver.h"
+#include <sys/resource.h>
 
 using namespace std;
+
+long get_mem_usage() {
+    struct rusage mysuage;
+    getrusage(RUSAGE_SELF, &mysuage);
+    return mysuage.ru_maxrss;
+}
 
 /*_________________________________________________________________________________________________
 ________________________________________________________________________________________________@*/
 void CirMgr::SATRar()
 {
+   clock_t start = clock();
+   
    // For Minisat based approach
-   _twoWayRepairList.clear();
-   _rarWireRePairList.clear();
-   _rarGateRepairList.clear();
+   _RepairList.clear();
    _w_tList.clear();
+   _repairCat[0] = 0;
+   _repairCat[1] = 0;
+   _repairCat[2] = 0;
    
    
-   CirMA MAw_t(this);
-   CirMA MAg_d(this);
+   _MAw_t = new CirMA (this);
+   _MAg_d = new CirMA (this);
 
    int Ntar = 0;
-
+    
+   cout << "\n----  Preprocess ----\n";
    genDfsList();
+   findGlobalDominators();
+   findTransitiveClosure();
+   cout << "Done\n----  Run SATrar ----\n";
+   
    for (auto& in: _dfsList) {
       if (in->getType() != AIG_GATE) continue;
       GateList& fanouts = getFanouts(in->getGid());
@@ -41,26 +56,27 @@ void CirMgr::SATRar()
          if (out->getType() != AIG_GATE) continue;
          pair<unsigned, unsigned> w_t = make_pair(in->getGid(), out->getGid());
          _w_tList.push_back(w_t);
-         if (SATRarOnWt(w_t, _w_tList.size()-1, MAw_t, MAg_d))
+         if (SATRarOnWt(w_t, _w_tList.size()-1, *_MAw_t, *_MAg_d))
             Ntar++;
       }
    }
 
    cout << "\n----  Statistic  ----\n";
-   cout << "2-Way rar alternatives: " << _twoWayRepairList.size() << "\n";
-   cout << "RAR wire alternatives: " << _rarWireRePairList.size() << "\n";
-   cout << "RAR gate alternatives: " << _rarGateRepairList.size() << "\n";
+   cout << "Total time usage: " << double(clock()-start)/CLOCKS_PER_SEC << " s\n";
+   cout << "2-Way rar alternatives: " << _repairCat[0] << "\n";
+   cout << "RAR wire alternatives: " << _repairCat[1] << "\n";
+   cout << "RAR gate alternatives: " << _repairCat[2] << "\n";
    cout << "#tar: " << Ntar << "\n";
-   cout << "#alt: " << _twoWayRepairList.size() + _rarWireRePairList.size() + _rarGateRepairList.size() << endl;
+   cout << "#alt: " << _RepairList.size() << endl;
 }
 
 void CirMgr::SATRarWrite(string& dir)
 {
    cout << "writing files...";
    size_t n = 0;
-   for (auto& repair: _rarGateRepairList) {
+   for (auto& repair: _RepairList) {
       string text = "";
-      RARGateRepair(repair, text);
+      SATRARRepair(repair, text);
       string file_name = dir + "/repair" + to_string(n) + ".aag";
       ofstream outfile(file_name);
       outfile << text;
@@ -75,32 +91,36 @@ bool CirMgr::SATRarOnWt(pair<unsigned, unsigned> w_t, int w_tIdx, CirMA& MAw_t, 
 {
    bool return_val = false;
 
-   cout << "\n  w_t(" << w_t.first << ", " << w_t.second << ")\n";
-   MAw_t.computeSATMA(w_t.first, w_t.second, 1, 0);
+   cout << "  w_t(" << w_t.first << ", " << w_t.second << ")\n";
+   MAw_t.computeSATMA(w_t.first, w_t.second, 1, 0, 0);
    genFanInCone(getGate(w_t.first));
    // MAw_t.printSATMA(w_t.first, 2);
    MAg_d.setCounterpartSolver(&MAw_t, w_t.first);
 
    int i = 0;
    unsigned g_d = w_t.second;
+
    do {
    // only backtrack to level 𝑖 to find MAs. If no conflict, compute 𝑀𝐴(𝑔_𝑑𝑖)
-      cout << "    g_d = " << g_d << "\n";
-      Var conflict_var = MAg_d.computeSATMA(g_d, 0, (i == 0), (i == 0));
+      // cout << "    g_d = " << g_d << "\n";
+      Var conflict_var = MAg_d.computeSATMA(g_d, 0, (i == 0), (i == 0), i);
       // MAg_d.printSATMA(g_d, 4);
 
    // 2-way RAR, make it a wire between conflict_gate and g_d
+      vector<unsigned> decisions;
+
       if (conflict_var != -1) {
          unsigned conflict_gid = MAw_t.var2Gid(conflict_var);
          bool phase = MAw_t.isNeg(conflict_gid);
+         decisions.push_back(conflict_gid*2 + phase);
          cout << "    conflict gid " << conflict_var << "\n";
-         _twoWayRepairList.push_back(make_pair(hashWtIdxGd(w_tIdx, g_d), conflict_gid*2 + phase));
+         _RepairList.push_back(make_pair(hashWtIdxGd(w_tIdx, g_d), decisions));
          return_val = true;
+         _repairCat[0]++;
          break;
       }
 
    // Decision making, select g_s belonging Phi_wt - Phi_i
-      vector<unsigned> decisions;
       unsigned nDecision = 0;
 
       for (const auto& gate: _dfsList) {
@@ -114,17 +134,19 @@ bool CirMgr::SATRarOnWt(pair<unsigned, unsigned> w_t, int w_tIdx, CirMA& MAw_t, 
             
             ++nDecision;
             decisions.push_back(gid*2 + MAw_t.isNeg(gid));
-            cout << "      decide " << MAw_t.phase(gid) << gid << "\n";
+            // cout << "      decide " << MAw_t.phase(gid) << gid << "\n";
             conflict_var = MAg_d.decisionGs(gid, MAw_t.isPos(gid));
 
             if (conflict_var != -1) {
                unsigned conflict_gid = MAw_t.var2Gid(conflict_var);
                cout << "        conflict gid " << conflict_gid << "\n";
                if (find(decisions.begin(), decisions.end(), conflict_gid) != decisions.end()) { // RAR wire 
-                  _rarWireRePairList.push_back(make_pair(hashWtIdxGd(w_tIdx, g_d), decisions));
-               } else {
+                  _RepairList.push_back(make_pair(hashWtIdxGd(w_tIdx, g_d), decisions));
+                  _repairCat[1]++;
+               } else { // RAR gate
                   decisions.push_back(conflict_gid*2 + MAw_t.isNeg(conflict_gid));
-                  _rarGateRepairList.push_back(make_pair(hashWtIdxGd(w_tIdx, g_d), decisions));
+                  _RepairList.push_back(make_pair(hashWtIdxGd(w_tIdx, g_d), decisions));
+                  _repairCat[2]++;
                }
                return_val = true;
                break;
@@ -134,10 +156,10 @@ bool CirMgr::SATRarOnWt(pair<unsigned, unsigned> w_t, int w_tIdx, CirMA& MAw_t, 
       MAg_d.backtrace(nDecision);
 
    // update g_d for next iteration
-      g_d = MAg_d._dominators.front();
-      MAg_d._dominators.pop_front();
+      if (MAg_d._dominators.empty()) break;
+      g_d = MAg_d._dominators[i];
       ++i;
-   } while (!MAg_d._dominators.empty());
+   } while (MAg_d._assump.size() >= 2);  // No dominators, break;
 
    MAg_d.resetSolver();
    MAw_t.resetSolver();
@@ -171,7 +193,7 @@ CirMgr::genFanInCone(CirGate *g)
 }
 
 void 
-CirMgr::RARGateRepair(pair<BigNum, vector<unsigned>>& repair, string& text)
+CirMgr::SATRARRepair(pair<BigNum, vector<unsigned>>& repair, string& text)
 {
    unsigned w_tFirst = _w_tList[hashToWtIdx(repair.first)].first;
    unsigned w_tSecond = _w_tList[hashToWtIdx(repair.first)].second;
@@ -237,24 +259,31 @@ CirMgr::RARGateRepair(pair<BigNum, vector<unsigned>>& repair, string& text)
    text = regex_replace(text, e3, n_lit_gd+"$2");
 
    string addcircuit = "\n";
-   string s_in0;
-   string s_in1;
-   for (int i=1; i<(int)decisions.size(); ++i) {
-      if (i==1) {
-         s_in0 = to_string(decisions[0]);
-         s_in1 = to_string(decisions[1]);
+   if (decisions.size() >= 2) {
+      string s_in0;
+      string s_in1;
+      for (int i=1; i<(int)decisions.size(); ++i) {
+         if (i==1) {
+            s_in0 = to_string(decisions[0]);
+            s_in1 = to_string(decisions[1]);
+         }
+         else {
+            s_in0 = to_string(gids[i-1]);
+            s_in1 = to_string(decisions[i]);
+         }
+         addcircuit += to_string(gids[i]*2) + " " + s_in0 + " " + s_in1 + "\n";
       }
-      else {
-         s_in0 = to_string(gids[i-1]);
-         s_in1 = to_string(decisions[i]);
-      }
-      addcircuit += to_string(gids[i]*2) + " " + s_in0 + " " + s_in1 + "\n";
+      addcircuit += to_string(g_d*2) + " " + n_lit_gd + " " + to_string(gids[decisions.size()-1]*2 + 1);
    }
-   addcircuit += to_string(g_d*2) + " " + n_lit_gd + " " + to_string(gids[decisions.size()-1]*2 + 1);
+   else {   // <= 1
+      // TODO
+      bool isNeg = decisions[0] % 2;
+      unsigned g_v = (isNeg) ? decisions[0]-1 : decisions[0]+1;
+      addcircuit += to_string(g_d*2) + " " + n_lit_gd + " " + to_string(g_v);
+   }
 
    regex e4 ("("+n_lit_gd+")(\\s\\d+)(\\s\\d+)");
    text = regex_replace(text, e4, "$1$2$3"+addcircuit);
-
 }
 
 void 
@@ -277,7 +306,7 @@ CirMgr::findGlobalDominators()
 
          gidDom = _globalDominators[fanouts[0]->getGid()];
             
-         for (size_t j=1; j<fanouts.size(); ++i) {
+         for (size_t j=1; j<fanouts.size(); ++j) {
             vector<unsigned> foDom = _globalDominators[fanouts[j]->getGid()];
 
             vector<unsigned> vec_intersect;
@@ -289,4 +318,19 @@ CirMgr::findGlobalDominators()
          _globalDominators[gid] = gidDom;
       }
    }
+}
+
+void 
+CirMgr::findTransitiveClosure() {
+   if (_graph != 0) return;
+   if (_dfsList.empty()) genDfsList();
+      
+   _graph = new Graph(getNumTots());
+   for (auto u: _dfsList) {
+      GateList& fanouts = getFanouts(u->getGid());
+      for (auto v: fanouts) {
+         _graph->addEdge(u->getGid(), v->getGid());
+      }
+   }
+   _graph->transitiveClosure();
 }

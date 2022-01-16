@@ -6,10 +6,10 @@
 #include <map>
 #include <unordered_set>
 #include <iostream>
-#include <deque>
 #include "cirGate.h"
 #include "cirMgr.h"
 #include "Solver.h"
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -18,25 +18,25 @@ using namespace std;
 */
 class CirMA
 {
+   friend class CirMgr;
 public:
    CirMA(CirMgr* _cirmgr): _mgr(_cirmgr), _solver(0), c_cirMA(0) {
       initialize();
       constructCNF();
    };
-   ~CirMA() { if (_solver) delete _solver; }
+   ~CirMA() { if (_solver) { delete _solver; _solver=0; } }
 
    void setCounterpartSolver(CirMA* cir_wt, unsigned w_t) {
       c_cirMA = cir_wt;
       _solver->setCounterpartSolver(cir_wt->_solver, w_t, cir_wt->_dominators, cir_wt->_gid2Var);
    }
-   int computeSATMA(unsigned, unsigned, bool, bool);
+   int computeSATMA(unsigned, unsigned, bool, bool, int);
    int decisionGs(unsigned, bool);
-   void computeSet(unsigned);
+   void computeSet(unsigned, int);
    void backtrace(int step) { _solver->cancelUntil(_solver->decisionLevel() - step); }
    void resetSolver() { _solver->cancelUntil(0); }
 
 // print (debug)
-   void printPath();
    void printSATMA(unsigned, unsigned);
    void printMA();
    void printDominators();
@@ -59,21 +59,16 @@ public:
 // Iterate
    inline size_t nDominators() { return _dominators.size(); }
 
-   deque<unsigned> _dominators;
+   vector<unsigned> _dominators;
 private:
-// MA
-   void findDominators(unsigned, unsigned, unordered_map<unsigned, unsigned>&);
-   void DFS(unsigned, unsigned, IdList&);
-   bool redundancyCheck(unsigned, bool);
 // SAT related
 //
    void reset() {
-      if (_solver) delete _solver;
+      if (_solver) { delete _solver; };
       _solver = new Solver();
       _gid2Var.clear();
       _assump.clear();
       _curVar = 0;
-      _allpaths.clear();
       _MA.clear();
       _initMA.clear();
       _dominators.clear();
@@ -139,9 +134,6 @@ private:
    const CirMA* c_cirMA;
    Var               _curVar;    // Variable currently
    vec<Lit>          _assump;    // Assumption List for assumption solve
-
-   // for dominators
-   vector<IdList> _allpaths;
 
    // for final MA set
    map<int, vector<size_t> > _decisionMA;
