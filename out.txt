@@ -1,0 +1,2 @@
+cir> cirr tests.fraig/ISCAS85/C432.aag
+

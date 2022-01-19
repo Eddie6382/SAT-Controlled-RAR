@@ -29,6 +29,8 @@ def log_progress(msg):
 
 def run(args):
    os.system('rm -rf ' + tempfile.gettempdir() + '/*')
+   if args.check:
+      os.system('rm -rf results/err_report/*')
    path = os.walk(args.benchmark_dir)
    i = 0;
    for root, _, files in path:
@@ -79,12 +81,13 @@ def run(args):
                   elif (text.find('SATISFIABLE') != -1):
                      log_progress(red('fail'))
                      log_progress(', miter returns SAT\n')
+                     os.system('cp ' + os.path.join(tmp_root, tmp_file) + ' ../results/err_report/')
                   else:
                      log_progress(red('fail'))
                      log_progress(', other errors\n')
             os.chdir('..')
 
-         os.system('rm -rf ' + tempfile.gettempdir() + '/*')
+         # os.system('rm -rf ' + tempfile.gettempdir() + '/*')
 
 
 if __name__ == "__main__":

@@ -107,13 +107,14 @@ bool CirMgr::SATRarOnWt(pair<unsigned, unsigned> w_t, int w_tIdx, CirMA& MAw_t, 
       // MAg_d.printSATMA(g_d, 4);
 
    // 2-way RAR, make it a wire between conflict_gate and g_d
+      
       vector<unsigned> decisions;
 
       if (conflict_var != -1) {
          unsigned conflict_gid = MAw_t.var2Gid(conflict_var);
          bool phase = MAw_t.isNeg(conflict_gid);
          decisions.push_back(conflict_gid*2 + phase);
-         cout << "    conflict gid " << conflict_var << "\n";
+         cout << "    conflict gid " << conflict_gid << "\n";
          _RepairList.push_back(make_pair(hashWtIdxGd(w_tIdx, g_d), decisions));
          return_val = true;
          _repairCat[0]++;
@@ -202,6 +203,7 @@ CirMgr::SATRARRepair(pair<BigNum, vector<unsigned>>& repair, string& text)
 
    size_t nAig = 0;
 
+// main body
    stringstream outfile;
    for (size_t i = 0, n = _dfsList.size(); i < n; ++i)
       if (_dfsList[i]->isAig()) ++nAig;
@@ -224,8 +226,12 @@ CirMgr::SATRARRepair(pair<BigNum, vector<unsigned>>& repair, string& text)
    for (size_t i = 0, n = _numDecl[PO]; i < n; ++i)
       if (getPo(i)->getName())
          outfile << "o" << i << " " << getPo(i)->getName() << endl;
-   outfile << "c" << endl;
-   outfile << "aag repair, (w_t, g_d) = (" << w_tFirst*2 << ", " << g_d*2 << ")" << endl;
+   outfile << "c\naag repair, redundant wire = (" << w_tFirst << ", " << w_tSecond << ")" << "\n";
+   outfile << "            g_d = " << g_d << "\n";
+   outfile << "            conflict decisions = ";
+   for (int i=0; i<(int)decisions.size(); ++i)
+      outfile << decisions[i]/2 << " ";
+   outfile << endl;
 
 // replace header
    text = outfile.str();

@@ -1,4 +1,4 @@
-cir> cirr tests.fraig/ISCAS85/C432_r.aag -r
+cir> cirr tests.fraig/ISCAS85/C432_r.aag
 
 cir> cirrar
 
@@ -914,12 +914,15 @@ Done
   w_t(341, 342)
 
 ----  Statistic  ----
-Total time usage: 0.1875 s
+Total time usage: 0.15625 s
 2-Way rar alternatives: 344
 RAR wire alternatives: 0
 RAR gate alternatives: 40
 #tar: 364
 #alt: 384
+
+cir> cirrarw -d /tmp
+writing files...done
 
 cir> q -f
 
