@@ -1,0 +1,3378 @@
+cir> cirr tests.fraig/ISCAS85/C1908.aag -r
+
+cir> cirrar
+
+----  Preprocess ----
+Done
+----  Run SATrar ----
+  w_t(170, 171)
+  w_t(170, 171)
+  w_t(171, 172)
+    conflict gid 170
+  w_t(171, 576)
+    conflict gid 170
+  w_t(576, 579)
+        conflict gid 2
+  w_t(576, 585)
+    conflict gid 586
+  w_t(576, 649)
+        conflict gid 2
+  w_t(576, 940)
+    conflict gid 2
+  w_t(574, 575)
+  w_t(574, 575)
+  w_t(575, 578)
+    conflict gid 574
+  w_t(575, 648)
+    conflict gid 574
+  w_t(575, 1136)
+    conflict gid 574
+  w_t(575, 1161)
+    conflict gid 574
+  w_t(571, 577)
+    conflict gid 570
+  w_t(571, 1136)
+    conflict gid 570
+  w_t(572, 573)
+  w_t(572, 573)
+  w_t(573, 577)
+    conflict gid 572
+  w_t(573, 647)
+    conflict gid 572
+  w_t(577, 578)
+        conflict gid 571
+  w_t(578, 579)
+        conflict gid 577
+  w_t(579, 586)
+        conflict gid 576
+  w_t(581, 582)
+  w_t(581, 582)
+  w_t(582, 584)
+    conflict gid 581
+  w_t(582, 939)
+    conflict gid 581
+  w_t(583, 584)
+    conflict gid 939
+  w_t(583, 858)
+    conflict gid 50
+  w_t(583, 939)
+    conflict gid 50
+  w_t(583, 986)
+    conflict gid 50
+  w_t(584, 585)
+  w_t(585, 586)
+        conflict gid 584
+  w_t(585, 650)
+        conflict gid 584
+  w_t(586, 590)
+    conflict gid 595
+  w_t(586, 606)
+    conflict gid 611
+  w_t(586, 620)
+    conflict gid 625
+  w_t(586, 634)
+    conflict gid 639
+  w_t(586, 692)
+    conflict gid 697
+  w_t(586, 703)
+    conflict gid 708
+  w_t(586, 714)
+    conflict gid 719
+  w_t(586, 725)
+    conflict gid 730
+  w_t(586, 864)
+    conflict gid 893
+  w_t(586, 868)
+    conflict gid 893
+  w_t(586, 872)
+    conflict gid 894
+  w_t(586, 876)
+    conflict gid 895
+  w_t(586, 880)
+    conflict gid 896
+  w_t(586, 884)
+    conflict gid 897
+  w_t(586, 888)
+    conflict gid 898
+  w_t(586, 892)
+    conflict gid 899
+  w_t(124, 125)
+  w_t(124, 125)
+  w_t(124, 441)
+  w_t(124, 441)
+  w_t(124, 535)
+  w_t(124, 535)
+  w_t(441, 442)
+  w_t(441, 442)
+  w_t(442, 446)
+    conflict gid 441
+  w_t(442, 447)
+  w_t(442, 447)
+  w_t(95, 96)
+  w_t(95, 96)
+  w_t(95, 443)
+  w_t(95, 443)
+  w_t(443, 444)
+  w_t(443, 444)
+  w_t(444, 445)
+  w_t(444, 445)
+  w_t(444, 448)
+    conflict gid 443
+  w_t(445, 446)
+    conflict gid 444
+  w_t(446, 449)
+  w_t(447, 448)
+    conflict gid 442
+  w_t(448, 449)
+  w_t(449, 453)
+    conflict gid 454
+  w_t(449, 454)
+  w_t(449, 454)
+  w_t(62, 63)
+  w_t(62, 63)
+  w_t(62, 198)
+  w_t(62, 198)
+  w_t(62, 450)
+  w_t(62, 450)
+  w_t(450, 451)
+  w_t(450, 451)
+  w_t(451, 452)
+  w_t(451, 452)
+  w_t(451, 455)
+    conflict gid 450
+  w_t(452, 453)
+    conflict gid 451
+  w_t(453, 456)
+  w_t(454, 455)
+    conflict gid 449
+  w_t(455, 456)
+  w_t(456, 474)
+    conflict gid 475
+  w_t(456, 475)
+  w_t(456, 475)
+  w_t(15, 16)
+  w_t(15, 16)
+  w_t(15, 457)
+  w_t(15, 457)
+  w_t(15, 514)
+  w_t(15, 514)
+  w_t(457, 458)
+  w_t(457, 458)
+  w_t(458, 462)
+    conflict gid 457
+  w_t(458, 463)
+  w_t(458, 463)
+  w_t(26, 27)
+  w_t(26, 27)
+  w_t(26, 320)
+  w_t(26, 320)
+  w_t(26, 459)
+  w_t(26, 459)
+  w_t(459, 460)
+  w_t(459, 460)
+  w_t(460, 461)
+  w_t(460, 461)
+  w_t(460, 464)
+    conflict gid 459
+  w_t(461, 462)
+    conflict gid 460
+  w_t(462, 465)
+  w_t(463, 464)
+    conflict gid 458
+  w_t(464, 465)
+  w_t(465, 469)
+    conflict gid 470
+  w_t(465, 470)
+  w_t(465, 470)
+  w_t(247, 248)
+  w_t(247, 248)
+  w_t(247, 466)
+  w_t(247, 466)
+  w_t(466, 467)
+  w_t(466, 467)
+  w_t(467, 468)
+  w_t(467, 468)
+  w_t(467, 471)
+    conflict gid 466
+  w_t(468, 469)
+    conflict gid 467
+  w_t(469, 472)
+  w_t(470, 471)
+    conflict gid 465
+  w_t(471, 472)
+  w_t(472, 473)
+  w_t(472, 473)
+  w_t(472, 476)
+    conflict gid 473
+  w_t(473, 474)
+    conflict gid 472
+  w_t(474, 477)
+  w_t(475, 476)
+    conflict gid 456
+  w_t(476, 477)
+  w_t(477, 481)
+    conflict gid 482
+  w_t(477, 482)
+  w_t(477, 482)
+  w_t(51, 52)
+    conflict gid 53
+  w_t(51, 190)
+    conflict gid 191
+  w_t(51, 345)
+    conflict gid 350
+  w_t(51, 376)
+    conflict gid 377
+  w_t(51, 479)
+    conflict gid 480
+  w_t(51, 517)
+    conflict gid 518
+  w_t(342, 343)
+  w_t(342, 343)
+  w_t(343, 344)
+    conflict gid 342
+  w_t(343, 478)
+    conflict gid 342
+  w_t(478, 479)
+  w_t(479, 480)
+    conflict gid 483
+  w_t(479, 480)
+    conflict gid 483
+  w_t(479, 483)
+  w_t(480, 481)
+    conflict gid 479
+  w_t(481, 484)
+  w_t(482, 483)
+    conflict gid 477
+  w_t(483, 484)
+  w_t(484, 485)
+    conflict gid 486
+  w_t(484, 1087)
+  w_t(484, 1087)
+  w_t(152, 153)
+    conflict gid 154
+  w_t(152, 284)
+    conflict gid 285
+  w_t(152, 359)
+    conflict gid 360
+  w_t(152, 426)
+    conflict gid 427
+  w_t(152, 485)
+    conflict gid 486
+  w_t(152, 556)
+    conflict gid 557
+  w_t(485, 486)
+  w_t(485, 486)
+  w_t(485, 800)
+        conflict gid 807
+        conflict gid 807
+        conflict gid 807
+  w_t(485, 800)
+        conflict gid 807
+        conflict gid 807
+        conflict gid 807
+  w_t(486, 487)
+  w_t(486, 487)
+  w_t(487, 493)
+    conflict gid 486
+  w_t(487, 494)
+  w_t(487, 494)
+  w_t(489, 490)
+  w_t(489, 490)
+  w_t(489, 802)
+        conflict gid 486
+        conflict gid 486
+        conflict gid 486
+  w_t(489, 802)
+        conflict gid 486
+        conflict gid 486
+        conflict gid 486
+  w_t(490, 491)
+  w_t(490, 491)
+  w_t(491, 492)
+  w_t(491, 492)
+  w_t(491, 495)
+    conflict gid 490
+  w_t(492, 493)
+    conflict gid 491
+  w_t(493, 496)
+  w_t(494, 495)
+    conflict gid 487
+  w_t(495, 496)
+  w_t(496, 497)
+  w_t(496, 497)
+  w_t(496, 614)
+  w_t(496, 614)
+  w_t(497, 569)
+    conflict gid 496
+  w_t(497, 602)
+    conflict gid 496
+  w_t(39, 40)
+  w_t(39, 40)
+  w_t(39, 299)
+  w_t(39, 299)
+  w_t(39, 498)
+  w_t(39, 498)
+  w_t(39, 1187)
+  w_t(39, 1187)
+  w_t(498, 499)
+  w_t(498, 499)
+  w_t(499, 503)
+    conflict gid 498
+  w_t(499, 504)
+  w_t(499, 504)
+  w_t(179, 180)
+  w_t(179, 180)
+  w_t(179, 301)
+  w_t(179, 301)
+  w_t(179, 1185)
+  w_t(179, 1185)
+  w_t(301, 302)
+  w_t(301, 302)
+  w_t(302, 303)
+  w_t(302, 303)
+  w_t(302, 500)
+  w_t(302, 500)
+  w_t(500, 501)
+  w_t(500, 501)
+  w_t(501, 502)
+  w_t(501, 502)
+  w_t(501, 505)
+    conflict gid 500
+  w_t(502, 503)
+    conflict gid 501
+  w_t(503, 506)
+  w_t(504, 505)
+    conflict gid 499
+  w_t(505, 506)
+  w_t(506, 510)
+    conflict gid 511
+  w_t(506, 511)
+  w_t(506, 511)
+  w_t(11, 12)
+  w_t(11, 12)
+  w_t(11, 216)
+  w_t(11, 216)
+  w_t(11, 310)
+  w_t(11, 310)
+  w_t(310, 311)
+  w_t(310, 311)
+  w_t(311, 312)
+  w_t(311, 312)
+  w_t(311, 507)
+  w_t(311, 507)
+  w_t(507, 508)
+  w_t(507, 508)
+  w_t(508, 509)
+  w_t(508, 509)
+  w_t(508, 512)
+    conflict gid 507
+  w_t(509, 510)
+    conflict gid 508
+  w_t(510, 513)
+  w_t(511, 512)
+    conflict gid 506
+  w_t(512, 513)
+  w_t(513, 531)
+    conflict gid 532
+  w_t(513, 532)
+  w_t(513, 532)
+  w_t(514, 515)
+  w_t(514, 515)
+  w_t(515, 519)
+    conflict gid 514
+  w_t(515, 520)
+  w_t(515, 520)
+  w_t(374, 375)
+    conflict gid 2
+  w_t(374, 516)
+    conflict gid 2
+  w_t(516, 517)
+  w_t(517, 518)
+    conflict gid 521
+  w_t(517, 518)
+    conflict gid 521
+  w_t(517, 521)
+  w_t(518, 519)
+    conflict gid 517
+  w_t(519, 522)
+  w_t(520, 521)
+    conflict gid 515
+  w_t(521, 522)
+  w_t(522, 526)
+    conflict gid 527
+  w_t(522, 527)
+  w_t(522, 527)
+  w_t(258, 259)
+  w_t(258, 259)
+  w_t(258, 523)
+  w_t(258, 523)
+  w_t(523, 524)
+  w_t(523, 524)
+  w_t(524, 525)
+  w_t(524, 525)
+  w_t(524, 528)
+    conflict gid 523
+  w_t(525, 526)
+    conflict gid 524
+  w_t(526, 529)
+  w_t(527, 528)
+    conflict gid 522
+  w_t(528, 529)
+  w_t(529, 530)
+  w_t(529, 530)
+  w_t(529, 533)
+    conflict gid 530
+  w_t(530, 531)
+    conflict gid 529
+  w_t(531, 534)
+  w_t(532, 533)
+    conflict gid 513
+  w_t(533, 534)
+  w_t(534, 552)
+    conflict gid 553
+  w_t(534, 553)
+  w_t(534, 553)
+  w_t(535, 536)
+  w_t(535, 536)
+  w_t(536, 540)
+    conflict gid 535
+  w_t(536, 541)
+  w_t(536, 541)
+  w_t(106, 107)
+  w_t(106, 107)
+  w_t(106, 537)
+  w_t(106, 537)
+  w_t(537, 538)
+  w_t(537, 538)
+  w_t(538, 539)
+  w_t(538, 539)
+  w_t(538, 542)
+    conflict gid 537
+  w_t(539, 540)
+    conflict gid 538
+  w_t(540, 543)
+  w_t(541, 542)
+    conflict gid 536
+  w_t(542, 543)
+  w_t(543, 547)
+    conflict gid 548
+  w_t(543, 548)
+  w_t(543, 548)
+  w_t(66, 67)
+  w_t(66, 67)
+  w_t(66, 544)
+  w_t(66, 544)
+  w_t(544, 545)
+  w_t(544, 545)
+  w_t(545, 546)
+  w_t(545, 546)
+  w_t(545, 549)
+    conflict gid 544
+  w_t(546, 547)
+    conflict gid 545
+  w_t(547, 550)
+  w_t(548, 549)
+    conflict gid 543
+  w_t(549, 550)
+  w_t(550, 551)
+  w_t(550, 551)
+  w_t(550, 554)
+    conflict gid 551
+  w_t(551, 552)
+    conflict gid 550
+  w_t(552, 555)
+  w_t(553, 554)
+    conflict gid 534
+  w_t(554, 555)
+  w_t(555, 556)
+    conflict gid 557
+  w_t(555, 1077)
+  w_t(555, 1077)
+  w_t(556, 557)
+  w_t(556, 557)
+  w_t(556, 810)
+        conflict gid 817
+        conflict gid 817
+  w_t(556, 810)
+        conflict gid 817
+        conflict gid 817
+  w_t(557, 558)
+  w_t(557, 558)
+  w_t(558, 564)
+    conflict gid 557
+  w_t(558, 565)
+  w_t(558, 565)
+  w_t(560, 561)
+  w_t(560, 561)
+  w_t(560, 812)
+        conflict gid 557
+        conflict gid 557
+  w_t(560, 812)
+        conflict gid 557
+        conflict gid 557
+  w_t(561, 562)
+  w_t(561, 562)
+  w_t(562, 563)
+  w_t(562, 563)
+  w_t(562, 566)
+    conflict gid 561
+  w_t(563, 564)
+    conflict gid 562
+  w_t(564, 567)
+  w_t(565, 566)
+    conflict gid 558
+  w_t(566, 567)
+  w_t(567, 568)
+  w_t(567, 568)
+  w_t(567, 600)
+  w_t(567, 600)
+  w_t(568, 569)
+    conflict gid 567
+  w_t(568, 616)
+    conflict gid 567
+  w_t(569, 589)
+  w_t(569, 633)
+  w_t(569, 713)
+  w_t(569, 770)
+  w_t(569, 863)
+  w_t(569, 875)
+  w_t(569, 887)
+  w_t(569, 918)
+  w_t(569, 943)
+    conflict gid 567
+  w_t(569, 947)
+    conflict gid 567
+  w_t(569, 951)
+    conflict gid 567
+  w_t(569, 963)
+    conflict gid 567
+  w_t(569, 969)
+    conflict gid 567
+  w_t(569, 975)
+    conflict gid 567
+  w_t(299, 300)
+  w_t(299, 300)
+  w_t(300, 306)
+    conflict gid 299
+  w_t(300, 307)
+  w_t(300, 307)
+  w_t(303, 304)
+  w_t(303, 304)
+  w_t(304, 305)
+  w_t(304, 305)
+  w_t(304, 308)
+    conflict gid 303
+  w_t(305, 306)
+    conflict gid 304
+  w_t(306, 309)
+  w_t(307, 308)
+    conflict gid 300
+  w_t(308, 309)
+  w_t(309, 315)
+    conflict gid 316
+  w_t(309, 316)
+  w_t(309, 316)
+  w_t(312, 313)
+  w_t(312, 313)
+  w_t(313, 314)
+  w_t(313, 314)
+  w_t(313, 317)
+    conflict gid 312
+  w_t(314, 315)
+    conflict gid 313
+  w_t(315, 318)
+  w_t(316, 317)
+    conflict gid 309
+  w_t(317, 318)
+  w_t(318, 319)
+  w_t(318, 319)
+  w_t(319, 338)
+    conflict gid 318
+  w_t(319, 339)
+  w_t(319, 339)
+  w_t(320, 321)
+  w_t(320, 321)
+  w_t(321, 325)
+    conflict gid 320
+  w_t(321, 326)
+  w_t(321, 326)
+  w_t(91, 92)
+  w_t(91, 92)
+  w_t(91, 322)
+  w_t(91, 322)
+  w_t(91, 396)
+  w_t(91, 396)
+  w_t(322, 323)
+  w_t(322, 323)
+  w_t(323, 324)
+  w_t(323, 324)
+  w_t(323, 327)
+    conflict gid 322
+  w_t(324, 325)
+    conflict gid 323
+  w_t(325, 328)
+  w_t(326, 327)
+    conflict gid 321
+  w_t(327, 328)
+  w_t(328, 332)
+    conflict gid 333
+  w_t(328, 333)
+  w_t(328, 333)
+  w_t(128, 129)
+  w_t(128, 129)
+  w_t(128, 176)
+  w_t(128, 176)
+  w_t(128, 329)
+  w_t(128, 329)
+  w_t(128, 1030)
+  w_t(128, 1030)
+  w_t(329, 330)
+  w_t(329, 330)
+  w_t(330, 331)
+  w_t(330, 331)
+  w_t(330, 334)
+    conflict gid 329
+  w_t(331, 332)
+    conflict gid 330
+  w_t(332, 335)
+  w_t(333, 334)
+    conflict gid 328
+  w_t(334, 335)
+  w_t(335, 336)
+  w_t(335, 336)
+  w_t(336, 337)
+  w_t(336, 337)
+  w_t(336, 340)
+    conflict gid 335
+  w_t(337, 338)
+    conflict gid 336
+  w_t(338, 341)
+  w_t(339, 340)
+    conflict gid 319
+  w_t(340, 341)
+  w_t(341, 355)
+    conflict gid 356
+  w_t(341, 356)
+  w_t(341, 356)
+  w_t(344, 345)
+  w_t(345, 349)
+  w_t(345, 350)
+    conflict gid 349
+  w_t(345, 350)
+    conflict gid 349
+  w_t(243, 244)
+  w_t(243, 244)
+  w_t(243, 346)
+  w_t(243, 346)
+  w_t(243, 1164)
+  w_t(243, 1164)
+  w_t(346, 347)
+  w_t(346, 347)
+  w_t(347, 348)
+  w_t(347, 348)
+  w_t(347, 351)
+    conflict gid 346
+  w_t(348, 349)
+    conflict gid 347
+  w_t(349, 352)
+  w_t(350, 351)
+    conflict gid 345
+  w_t(351, 352)
+  w_t(352, 353)
+  w_t(352, 353)
+  w_t(353, 354)
+  w_t(353, 354)
+  w_t(353, 357)
+    conflict gid 352
+  w_t(354, 355)
+    conflict gid 353
+  w_t(355, 358)
+  w_t(356, 357)
+    conflict gid 341
+  w_t(357, 358)
+  w_t(358, 359)
+    conflict gid 360
+  w_t(358, 1099)
+  w_t(358, 1099)
+  w_t(359, 360)
+  w_t(359, 360)
+  w_t(359, 790)
+        conflict gid 797
+        conflict gid 797
+        conflict gid 797
+  w_t(359, 790)
+        conflict gid 797
+        conflict gid 797
+        conflict gid 797
+  w_t(360, 361)
+  w_t(360, 361)
+  w_t(361, 367)
+    conflict gid 360
+  w_t(361, 368)
+  w_t(361, 368)
+  w_t(5, 6)
+    conflict gid 4
+  w_t(5, 172)
+    conflict gid 4
+  w_t(172, 173)
+    conflict gid 174
+  w_t(172, 363)
+    conflict gid 364
+  w_t(172, 1101)
+    conflict gid 363
+  w_t(363, 364)
+  w_t(363, 364)
+  w_t(363, 792)
+        conflict gid 363
+        conflict gid 363
+        conflict gid 363
+  w_t(363, 792)
+        conflict gid 363
+        conflict gid 363
+        conflict gid 363
+  w_t(364, 365)
+  w_t(364, 365)
+  w_t(365, 366)
+  w_t(365, 366)
+  w_t(365, 369)
+    conflict gid 364
+  w_t(366, 367)
+    conflict gid 365
+  w_t(367, 370)
+  w_t(368, 369)
+    conflict gid 361
+  w_t(369, 370)
+  w_t(370, 371)
+  w_t(370, 371)
+  w_t(370, 628)
+  w_t(370, 628)
+  w_t(371, 440)
+    conflict gid 370
+  w_t(371, 599)
+    conflict gid 370
+  w_t(77, 78)
+  w_t(77, 78)
+  w_t(77, 372)
+  w_t(77, 372)
+  w_t(77, 1237)
+  w_t(77, 1237)
+  w_t(372, 373)
+  w_t(372, 373)
+  w_t(373, 380)
+    conflict gid 372
+  w_t(373, 381)
+    conflict gid 372
+  w_t(373, 381)
+    conflict gid 372
+  w_t(375, 376)
+  w_t(376, 377)
+    conflict gid 1239
+  w_t(376, 377)
+    conflict gid 1239
+  w_t(376, 1239)
+    conflict gid 377
+  w_t(376, 1239)
+    conflict gid 377
+  w_t(377, 378)
+  w_t(377, 378)
+  w_t(378, 379)
+    conflict gid 377
+  w_t(378, 379)
+    conflict gid 377
+  w_t(378, 382)
+    conflict gid 377
+  w_t(379, 380)
+    conflict gid 378
+  w_t(380, 383)
+  w_t(381, 382)
+    conflict gid 373
+  w_t(382, 383)
+  w_t(383, 384)
+  w_t(383, 384)
+  w_t(384, 422)
+    conflict gid 383
+  w_t(384, 423)
+    conflict gid 383
+  w_t(384, 423)
+    conflict gid 383
+  w_t(244, 245)
+  w_t(244, 245)
+  w_t(245, 253)
+    conflict gid 244
+  w_t(245, 254)
+  w_t(245, 254)
+  w_t(248, 249)
+  w_t(248, 249)
+  w_t(249, 250)
+  w_t(249, 250)
+  w_t(249, 1166)
+  w_t(249, 1166)
+  w_t(250, 251)
+  w_t(250, 251)
+  w_t(251, 252)
+  w_t(251, 252)
+  w_t(251, 255)
+    conflict gid 250
+  w_t(252, 253)
+    conflict gid 251
+  w_t(253, 256)
+  w_t(254, 255)
+    conflict gid 245
+  w_t(255, 256)
+  w_t(256, 264)
+    conflict gid 265
+  w_t(256, 265)
+  w_t(256, 265)
+  w_t(259, 260)
+  w_t(259, 260)
+  w_t(260, 261)
+  w_t(260, 261)
+  w_t(260, 1173)
+  w_t(260, 1173)
+  w_t(261, 262)
+  w_t(261, 262)
+  w_t(262, 263)
+  w_t(262, 263)
+  w_t(262, 266)
+    conflict gid 261
+  w_t(263, 264)
+    conflict gid 262
+  w_t(264, 267)
+  w_t(265, 266)
+    conflict gid 256
+  w_t(266, 267)
+  w_t(267, 268)
+  w_t(267, 268)
+  w_t(268, 269)
+  w_t(268, 269)
+  w_t(268, 385)
+  w_t(268, 385)
+  w_t(268, 1214)
+  w_t(268, 1214)
+  w_t(385, 386)
+  w_t(385, 386)
+  w_t(386, 392)
+    conflict gid 385
+  w_t(386, 393)
+    conflict gid 417
+  w_t(386, 393)
+    conflict gid 417
+  w_t(12, 13)
+  w_t(12, 13)
+  w_t(13, 21)
+    conflict gid 12
+  w_t(13, 22)
+  w_t(13, 22)
+  w_t(16, 17)
+  w_t(16, 17)
+  w_t(17, 18)
+  w_t(17, 18)
+  w_t(17, 218)
+  w_t(17, 218)
+  w_t(18, 19)
+  w_t(18, 19)
+  w_t(19, 20)
+  w_t(19, 20)
+  w_t(19, 23)
+    conflict gid 18
+  w_t(20, 21)
+    conflict gid 19
+  w_t(21, 24)
+  w_t(22, 23)
+    conflict gid 13
+  w_t(23, 24)
+  w_t(24, 32)
+    conflict gid 33
+  w_t(24, 33)
+  w_t(24, 33)
+  w_t(27, 28)
+  w_t(27, 28)
+  w_t(28, 29)
+  w_t(28, 29)
+  w_t(28, 225)
+  w_t(28, 225)
+  w_t(29, 30)
+  w_t(29, 30)
+  w_t(30, 31)
+  w_t(30, 31)
+  w_t(30, 34)
+    conflict gid 29
+  w_t(31, 32)
+    conflict gid 30
+  w_t(32, 35)
+  w_t(33, 34)
+    conflict gid 24
+  w_t(34, 35)
+  w_t(35, 36)
+  w_t(35, 36)
+  w_t(35, 387)
+  w_t(35, 387)
+  w_t(35, 990)
+  w_t(35, 990)
+  w_t(387, 388)
+  w_t(387, 388)
+  w_t(388, 389)
+  w_t(388, 389)
+  w_t(388, 1216)
+  w_t(388, 1216)
+  w_t(389, 390)
+  w_t(389, 390)
+  w_t(390, 391)
+    conflict gid 417
+  w_t(390, 391)
+    conflict gid 417
+  w_t(390, 394)
+    conflict gid 389
+  w_t(391, 392)
+    conflict gid 390
+  w_t(392, 395)
+  w_t(393, 394)
+    conflict gid 386
+  w_t(394, 395)
+  w_t(395, 416)
+    conflict gid 417
+  w_t(395, 417)
+    conflict gid 416
+  w_t(395, 417)
+    conflict gid 416
+  w_t(396, 397)
+  w_t(396, 397)
+  w_t(397, 401)
+    conflict gid 396
+  w_t(397, 402)
+  w_t(397, 402)
+  w_t(96, 97)
+  w_t(96, 97)
+  w_t(97, 98)
+  w_t(97, 98)
+  w_t(97, 398)
+  w_t(97, 398)
+  w_t(398, 399)
+  w_t(398, 399)
+  w_t(399, 400)
+  w_t(399, 400)
+  w_t(399, 403)
+    conflict gid 398
+  w_t(400, 401)
+    conflict gid 399
+  w_t(401, 404)
+  w_t(402, 403)
+    conflict gid 397
+  w_t(403, 404)
+  w_t(404, 408)
+    conflict gid 409
+  w_t(404, 409)
+  w_t(404, 409)
+  w_t(107, 108)
+  w_t(107, 108)
+  w_t(108, 109)
+  w_t(108, 109)
+  w_t(108, 405)
+  w_t(108, 405)
+  w_t(405, 406)
+  w_t(405, 406)
+  w_t(406, 407)
+  w_t(406, 407)
+  w_t(406, 410)
+    conflict gid 405
+  w_t(407, 408)
+    conflict gid 406
+  w_t(408, 411)
+  w_t(409, 410)
+    conflict gid 404
+  w_t(410, 411)
+  w_t(411, 412)
+  w_t(411, 412)
+  w_t(412, 413)
+  w_t(412, 413)
+  w_t(412, 1223)
+  w_t(412, 1223)
+  w_t(413, 414)
+  w_t(413, 414)
+  w_t(414, 415)
+    conflict gid 413
+  w_t(414, 415)
+    conflict gid 413
+  w_t(414, 418)
+    conflict gid 413
+  w_t(415, 416)
+    conflict gid 414
+  w_t(416, 419)
+  w_t(417, 418)
+    conflict gid 395
+  w_t(418, 419)
+  w_t(419, 420)
+  w_t(419, 420)
+  w_t(420, 421)
+    conflict gid 419
+  w_t(420, 421)
+    conflict gid 419
+  w_t(420, 424)
+    conflict gid 419
+  w_t(421, 422)
+    conflict gid 420
+  w_t(422, 425)
+  w_t(423, 424)
+    conflict gid 384
+  w_t(424, 425)
+  w_t(425, 426)
+    conflict gid 427
+  w_t(426, 427)
+  w_t(426, 427)
+  w_t(426, 820)
+        conflict gid 827
+  w_t(426, 820)
+        conflict gid 827
+  w_t(427, 428)
+  w_t(427, 428)
+  w_t(428, 434)
+    conflict gid 427
+  w_t(428, 435)
+  w_t(428, 435)
+  w_t(430, 431)
+  w_t(430, 431)
+  w_t(430, 822)
+        conflict gid 427
+  w_t(430, 822)
+        conflict gid 427
+  w_t(431, 432)
+  w_t(431, 432)
+  w_t(432, 433)
+  w_t(432, 433)
+  w_t(432, 436)
+    conflict gid 431
+  w_t(433, 434)
+    conflict gid 432
+  w_t(434, 437)
+  w_t(435, 436)
+    conflict gid 428
+  w_t(436, 437)
+  w_t(437, 438)
+  w_t(437, 438)
+  w_t(437, 598)
+  w_t(437, 598)
+  w_t(438, 439)
+  w_t(438, 439)
+  w_t(439, 440)
+    conflict gid 438
+  w_t(439, 644)
+    conflict gid 438
+  w_t(440, 588)
+  w_t(440, 666)
+  w_t(440, 690)
+  w_t(440, 701)
+  w_t(440, 747)
+  w_t(440, 758)
+  w_t(440, 862)
+  w_t(440, 878)
+  w_t(440, 882)
+  w_t(440, 909)
+  w_t(440, 913)
+  w_t(440, 925)
+  w_t(440, 950)
+    conflict gid 438
+  w_t(3, 6)
+    conflict gid 2
+  w_t(6, 7)
+    conflict gid 8
+  w_t(6, 157)
+    conflict gid 158
+  w_t(6, 1013)
+    conflict gid 3
+  w_t(7, 8)
+  w_t(7, 8)
+  w_t(7, 853)
+    conflict gid 8
+  w_t(7, 971)
+    conflict gid 8
+  w_t(7, 971)
+    conflict gid 8
+  w_t(8, 9)
+  w_t(8, 9)
+  w_t(9, 165)
+    conflict gid 166
+  w_t(9, 745)
+    conflict gid 8
+  w_t(36, 37)
+  w_t(36, 37)
+  w_t(37, 45)
+    conflict gid 36
+  w_t(37, 46)
+    conflict gid 57
+  w_t(37, 46)
+    conflict gid 57
+  w_t(40, 41)
+  w_t(40, 41)
+  w_t(41, 42)
+  w_t(41, 42)
+  w_t(41, 992)
+  w_t(41, 992)
+  w_t(42, 43)
+  w_t(42, 43)
+  w_t(43, 44)
+    conflict gid 57
+  w_t(43, 44)
+    conflict gid 57
+  w_t(43, 47)
+    conflict gid 42
+  w_t(44, 45)
+    conflict gid 43
+  w_t(45, 48)
+  w_t(46, 47)
+    conflict gid 37
+  w_t(47, 48)
+  w_t(48, 56)
+    conflict gid 57
+  w_t(48, 57)
+    conflict gid 56
+  w_t(48, 57)
+    conflict gid 56
+  w_t(52, 53)
+    conflict gid 999
+  w_t(52, 53)
+    conflict gid 999
+  w_t(52, 999)
+    conflict gid 53
+  w_t(52, 999)
+    conflict gid 53
+  w_t(53, 54)
+  w_t(53, 54)
+  w_t(54, 55)
+    conflict gid 53
+  w_t(54, 55)
+    conflict gid 53
+  w_t(54, 58)
+    conflict gid 53
+  w_t(55, 56)
+    conflict gid 54
+  w_t(56, 59)
+  w_t(57, 58)
+    conflict gid 48
+  w_t(58, 59)
+  w_t(59, 60)
+  w_t(59, 60)
+  w_t(60, 147)
+    conflict gid 59
+  w_t(60, 148)
+    conflict gid 59
+  w_t(60, 148)
+    conflict gid 59
+  w_t(63, 64)
+  w_t(63, 64)
+  w_t(64, 72)
+    conflict gid 63
+  w_t(64, 73)
+  w_t(64, 73)
+  w_t(67, 68)
+  w_t(67, 68)
+  w_t(68, 69)
+  w_t(68, 69)
+  w_t(68, 200)
+  w_t(68, 200)
+  w_t(69, 70)
+  w_t(69, 70)
+  w_t(70, 71)
+  w_t(70, 71)
+  w_t(70, 74)
+    conflict gid 69
+  w_t(71, 72)
+    conflict gid 70
+  w_t(72, 75)
+  w_t(73, 74)
+    conflict gid 64
+  w_t(74, 75)
+  w_t(75, 83)
+    conflict gid 84
+  w_t(75, 84)
+  w_t(75, 84)
+  w_t(78, 79)
+  w_t(78, 79)
+  w_t(79, 80)
+  w_t(79, 80)
+  w_t(79, 207)
+  w_t(79, 207)
+  w_t(80, 81)
+  w_t(80, 81)
+  w_t(81, 82)
+  w_t(81, 82)
+  w_t(81, 85)
+    conflict gid 80
+  w_t(82, 83)
+    conflict gid 81
+  w_t(83, 86)
+  w_t(84, 85)
+    conflict gid 75
+  w_t(85, 86)
+  w_t(86, 87)
+  w_t(86, 87)
+  w_t(87, 88)
+  w_t(87, 88)
+  w_t(87, 1119)
+  w_t(87, 1119)
+  w_t(88, 89)
+  w_t(88, 89)
+  w_t(89, 119)
+    conflict gid 88
+  w_t(89, 120)
+  w_t(89, 120)
+  w_t(92, 93)
+  w_t(92, 93)
+  w_t(93, 101)
+    conflict gid 92
+  w_t(93, 102)
+  w_t(93, 102)
+  w_t(98, 99)
+  w_t(98, 99)
+  w_t(99, 100)
+  w_t(99, 100)
+  w_t(99, 103)
+    conflict gid 98
+  w_t(100, 101)
+    conflict gid 99
+  w_t(101, 104)
+  w_t(102, 103)
+    conflict gid 93
+  w_t(103, 104)
+  w_t(104, 112)
+    conflict gid 113
+  w_t(104, 113)
+  w_t(104, 113)
+  w_t(109, 110)
+  w_t(109, 110)
+  w_t(110, 111)
+  w_t(110, 111)
+  w_t(110, 114)
+    conflict gid 109
+  w_t(111, 112)
+    conflict gid 110
+  w_t(112, 115)
+  w_t(113, 114)
+    conflict gid 104
+  w_t(114, 115)
+  w_t(115, 116)
+  w_t(115, 116)
+  w_t(115, 1121)
+  w_t(115, 1121)
+  w_t(116, 117)
+  w_t(116, 117)
+  w_t(117, 118)
+  w_t(117, 118)
+  w_t(117, 121)
+    conflict gid 116
+  w_t(118, 119)
+    conflict gid 117
+  w_t(119, 122)
+  w_t(120, 121)
+    conflict gid 89
+  w_t(121, 122)
+  w_t(122, 140)
+    conflict gid 141
+  w_t(122, 141)
+  w_t(122, 141)
+  w_t(125, 126)
+  w_t(125, 126)
+  w_t(126, 132)
+    conflict gid 125
+  w_t(126, 133)
+  w_t(126, 133)
+  w_t(129, 130)
+  w_t(129, 130)
+  w_t(130, 131)
+  w_t(130, 131)
+  w_t(130, 134)
+    conflict gid 129
+  w_t(131, 132)
+    conflict gid 130
+  w_t(132, 135)
+  w_t(133, 134)
+    conflict gid 126
+  w_t(134, 135)
+  w_t(135, 136)
+  w_t(135, 136)
+  w_t(136, 137)
+  w_t(136, 137)
+  w_t(136, 1128)
+  w_t(136, 1128)
+  w_t(137, 138)
+  w_t(137, 138)
+  w_t(138, 139)
+  w_t(138, 139)
+  w_t(138, 142)
+    conflict gid 137
+  w_t(139, 140)
+    conflict gid 138
+  w_t(140, 143)
+  w_t(141, 142)
+    conflict gid 122
+  w_t(142, 143)
+  w_t(143, 144)
+  w_t(143, 144)
+  w_t(143, 1006)
+  w_t(143, 1006)
+  w_t(144, 145)
+  w_t(144, 145)
+  w_t(145, 146)
+    conflict gid 144
+  w_t(145, 146)
+    conflict gid 144
+  w_t(145, 149)
+    conflict gid 144
+  w_t(146, 147)
+    conflict gid 145
+  w_t(147, 150)
+  w_t(148, 149)
+    conflict gid 60
+  w_t(149, 150)
+  w_t(150, 151)
+  w_t(150, 151)
+  w_t(151, 153)
+    conflict gid 154
+  w_t(153, 154)
+  w_t(153, 154)
+  w_t(153, 840)
+  w_t(153, 840)
+  w_t(154, 155)
+  w_t(154, 155)
+  w_t(155, 161)
+    conflict gid 154
+  w_t(155, 162)
+  w_t(155, 162)
+  w_t(157, 158)
+  w_t(157, 158)
+  w_t(157, 842)
+  w_t(157, 842)
+  w_t(158, 159)
+  w_t(158, 159)
+  w_t(159, 160)
+  w_t(159, 160)
+  w_t(159, 163)
+    conflict gid 158
+  w_t(160, 161)
+    conflict gid 159
+  w_t(161, 164)
+  w_t(162, 163)
+    conflict gid 155
+  w_t(163, 164)
+  w_t(164, 165)
+    conflict gid 166
+  w_t(164, 744)
+  w_t(164, 744)
+  w_t(165, 166)
+    conflict gid 642
+  w_t(165, 166)
+    conflict gid 642
+  w_t(165, 642)
+    conflict gid 166
+  w_t(165, 642)
+    conflict gid 166
+  w_t(166, 167)
+  w_t(166, 167)
+  w_t(167, 587)
+    conflict gid 166
+  w_t(167, 603)
+    conflict gid 166
+  w_t(167, 617)
+    conflict gid 166
+  w_t(167, 631)
+    conflict gid 166
+  w_t(167, 689)
+    conflict gid 166
+  w_t(167, 861)
+    conflict gid 166
+  w_t(167, 865)
+    conflict gid 166
+  w_t(167, 869)
+    conflict gid 166
+  w_t(167, 873)
+    conflict gid 166
+  w_t(167, 877)
+    conflict gid 166
+  w_t(173, 174)
+  w_t(173, 174)
+  w_t(173, 856)
+    conflict gid 174
+  w_t(173, 965)
+    conflict gid 174
+  w_t(173, 965)
+    conflict gid 174
+  w_t(174, 175)
+  w_t(174, 175)
+  w_t(175, 296)
+    conflict gid 297
+  w_t(175, 688)
+    conflict gid 174
+  w_t(176, 177)
+  w_t(176, 177)
+  w_t(177, 185)
+    conflict gid 176
+  w_t(177, 186)
+    conflict gid 195
+  w_t(177, 186)
+    conflict gid 195
+  w_t(180, 181)
+  w_t(180, 181)
+  w_t(181, 182)
+  w_t(181, 182)
+  w_t(181, 1032)
+  w_t(181, 1032)
+  w_t(182, 183)
+  w_t(182, 183)
+  w_t(183, 184)
+    conflict gid 195
+  w_t(183, 184)
+    conflict gid 195
+  w_t(183, 187)
+    conflict gid 182
+  w_t(184, 185)
+    conflict gid 183
+  w_t(185, 188)
+  w_t(186, 187)
+    conflict gid 177
+  w_t(187, 188)
+  w_t(188, 194)
+    conflict gid 195
+  w_t(188, 195)
+    conflict gid 281
+  w_t(188, 195)
+    conflict gid 281
+  w_t(190, 191)
+    conflict gid 1039
+  w_t(190, 191)
+    conflict gid 1039
+  w_t(190, 1039)
+    conflict gid 191
+  w_t(190, 1039)
+    conflict gid 191
+  w_t(191, 192)
+  w_t(191, 192)
+  w_t(192, 193)
+    conflict gid 281
+  w_t(192, 193)
+    conflict gid 281
+  w_t(192, 196)
+    conflict gid 191
+  w_t(193, 194)
+    conflict gid 192
+  w_t(194, 197)
+  w_t(195, 196)
+    conflict gid 188
+  w_t(196, 197)
+  w_t(197, 280)
+    conflict gid 281
+  w_t(197, 281)
+    conflict gid 280
+  w_t(197, 281)
+    conflict gid 280
+  w_t(198, 199)
+  w_t(198, 199)
+  w_t(199, 203)
+    conflict gid 198
+  w_t(199, 204)
+  w_t(199, 204)
+  w_t(200, 201)
+  w_t(200, 201)
+  w_t(201, 202)
+  w_t(201, 202)
+  w_t(201, 205)
+    conflict gid 200
+  w_t(202, 203)
+    conflict gid 201
+  w_t(203, 206)
+  w_t(204, 205)
+    conflict gid 199
+  w_t(205, 206)
+  w_t(206, 210)
+    conflict gid 211
+  w_t(206, 211)
+  w_t(206, 211)
+  w_t(207, 208)
+  w_t(207, 208)
+  w_t(208, 209)
+  w_t(208, 209)
+  w_t(208, 212)
+    conflict gid 207
+  w_t(209, 210)
+    conflict gid 208
+  w_t(210, 213)
+  w_t(211, 212)
+    conflict gid 206
+  w_t(212, 213)
+  w_t(213, 214)
+  w_t(213, 214)
+  w_t(213, 1047)
+  w_t(213, 1047)
+  w_t(214, 215)
+  w_t(214, 215)
+  w_t(215, 238)
+    conflict gid 214
+  w_t(215, 239)
+    conflict gid 275
+  w_t(215, 239)
+    conflict gid 275
+  w_t(216, 217)
+  w_t(216, 217)
+  w_t(217, 221)
+    conflict gid 216
+  w_t(217, 222)
+  w_t(217, 222)
+  w_t(218, 219)
+  w_t(218, 219)
+  w_t(219, 220)
+  w_t(219, 220)
+  w_t(219, 223)
+    conflict gid 218
+  w_t(220, 221)
+    conflict gid 219
+  w_t(221, 224)
+  w_t(222, 223)
+    conflict gid 217
+  w_t(223, 224)
+  w_t(224, 228)
+    conflict gid 229
+  w_t(224, 229)
+  w_t(224, 229)
+  w_t(225, 226)
+  w_t(225, 226)
+  w_t(226, 227)
+  w_t(226, 227)
+  w_t(226, 230)
+    conflict gid 225
+  w_t(227, 228)
+    conflict gid 226
+  w_t(228, 231)
+  w_t(229, 230)
+    conflict gid 224
+  w_t(230, 231)
+  w_t(231, 232)
+  w_t(231, 232)
+  w_t(232, 233)
+  w_t(232, 233)
+  w_t(232, 1162)
+  w_t(232, 1162)
+  w_t(233, 234)
+  w_t(233, 234)
+  w_t(234, 235)
+  w_t(234, 235)
+  w_t(234, 1049)
+  w_t(234, 1049)
+  w_t(235, 236)
+  w_t(235, 236)
+  w_t(236, 237)
+    conflict gid 275
+  w_t(236, 237)
+    conflict gid 275
+  w_t(236, 240)
+    conflict gid 235
+  w_t(237, 238)
+    conflict gid 236
+  w_t(238, 241)
+  w_t(239, 240)
+    conflict gid 215
+  w_t(240, 241)
+  w_t(241, 274)
+    conflict gid 275
+  w_t(241, 275)
+    conflict gid 274
+  w_t(241, 275)
+    conflict gid 274
+  w_t(269, 270)
+  w_t(269, 270)
+  w_t(270, 271)
+  w_t(270, 271)
+  w_t(270, 1056)
+  w_t(270, 1056)
+  w_t(271, 272)
+  w_t(271, 272)
+  w_t(272, 273)
+    conflict gid 271
+  w_t(272, 273)
+    conflict gid 271
+  w_t(272, 276)
+    conflict gid 271
+  w_t(273, 274)
+    conflict gid 272
+  w_t(274, 277)
+  w_t(275, 276)
+    conflict gid 241
+  w_t(276, 277)
+  w_t(277, 278)
+  w_t(277, 278)
+  w_t(278, 279)
+    conflict gid 277
+  w_t(278, 279)
+    conflict gid 277
+  w_t(278, 282)
+    conflict gid 277
+  w_t(279, 280)
+    conflict gid 278
+  w_t(280, 283)
+  w_t(281, 282)
+    conflict gid 197
+  w_t(282, 283)
+  w_t(283, 284)
+    conflict gid 285
+  w_t(284, 285)
+  w_t(284, 285)
+  w_t(284, 830)
+  w_t(284, 830)
+  w_t(285, 286)
+  w_t(285, 286)
+  w_t(286, 292)
+    conflict gid 285
+  w_t(286, 293)
+  w_t(286, 293)
+  w_t(288, 289)
+  w_t(288, 289)
+  w_t(288, 832)
+  w_t(288, 832)
+  w_t(289, 290)
+  w_t(289, 290)
+  w_t(290, 291)
+  w_t(290, 291)
+  w_t(290, 294)
+    conflict gid 289
+  w_t(291, 292)
+    conflict gid 290
+  w_t(292, 295)
+  w_t(293, 294)
+    conflict gid 286
+  w_t(294, 295)
+  w_t(295, 296)
+    conflict gid 297
+  w_t(295, 687)
+  w_t(295, 687)
+  w_t(296, 297)
+    conflict gid 662
+  w_t(296, 297)
+    conflict gid 662
+  w_t(296, 662)
+    conflict gid 297
+  w_t(296, 662)
+    conflict gid 297
+  w_t(297, 298)
+  w_t(297, 298)
+  w_t(298, 587)
+    conflict gid 297
+  w_t(298, 603)
+    conflict gid 297
+  w_t(298, 617)
+    conflict gid 297
+  w_t(298, 631)
+    conflict gid 297
+  w_t(298, 651)
+    conflict gid 297
+  w_t(298, 861)
+    conflict gid 297
+  w_t(298, 865)
+    conflict gid 297
+  w_t(298, 869)
+    conflict gid 297
+  w_t(298, 873)
+    conflict gid 297
+  w_t(298, 904)
+    conflict gid 297
+  w_t(587, 588)
+  w_t(588, 589)
+  w_t(589, 590)
+  w_t(590, 594)
+  w_t(590, 595)
+    conflict gid 594
+  w_t(590, 595)
+    conflict gid 594
+  w_t(591, 592)
+  w_t(591, 592)
+  w_t(592, 593)
+  w_t(592, 593)
+  w_t(592, 596)
+    conflict gid 591
+  w_t(593, 594)
+    conflict gid 592
+  w_t(594, 597)
+  w_t(595, 596)
+    conflict gid 590
+  w_t(596, 597)
+  w_t(600, 601)
+  w_t(600, 601)
+  w_t(601, 602)
+    conflict gid 600
+  w_t(601, 664)
+    conflict gid 600
+  w_t(602, 605)
+  w_t(602, 678)
+  w_t(602, 691)
+  w_t(602, 735)
+  w_t(602, 748)
+  w_t(602, 781)
+  w_t(602, 867)
+  w_t(602, 879)
+  w_t(602, 902)
+  w_t(602, 910)
+  w_t(602, 922)
+  w_t(602, 930)
+  w_t(602, 955)
+    conflict gid 600
+  w_t(598, 599)
+    conflict gid 437
+  w_t(598, 630)
+    conflict gid 437
+  w_t(599, 604)
+  w_t(599, 618)
+  w_t(599, 723)
+  w_t(599, 866)
+  w_t(599, 870)
+  w_t(599, 890)
+  w_t(599, 942)
+    conflict gid 437
+  w_t(599, 946)
+    conflict gid 437
+  w_t(599, 954)
+    conflict gid 437
+  w_t(599, 958)
+    conflict gid 437
+  w_t(599, 968)
+    conflict gid 437
+  w_t(599, 974)
+    conflict gid 437
+  w_t(603, 604)
+  w_t(604, 605)
+  w_t(605, 606)
+  w_t(606, 610)
+  w_t(606, 611)
+    conflict gid 610
+  w_t(606, 611)
+    conflict gid 610
+  w_t(607, 608)
+  w_t(607, 608)
+  w_t(608, 609)
+  w_t(608, 609)
+  w_t(608, 612)
+    conflict gid 607
+  w_t(609, 610)
+    conflict gid 608
+  w_t(610, 613)
+  w_t(611, 612)
+    conflict gid 606
+  w_t(612, 613)
+  w_t(614, 615)
+  w_t(614, 615)
+  w_t(615, 616)
+    conflict gid 614
+  w_t(615, 664)
+    conflict gid 614
+  w_t(616, 619)
+  w_t(616, 653)
+  w_t(616, 702)
+  w_t(616, 759)
+  w_t(616, 871)
+  w_t(616, 883)
+  w_t(616, 906)
+  w_t(616, 914)
+  w_t(616, 959)
+    conflict gid 614
+  w_t(617, 618)
+  w_t(618, 619)
+  w_t(619, 620)
+  w_t(620, 624)
+  w_t(620, 625)
+    conflict gid 624
+  w_t(620, 625)
+    conflict gid 624
+  w_t(621, 622)
+  w_t(621, 622)
+  w_t(622, 623)
+  w_t(622, 623)
+  w_t(622, 626)
+    conflict gid 621
+  w_t(623, 624)
+    conflict gid 622
+  w_t(624, 627)
+  w_t(625, 626)
+    conflict gid 620
+  w_t(626, 627)
+  w_t(628, 629)
+  w_t(628, 629)
+  w_t(629, 630)
+    conflict gid 628
+  w_t(629, 644)
+    conflict gid 628
+  w_t(630, 632)
+  w_t(630, 734)
+  w_t(630, 780)
+  w_t(630, 874)
+  w_t(630, 901)
+  w_t(630, 921)
+  w_t(630, 962)
+    conflict gid 628
+  w_t(631, 632)
+  w_t(632, 633)
+  w_t(633, 634)
+  w_t(634, 638)
+  w_t(634, 639)
+    conflict gid 638
+  w_t(634, 639)
+    conflict gid 638
+  w_t(635, 636)
+  w_t(635, 636)
+  w_t(636, 637)
+  w_t(636, 637)
+  w_t(636, 640)
+    conflict gid 635
+  w_t(637, 638)
+    conflict gid 636
+  w_t(638, 641)
+  w_t(639, 640)
+    conflict gid 634
+  w_t(640, 641)
+  w_t(646, 647)
+    conflict gid 645
+  w_t(646, 1161)
+    conflict gid 645
+  w_t(647, 648)
+        conflict gid 646
+  w_t(648, 649)
+        conflict gid 647
+  w_t(649, 650)
+        conflict gid 576
+  w_t(650, 654)
+    conflict gid 659
+  w_t(650, 668)
+    conflict gid 673
+  w_t(650, 679)
+    conflict gid 684
+  w_t(650, 736)
+    conflict gid 741
+  w_t(650, 749)
+    conflict gid 754
+  w_t(650, 760)
+    conflict gid 765
+  w_t(650, 771)
+    conflict gid 776
+  w_t(650, 782)
+    conflict gid 787
+  w_t(650, 903)
+    conflict gid 932
+  w_t(650, 907)
+    conflict gid 932
+  w_t(650, 911)
+    conflict gid 933
+  w_t(650, 915)
+    conflict gid 934
+  w_t(650, 919)
+    conflict gid 935
+  w_t(650, 923)
+    conflict gid 936
+  w_t(650, 927)
+    conflict gid 937
+  w_t(650, 931)
+    conflict gid 938
+  w_t(644, 652)
+  w_t(644, 677)
+  w_t(644, 712)
+  w_t(644, 769)
+  w_t(644, 886)
+  w_t(644, 905)
+  w_t(644, 917)
+  w_t(644, 929)
+  w_t(642, 643)
+  w_t(642, 643)
+  w_t(643, 651)
+    conflict gid 642
+  w_t(643, 665)
+    conflict gid 642
+  w_t(643, 676)
+    conflict gid 642
+  w_t(643, 700)
+    conflict gid 642
+  w_t(643, 711)
+    conflict gid 642
+  w_t(643, 722)
+    conflict gid 642
+  w_t(643, 733)
+    conflict gid 642
+  w_t(643, 881)
+    conflict gid 642
+  w_t(643, 885)
+    conflict gid 642
+  w_t(643, 889)
+    conflict gid 642
+  w_t(643, 900)
+    conflict gid 642
+  w_t(643, 904)
+    conflict gid 642
+  w_t(643, 924)
+    conflict gid 642
+  w_t(643, 928)
+    conflict gid 642
+  w_t(643, 941)
+    conflict gid 642
+  w_t(651, 652)
+  w_t(652, 653)
+  w_t(653, 654)
+  w_t(654, 658)
+  w_t(654, 659)
+    conflict gid 658
+  w_t(654, 659)
+    conflict gid 658
+  w_t(655, 656)
+  w_t(655, 656)
+  w_t(656, 657)
+  w_t(656, 657)
+  w_t(656, 660)
+    conflict gid 655
+  w_t(657, 658)
+    conflict gid 656
+  w_t(658, 661)
+  w_t(659, 660)
+    conflict gid 654
+  w_t(660, 661)
+  w_t(664, 667)
+  w_t(664, 724)
+  w_t(664, 891)
+  w_t(664, 926)
+  w_t(662, 663)
+  w_t(662, 663)
+  w_t(663, 665)
+    conflict gid 662
+  w_t(663, 676)
+    conflict gid 662
+  w_t(663, 746)
+    conflict gid 662
+  w_t(663, 757)
+    conflict gid 662
+  w_t(663, 768)
+    conflict gid 662
+  w_t(663, 779)
+    conflict gid 662
+  w_t(663, 908)
+    conflict gid 662
+  w_t(663, 912)
+    conflict gid 662
+  w_t(663, 916)
+    conflict gid 662
+  w_t(663, 920)
+    conflict gid 662
+  w_t(663, 924)
+    conflict gid 662
+  w_t(663, 928)
+    conflict gid 662
+  w_t(663, 945)
+    conflict gid 662
+  w_t(665, 666)
+  w_t(666, 667)
+  w_t(667, 668)
+  w_t(668, 672)
+  w_t(668, 673)
+    conflict gid 672
+  w_t(668, 673)
+    conflict gid 672
+  w_t(669, 670)
+  w_t(669, 670)
+  w_t(670, 671)
+  w_t(670, 671)
+  w_t(670, 674)
+    conflict gid 669
+  w_t(671, 672)
+    conflict gid 670
+  w_t(672, 675)
+  w_t(673, 674)
+    conflict gid 668
+  w_t(674, 675)
+  w_t(676, 677)
+  w_t(677, 678)
+  w_t(678, 679)
+  w_t(679, 683)
+  w_t(679, 684)
+    conflict gid 683
+  w_t(679, 684)
+    conflict gid 683
+  w_t(680, 681)
+  w_t(680, 681)
+  w_t(681, 682)
+  w_t(681, 682)
+  w_t(681, 685)
+    conflict gid 680
+  w_t(682, 683)
+    conflict gid 681
+  w_t(683, 686)
+  w_t(684, 685)
+    conflict gid 679
+  w_t(685, 686)
+  w_t(687, 688)
+    conflict gid 295
+  w_t(687, 966)
+    conflict gid 295
+  w_t(688, 689)
+  w_t(688, 700)
+  w_t(688, 711)
+  w_t(688, 722)
+  w_t(688, 733)
+  w_t(688, 877)
+  w_t(688, 881)
+  w_t(688, 885)
+  w_t(688, 889)
+  w_t(688, 900)
+  w_t(688, 941)
+    conflict gid 295
+  w_t(688, 949)
+    conflict gid 295
+  w_t(688, 953)
+    conflict gid 295
+  w_t(688, 957)
+    conflict gid 295
+  w_t(688, 961)
+    conflict gid 295
+  w_t(688, 973)
+    conflict gid 295
+  w_t(689, 690)
+  w_t(690, 691)
+  w_t(691, 692)
+  w_t(692, 696)
+  w_t(692, 697)
+    conflict gid 696
+  w_t(692, 697)
+    conflict gid 696
+  w_t(693, 694)
+  w_t(693, 694)
+  w_t(694, 695)
+  w_t(694, 695)
+  w_t(694, 698)
+    conflict gid 693
+  w_t(695, 696)
+    conflict gid 694
+  w_t(696, 699)
+  w_t(697, 698)
+    conflict gid 692
+  w_t(698, 699)
+  w_t(700, 701)
+  w_t(701, 702)
+  w_t(702, 703)
+  w_t(703, 707)
+  w_t(703, 708)
+    conflict gid 707
+  w_t(703, 708)
+    conflict gid 707
+  w_t(704, 705)
+  w_t(704, 705)
+  w_t(705, 706)
+  w_t(705, 706)
+  w_t(705, 709)
+    conflict gid 704
+  w_t(706, 707)
+    conflict gid 705
+  w_t(707, 710)
+  w_t(708, 709)
+    conflict gid 703
+  w_t(709, 710)
+  w_t(711, 712)
+  w_t(712, 713)
+  w_t(713, 714)
+  w_t(714, 718)
+  w_t(714, 719)
+    conflict gid 718
+  w_t(714, 719)
+    conflict gid 718
+  w_t(715, 716)
+  w_t(715, 716)
+  w_t(716, 717)
+  w_t(716, 717)
+  w_t(716, 720)
+    conflict gid 715
+  w_t(717, 718)
+    conflict gid 716
+  w_t(718, 721)
+  w_t(719, 720)
+    conflict gid 714
+  w_t(720, 721)
+  w_t(722, 723)
+  w_t(723, 724)
+  w_t(724, 725)
+  w_t(725, 729)
+  w_t(725, 730)
+    conflict gid 729
+  w_t(725, 730)
+    conflict gid 729
+  w_t(726, 727)
+  w_t(726, 727)
+  w_t(727, 728)
+  w_t(727, 728)
+  w_t(727, 731)
+    conflict gid 726
+  w_t(728, 729)
+    conflict gid 727
+  w_t(729, 732)
+  w_t(730, 731)
+    conflict gid 725
+  w_t(731, 732)
+  w_t(733, 734)
+  w_t(734, 735)
+  w_t(735, 736)
+  w_t(736, 740)
+  w_t(736, 741)
+    conflict gid 740
+  w_t(736, 741)
+    conflict gid 740
+  w_t(737, 738)
+  w_t(737, 738)
+  w_t(738, 739)
+  w_t(738, 739)
+  w_t(738, 742)
+    conflict gid 737
+  w_t(739, 740)
+    conflict gid 738
+  w_t(740, 743)
+  w_t(741, 742)
+    conflict gid 736
+  w_t(742, 743)
+  w_t(744, 745)
+    conflict gid 164
+  w_t(744, 972)
+    conflict gid 164
+  w_t(745, 746)
+  w_t(745, 757)
+  w_t(745, 768)
+  w_t(745, 779)
+  w_t(745, 908)
+  w_t(745, 912)
+  w_t(745, 916)
+  w_t(745, 920)
+  w_t(745, 945)
+    conflict gid 164
+  w_t(745, 949)
+    conflict gid 164
+  w_t(745, 953)
+    conflict gid 164
+  w_t(745, 957)
+    conflict gid 164
+  w_t(745, 961)
+    conflict gid 164
+  w_t(745, 967)
+    conflict gid 164
+  w_t(746, 747)
+  w_t(747, 748)
+  w_t(748, 749)
+  w_t(749, 753)
+  w_t(749, 754)
+    conflict gid 753
+  w_t(749, 754)
+    conflict gid 753
+  w_t(750, 751)
+  w_t(750, 751)
+  w_t(751, 752)
+  w_t(751, 752)
+  w_t(751, 755)
+    conflict gid 750
+  w_t(752, 753)
+    conflict gid 751
+  w_t(753, 756)
+  w_t(754, 755)
+    conflict gid 749
+  w_t(755, 756)
+  w_t(757, 758)
+  w_t(758, 759)
+  w_t(759, 760)
+  w_t(760, 764)
+  w_t(760, 765)
+    conflict gid 764
+  w_t(760, 765)
+    conflict gid 764
+  w_t(761, 762)
+  w_t(761, 762)
+  w_t(762, 763)
+  w_t(762, 763)
+  w_t(762, 766)
+    conflict gid 761
+  w_t(763, 764)
+    conflict gid 762
+  w_t(764, 767)
+  w_t(765, 766)
+    conflict gid 760
+  w_t(766, 767)
+  w_t(768, 769)
+  w_t(769, 770)
+  w_t(770, 771)
+  w_t(771, 775)
+  w_t(771, 776)
+    conflict gid 775
+  w_t(771, 776)
+    conflict gid 775
+  w_t(772, 773)
+  w_t(772, 773)
+  w_t(773, 774)
+  w_t(773, 774)
+  w_t(773, 777)
+    conflict gid 772
+  w_t(774, 775)
+    conflict gid 773
+  w_t(775, 778)
+  w_t(776, 777)
+    conflict gid 771
+  w_t(777, 778)
+  w_t(779, 780)
+  w_t(780, 781)
+  w_t(781, 782)
+  w_t(782, 786)
+  w_t(782, 787)
+    conflict gid 786
+  w_t(782, 787)
+    conflict gid 786
+  w_t(783, 784)
+  w_t(783, 784)
+  w_t(784, 785)
+  w_t(784, 785)
+  w_t(784, 788)
+    conflict gid 783
+  w_t(785, 786)
+    conflict gid 784
+  w_t(786, 789)
+  w_t(787, 788)
+    conflict gid 782
+  w_t(788, 789)
+  w_t(857, 859)
+    conflict gid 580
+  w_t(857, 860)
+    conflict gid 859
+  w_t(840, 841)
+  w_t(840, 841)
+  w_t(841, 845)
+    conflict gid 840
+  w_t(841, 846)
+    conflict gid 840
+  w_t(841, 846)
+    conflict gid 840
+  w_t(842, 843)
+  w_t(842, 843)
+  w_t(843, 844)
+    conflict gid 842
+  w_t(843, 844)
+    conflict gid 842
+  w_t(843, 847)
+    conflict gid 842
+  w_t(844, 845)
+    conflict gid 843
+  w_t(845, 848)
+  w_t(846, 847)
+    conflict gid 841
+  w_t(847, 848)
+  w_t(848, 849)
+  w_t(848, 849)
+  w_t(849, 855)
+    conflict gid 848
+  w_t(830, 831)
+  w_t(830, 831)
+  w_t(831, 835)
+    conflict gid 830
+  w_t(831, 836)
+    conflict gid 830
+  w_t(831, 836)
+    conflict gid 830
+  w_t(832, 833)
+  w_t(832, 833)
+  w_t(833, 834)
+    conflict gid 832
+  w_t(833, 834)
+    conflict gid 832
+  w_t(833, 837)
+    conflict gid 832
+  w_t(834, 835)
+    conflict gid 833
+  w_t(835, 838)
+  w_t(836, 837)
+    conflict gid 831
+  w_t(837, 838)
+  w_t(838, 839)
+  w_t(838, 839)
+  w_t(839, 854)
+    conflict gid 838
+  w_t(820, 821)
+        conflict gid 827
+        conflict gid 827
+  w_t(820, 821)
+        conflict gid 827
+        conflict gid 827
+  w_t(821, 825)
+    conflict gid 820
+  w_t(821, 826)
+    conflict gid 820
+  w_t(821, 826)
+    conflict gid 820
+  w_t(822, 823)
+        conflict gid 820
+        conflict gid 820
+  w_t(822, 823)
+        conflict gid 820
+        conflict gid 820
+  w_t(823, 824)
+    conflict gid 822
+  w_t(823, 824)
+    conflict gid 822
+  w_t(823, 827)
+    conflict gid 822
+  w_t(824, 825)
+    conflict gid 823
+  w_t(825, 828)
+  w_t(826, 827)
+    conflict gid 821
+  w_t(827, 828)
+  w_t(828, 829)
+  w_t(828, 829)
+  w_t(829, 852)
+    conflict gid 828
+  w_t(810, 811)
+        conflict gid 817
+        conflict gid 817
+        conflict gid 817
+  w_t(810, 811)
+        conflict gid 817
+        conflict gid 817
+        conflict gid 817
+  w_t(811, 815)
+    conflict gid 810
+  w_t(811, 816)
+    conflict gid 810
+  w_t(811, 816)
+    conflict gid 810
+  w_t(812, 813)
+        conflict gid 810
+        conflict gid 810
+        conflict gid 810
+  w_t(812, 813)
+        conflict gid 810
+        conflict gid 810
+        conflict gid 810
+  w_t(813, 814)
+    conflict gid 812
+  w_t(813, 814)
+    conflict gid 812
+  w_t(813, 817)
+    conflict gid 812
+  w_t(814, 815)
+    conflict gid 813
+  w_t(815, 818)
+  w_t(816, 817)
+    conflict gid 811
+  w_t(817, 818)
+  w_t(818, 819)
+  w_t(818, 819)
+  w_t(819, 851)
+    conflict gid 818
+  w_t(790, 791)
+        conflict gid 797
+        conflict gid 797
+        conflict gid 797
+        conflict gid 797
+  w_t(790, 791)
+        conflict gid 797
+        conflict gid 797
+        conflict gid 797
+        conflict gid 797
+  w_t(791, 795)
+    conflict gid 790
+  w_t(791, 796)
+    conflict gid 790
+  w_t(791, 796)
+    conflict gid 790
+  w_t(792, 793)
+        conflict gid 790
+        conflict gid 790
+        conflict gid 790
+        conflict gid 790
+  w_t(792, 793)
+        conflict gid 790
+        conflict gid 790
+        conflict gid 790
+        conflict gid 790
+  w_t(793, 794)
+    conflict gid 792
+  w_t(793, 794)
+    conflict gid 792
+  w_t(793, 797)
+    conflict gid 792
+  w_t(794, 795)
+    conflict gid 793
+  w_t(795, 798)
+  w_t(796, 797)
+    conflict gid 791
+  w_t(797, 798)
+  w_t(798, 799)
+  w_t(798, 799)
+  w_t(799, 850)
+    conflict gid 798
+  w_t(800, 801)
+        conflict gid 807
+        conflict gid 807
+        conflict gid 807
+        conflict gid 807
+  w_t(800, 801)
+        conflict gid 807
+        conflict gid 807
+        conflict gid 807
+        conflict gid 807
+  w_t(801, 805)
+    conflict gid 800
+  w_t(801, 806)
+    conflict gid 800
+  w_t(801, 806)
+    conflict gid 800
+  w_t(802, 803)
+        conflict gid 800
+        conflict gid 800
+        conflict gid 800
+        conflict gid 800
+  w_t(802, 803)
+        conflict gid 800
+        conflict gid 800
+        conflict gid 800
+        conflict gid 800
+  w_t(803, 804)
+    conflict gid 802
+  w_t(803, 804)
+    conflict gid 802
+  w_t(803, 807)
+    conflict gid 802
+  w_t(804, 805)
+    conflict gid 803
+  w_t(805, 808)
+  w_t(806, 807)
+    conflict gid 801
+  w_t(807, 808)
+  w_t(808, 809)
+  w_t(808, 809)
+  w_t(809, 850)
+    conflict gid 808
+  w_t(850, 851)
+  w_t(851, 852)
+  w_t(852, 853)
+  w_t(853, 854)
+  w_t(854, 855)
+  w_t(855, 856)
+  w_t(856, 858)
+    conflict gid 986
+  w_t(856, 986)
+    conflict gid 858
+  w_t(858, 859)
+        conflict gid 856
+  w_t(859, 860)
+        conflict gid 858
+  w_t(860, 989)
+        conflict gid 859
+  w_t(939, 940)
+    conflict gid 859
+  w_t(940, 944)
+    conflict gid 859
+  w_t(940, 948)
+    conflict gid 859
+  w_t(940, 952)
+    conflict gid 859
+  w_t(940, 956)
+    conflict gid 859
+  w_t(940, 960)
+    conflict gid 859
+  w_t(940, 964)
+    conflict gid 859
+  w_t(940, 970)
+    conflict gid 859
+  w_t(940, 976)
+    conflict gid 859
+  w_t(971, 972)
+    conflict gid 859
+  w_t(972, 973)
+    conflict gid 859
+  w_t(973, 974)
+    conflict gid 859
+  w_t(974, 975)
+    conflict gid 859
+  w_t(975, 976)
+    conflict gid 859
+  w_t(976, 983)
+    conflict gid 859
+  w_t(965, 966)
+    conflict gid 859
+  w_t(966, 967)
+    conflict gid 859
+  w_t(967, 968)
+    conflict gid 859
+  w_t(968, 969)
+    conflict gid 859
+  w_t(969, 970)
+    conflict gid 859
+  w_t(970, 982)
+    conflict gid 859
+  w_t(961, 962)
+    conflict gid 859
+  w_t(962, 963)
+    conflict gid 859
+  w_t(963, 964)
+    conflict gid 859
+  w_t(964, 981)
+    conflict gid 859
+  w_t(957, 958)
+    conflict gid 859
+  w_t(958, 959)
+    conflict gid 859
+  w_t(959, 960)
+    conflict gid 859
+  w_t(960, 980)
+    conflict gid 859
+  w_t(953, 954)
+    conflict gid 859
+  w_t(954, 955)
+    conflict gid 859
+  w_t(955, 956)
+    conflict gid 859
+  w_t(956, 979)
+    conflict gid 859
+  w_t(949, 950)
+    conflict gid 859
+  w_t(950, 951)
+    conflict gid 859
+  w_t(951, 952)
+    conflict gid 859
+  w_t(952, 978)
+    conflict gid 859
+  w_t(941, 942)
+    conflict gid 859
+  w_t(942, 943)
+    conflict gid 859
+  w_t(943, 944)
+    conflict gid 859
+  w_t(944, 977)
+    conflict gid 859
+  w_t(945, 946)
+    conflict gid 859
+  w_t(946, 947)
+    conflict gid 859
+  w_t(947, 948)
+    conflict gid 859
+  w_t(948, 977)
+    conflict gid 859
+  w_t(977, 978)
+    conflict gid 859
+  w_t(978, 979)
+    conflict gid 859
+  w_t(979, 980)
+    conflict gid 859
+  w_t(980, 981)
+    conflict gid 859
+  w_t(981, 982)
+    conflict gid 859
+  w_t(982, 983)
+    conflict gid 859
+  w_t(983, 985)
+    conflict gid 859
+  w_t(889, 890)
+  w_t(890, 891)
+  w_t(891, 892)
+  w_t(892, 899)
+  w_t(892, 1116)
+  w_t(885, 886)
+  w_t(886, 887)
+  w_t(887, 888)
+  w_t(888, 898)
+  w_t(888, 1115)
+  w_t(881, 882)
+  w_t(882, 883)
+  w_t(883, 884)
+  w_t(884, 897)
+  w_t(884, 1114)
+  w_t(877, 878)
+  w_t(878, 879)
+  w_t(879, 880)
+  w_t(880, 896)
+  w_t(880, 1113)
+  w_t(873, 874)
+  w_t(874, 875)
+  w_t(875, 876)
+  w_t(876, 895)
+  w_t(876, 1112)
+  w_t(869, 870)
+  w_t(870, 871)
+  w_t(871, 872)
+  w_t(872, 894)
+  w_t(872, 1111)
+  w_t(861, 862)
+  w_t(862, 863)
+  w_t(863, 864)
+  w_t(864, 893)
+  w_t(864, 1110)
+  w_t(865, 866)
+  w_t(866, 867)
+  w_t(867, 868)
+  w_t(868, 893)
+  w_t(868, 1110)
+  w_t(893, 894)
+  w_t(894, 895)
+  w_t(895, 896)
+  w_t(896, 897)
+  w_t(897, 898)
+  w_t(898, 899)
+  w_t(899, 984)
+    conflict gid 859
+  w_t(899, 1016)
+  w_t(928, 929)
+  w_t(929, 930)
+  w_t(930, 931)
+  w_t(931, 938)
+  w_t(931, 1158)
+  w_t(924, 925)
+  w_t(925, 926)
+  w_t(926, 927)
+  w_t(927, 937)
+  w_t(927, 1157)
+  w_t(920, 921)
+  w_t(921, 922)
+  w_t(922, 923)
+  w_t(923, 936)
+  w_t(923, 1156)
+  w_t(916, 917)
+  w_t(917, 918)
+  w_t(918, 919)
+  w_t(919, 935)
+  w_t(919, 1155)
+  w_t(912, 913)
+  w_t(913, 914)
+  w_t(914, 915)
+  w_t(915, 934)
+  w_t(915, 1154)
+  w_t(908, 909)
+  w_t(909, 910)
+  w_t(910, 911)
+  w_t(911, 933)
+  w_t(911, 1153)
+  w_t(900, 901)
+  w_t(901, 902)
+  w_t(902, 903)
+  w_t(903, 932)
+  w_t(903, 1152)
+  w_t(904, 905)
+  w_t(905, 906)
+  w_t(906, 907)
+  w_t(907, 932)
+  w_t(907, 1152)
+  w_t(932, 933)
+  w_t(933, 934)
+  w_t(934, 935)
+  w_t(935, 936)
+  w_t(936, 937)
+  w_t(937, 938)
+  w_t(938, 984)
+    conflict gid 859
+  w_t(938, 1016)
+  w_t(984, 985)
+    conflict gid 859
+  w_t(985, 988)
+    conflict gid 859
+  w_t(986, 987)
+    conflict gid 859
+  w_t(987, 988)
+    conflict gid 859
+  w_t(988, 989)
+  w_t(990, 991)
+  w_t(990, 991)
+  w_t(991, 995)
+    conflict gid 990
+  w_t(991, 996)
+    conflict gid 1003
+  w_t(991, 996)
+    conflict gid 1003
+  w_t(992, 993)
+  w_t(992, 993)
+  w_t(993, 994)
+    conflict gid 1003
+  w_t(993, 994)
+    conflict gid 1003
+  w_t(993, 997)
+    conflict gid 992
+  w_t(994, 995)
+    conflict gid 993
+  w_t(995, 998)
+  w_t(996, 997)
+    conflict gid 991
+  w_t(997, 998)
+  w_t(998, 1002)
+    conflict gid 1003
+  w_t(998, 1003)
+    conflict gid 1010
+  w_t(998, 1003)
+    conflict gid 1010
+  w_t(999, 1000)
+  w_t(999, 1000)
+  w_t(1000, 1001)
+    conflict gid 1010
+  w_t(1000, 1001)
+    conflict gid 1010
+  w_t(1000, 1004)
+    conflict gid 999
+  w_t(1001, 1002)
+    conflict gid 1000
+  w_t(1002, 1005)
+  w_t(1003, 1004)
+    conflict gid 998
+  w_t(1004, 1005)
+  w_t(1005, 1009)
+    conflict gid 1010
+  w_t(1005, 1010)
+    conflict gid 1021
+  w_t(1005, 1010)
+    conflict gid 1021
+  w_t(1006, 1007)
+  w_t(1006, 1007)
+  w_t(1007, 1008)
+    conflict gid 1021
+  w_t(1007, 1008)
+    conflict gid 1021
+  w_t(1007, 1011)
+    conflict gid 1006
+  w_t(1008, 1009)
+    conflict gid 1007
+  w_t(1009, 1012)
+  w_t(1010, 1011)
+    conflict gid 1005
+  w_t(1011, 1012)
+  w_t(1012, 1020)
+    conflict gid 1005
+  w_t(1012, 1021)
+    conflict gid 1005
+  w_t(1012, 1021)
+    conflict gid 1005
+  w_t(1016, 1018)
+    conflict gid 1019
+  w_t(1016, 1069)
+    conflict gid 1070
+  w_t(1016, 1080)
+    conflict gid 1081
+  w_t(1016, 1090)
+    conflict gid 1091
+  w_t(1016, 1103)
+    conflict gid 1104
+  w_t(1016, 1231)
+    conflict gid 1232
+  w_t(1013, 1017)
+    conflict gid 1232
+  w_t(1014, 1015)
+  w_t(1014, 1015)
+  w_t(1015, 1017)
+    conflict gid 1232
+  w_t(1015, 1068)
+    conflict gid 1014
+  w_t(1015, 1079)
+    conflict gid 1014
+  w_t(1015, 1089)
+    conflict gid 1014
+  w_t(1015, 1102)
+    conflict gid 1014
+  w_t(1015, 1230)
+    conflict gid 1014
+  w_t(1017, 1018)
+    conflict gid 1014
+  w_t(1018, 1019)
+    conflict gid 1014
+  w_t(1018, 1019)
+    conflict gid 1014
+  w_t(1018, 1022)
+    conflict gid 1014
+  w_t(1019, 1020)
+    conflict gid 1018
+  w_t(1020, 1023)
+  w_t(1021, 1022)
+    conflict gid 1018
+  w_t(1022, 1023)
+  w_t(1023, 1028)
+  w_t(1024, 1027)
+    conflict gid 580
+  w_t(1024, 1029)
+    conflict gid 580
+  w_t(1024, 1076)
+    conflict gid 580
+  w_t(1024, 1096)
+    conflict gid 580
+  w_t(1024, 1098)
+    conflict gid 580
+  w_t(1024, 1251)
+    conflict gid 580
+  w_t(1025, 1026)
+  w_t(1025, 1026)
+  w_t(1026, 1027)
+  w_t(1026, 1029)
+  w_t(1026, 1076)
+  w_t(1026, 1096)
+  w_t(1026, 1098)
+  w_t(1026, 1251)
+  w_t(1027, 1028)
+        conflict gid 1024
+  w_t(1029, 1075)
+        conflict gid 1024
+  w_t(1030, 1031)
+  w_t(1030, 1031)
+  w_t(1031, 1035)
+    conflict gid 1030
+  w_t(1031, 1036)
+    conflict gid 1043
+  w_t(1031, 1036)
+    conflict gid 1043
+  w_t(1032, 1033)
+  w_t(1032, 1033)
+  w_t(1033, 1034)
+    conflict gid 1043
+  w_t(1033, 1034)
+    conflict gid 1043
+  w_t(1033, 1037)
+    conflict gid 1032
+  w_t(1034, 1035)
+    conflict gid 1033
+  w_t(1035, 1038)
+  w_t(1036, 1037)
+    conflict gid 1031
+  w_t(1037, 1038)
+  w_t(1038, 1042)
+    conflict gid 1043
+  w_t(1038, 1043)
+    conflict gid 1042
+  w_t(1038, 1043)
+    conflict gid 1042
+  w_t(1039, 1040)
+  w_t(1039, 1040)
+  w_t(1040, 1041)
+    conflict gid 1039
+  w_t(1040, 1041)
+    conflict gid 1039
+  w_t(1040, 1044)
+    conflict gid 1039
+  w_t(1041, 1042)
+    conflict gid 1040
+  w_t(1042, 1045)
+  w_t(1043, 1044)
+    conflict gid 1038
+  w_t(1044, 1045)
+  w_t(1045, 1046)
+  w_t(1045, 1046)
+  w_t(1046, 1064)
+    conflict gid 1045
+  w_t(1046, 1065)
+    conflict gid 1072
+  w_t(1046, 1065)
+    conflict gid 1072
+  w_t(1047, 1048)
+  w_t(1047, 1048)
+  w_t(1048, 1052)
+    conflict gid 1047
+  w_t(1048, 1053)
+    conflict gid 1060
+  w_t(1048, 1053)
+    conflict gid 1060
+  w_t(1049, 1050)
+  w_t(1049, 1050)
+  w_t(1050, 1051)
+    conflict gid 1060
+  w_t(1050, 1051)
+    conflict gid 1060
+  w_t(1050, 1054)
+    conflict gid 1049
+  w_t(1051, 1052)
+    conflict gid 1050
+  w_t(1052, 1055)
+  w_t(1053, 1054)
+    conflict gid 1048
+  w_t(1054, 1055)
+  w_t(1055, 1059)
+    conflict gid 1060
+  w_t(1055, 1060)
+    conflict gid 1063
+  w_t(1055, 1060)
+    conflict gid 1063
+  w_t(1056, 1057)
+  w_t(1056, 1057)
+  w_t(1057, 1058)
+    conflict gid 1063
+  w_t(1057, 1058)
+    conflict gid 1063
+  w_t(1057, 1061)
+    conflict gid 1056
+  w_t(1058, 1059)
+    conflict gid 1057
+  w_t(1059, 1062)
+  w_t(1060, 1061)
+    conflict gid 1055
+  w_t(1061, 1062)
+  w_t(1062, 1063)
+    conflict gid 1072
+  w_t(1062, 1063)
+    conflict gid 1072
+  w_t(1062, 1066)
+    conflict gid 1063
+  w_t(1063, 1064)
+    conflict gid 1062
+  w_t(1064, 1067)
+  w_t(1065, 1066)
+    conflict gid 1046
+  w_t(1066, 1067)
+  w_t(1067, 1071)
+    conflict gid 1072
+  w_t(1067, 1072)
+    conflict gid 1071
+  w_t(1067, 1072)
+    conflict gid 1071
+  w_t(1068, 1069)
+  w_t(1069, 1070)
+    conflict gid 1073
+  w_t(1069, 1070)
+    conflict gid 1073
+  w_t(1069, 1073)
+    conflict gid 1071
+  w_t(1070, 1071)
+    conflict gid 1069
+  w_t(1071, 1074)
+  w_t(1072, 1073)
+    conflict gid 1067
+  w_t(1073, 1074)
+  w_t(1074, 1075)
+  w_t(1076, 1086)
+        conflict gid 1024
+  w_t(1077, 1078)
+  w_t(1077, 1078)
+  w_t(1078, 1082)
+    conflict gid 1077
+  w_t(1078, 1083)
+    conflict gid 1077
+  w_t(1078, 1083)
+    conflict gid 1077
+  w_t(1079, 1080)
+  w_t(1080, 1081)
+    conflict gid 1077
+  w_t(1080, 1081)
+    conflict gid 1077
+  w_t(1080, 1084)
+    conflict gid 1077
+  w_t(1081, 1082)
+    conflict gid 1080
+  w_t(1082, 1085)
+  w_t(1083, 1084)
+    conflict gid 1078
+  w_t(1084, 1085)
+  w_t(1085, 1086)
+  w_t(1087, 1088)
+  w_t(1087, 1088)
+  w_t(1088, 1092)
+    conflict gid 1087
+  w_t(1088, 1093)
+    conflict gid 1087
+  w_t(1088, 1093)
+    conflict gid 1087
+  w_t(1089, 1090)
+  w_t(1090, 1091)
+    conflict gid 1087
+  w_t(1090, 1091)
+    conflict gid 1087
+  w_t(1090, 1094)
+    conflict gid 1087
+  w_t(1091, 1092)
+    conflict gid 1090
+  w_t(1092, 1095)
+  w_t(1093, 1094)
+    conflict gid 1088
+  w_t(1094, 1095)
+  w_t(1095, 1097)
+  w_t(1096, 1097)
+        conflict gid 1024
+  w_t(1098, 1109)
+        conflict gid 1024
+  w_t(1099, 1100)
+  w_t(1099, 1100)
+  w_t(1100, 1105)
+    conflict gid 1024
+  w_t(1100, 1106)
+    conflict gid 1024
+  w_t(1100, 1106)
+    conflict gid 1024
+  w_t(1101, 1102)
+    conflict gid 1024
+  w_t(1102, 1103)
+    conflict gid 1024
+  w_t(1103, 1104)
+    conflict gid 1024
+  w_t(1103, 1104)
+    conflict gid 1024
+  w_t(1103, 1107)
+    conflict gid 1024
+  w_t(1104, 1105)
+    conflict gid 1103
+  w_t(1105, 1108)
+  w_t(1106, 1107)
+    conflict gid 1103
+  w_t(1107, 1108)
+  w_t(1108, 1109)
+  w_t(1110, 1111)
+    conflict gid 1140
+  w_t(1111, 1112)
+    conflict gid 1140
+  w_t(1112, 1113)
+    conflict gid 1140
+  w_t(1113, 1114)
+    conflict gid 1140
+  w_t(1114, 1115)
+    conflict gid 1140
+  w_t(1115, 1116)
+    conflict gid 1140
+  w_t(1116, 1118)
+    conflict gid 1140
+  w_t(1117, 1118)
+  w_t(1118, 1139)
+  w_t(1118, 1140)
+    conflict gid 1139
+  w_t(1118, 1140)
+    conflict gid 1139
+  w_t(1119, 1120)
+  w_t(1119, 1120)
+  w_t(1120, 1124)
+    conflict gid 1119
+  w_t(1120, 1125)
+    conflict gid 1132
+  w_t(1120, 1125)
+    conflict gid 1132
+  w_t(1121, 1122)
+  w_t(1121, 1122)
+  w_t(1122, 1123)
+    conflict gid 1132
+  w_t(1122, 1123)
+    conflict gid 1132
+  w_t(1122, 1126)
+    conflict gid 1121
+  w_t(1123, 1124)
+    conflict gid 1122
+  w_t(1124, 1127)
+  w_t(1125, 1126)
+    conflict gid 1120
+  w_t(1126, 1127)
+  w_t(1127, 1131)
+    conflict gid 1132
+  w_t(1127, 1132)
+    conflict gid 1131
+  w_t(1127, 1132)
+    conflict gid 1131
+  w_t(1128, 1129)
+  w_t(1128, 1129)
+  w_t(1129, 1130)
+    conflict gid 1128
+  w_t(1129, 1130)
+    conflict gid 1128
+  w_t(1129, 1133)
+    conflict gid 1128
+  w_t(1130, 1131)
+    conflict gid 1129
+  w_t(1131, 1134)
+  w_t(1132, 1133)
+    conflict gid 1127
+  w_t(1133, 1134)
+  w_t(1134, 1135)
+  w_t(1134, 1135)
+  w_t(1135, 1137)
+    conflict gid 1138
+  w_t(1136, 1137)
+    conflict gid 1138
+  w_t(1137, 1138)
+    conflict gid 1141
+  w_t(1137, 1138)
+    conflict gid 1141
+  w_t(1137, 1141)
+  w_t(1138, 1139)
+    conflict gid 1137
+  w_t(1139, 1142)
+  w_t(1140, 1141)
+    conflict gid 1118
+  w_t(1141, 1142)
+  w_t(1142, 1148)
+    conflict gid 1149
+  w_t(1142, 1149)
+  w_t(1142, 1149)
+  w_t(1143, 1146)
+    conflict gid 1147
+  w_t(1144, 1145)
+  w_t(1144, 1145)
+  w_t(1145, 1146)
+    conflict gid 1147
+  w_t(1145, 1208)
+    conflict gid 1209
+  w_t(1146, 1147)
+    conflict gid 1150
+  w_t(1146, 1147)
+    conflict gid 1150
+  w_t(1146, 1150)
+  w_t(1147, 1148)
+    conflict gid 1146
+  w_t(1148, 1151)
+  w_t(1149, 1150)
+    conflict gid 1142
+  w_t(1150, 1151)
+  w_t(1152, 1153)
+    conflict gid 1204
+  w_t(1153, 1154)
+    conflict gid 1204
+  w_t(1154, 1155)
+    conflict gid 1204
+  w_t(1155, 1156)
+    conflict gid 1204
+  w_t(1156, 1157)
+    conflict gid 1204
+  w_t(1157, 1158)
+    conflict gid 1204
+  w_t(1158, 1160)
+    conflict gid 1204
+  w_t(1159, 1160)
+  w_t(1160, 1203)
+  w_t(1160, 1204)
+    conflict gid 1203
+  w_t(1160, 1204)
+    conflict gid 1203
+  w_t(1161, 1201)
+    conflict gid 1202
+  w_t(1162, 1163)
+  w_t(1162, 1163)
+  w_t(1163, 1181)
+    conflict gid 1162
+  w_t(1163, 1182)
+    conflict gid 1197
+  w_t(1163, 1182)
+    conflict gid 1197
+  w_t(1164, 1165)
+  w_t(1164, 1165)
+  w_t(1165, 1169)
+    conflict gid 1164
+  w_t(1165, 1170)
+    conflict gid 1177
+  w_t(1165, 1170)
+    conflict gid 1177
+  w_t(1166, 1167)
+  w_t(1166, 1167)
+  w_t(1167, 1168)
+    conflict gid 1177
+  w_t(1167, 1168)
+    conflict gid 1177
+  w_t(1167, 1171)
+    conflict gid 1166
+  w_t(1168, 1169)
+    conflict gid 1167
+  w_t(1169, 1172)
+  w_t(1170, 1171)
+    conflict gid 1165
+  w_t(1171, 1172)
+  w_t(1172, 1176)
+    conflict gid 1177
+  w_t(1172, 1177)
+    conflict gid 1180
+  w_t(1172, 1177)
+    conflict gid 1180
+  w_t(1173, 1174)
+  w_t(1173, 1174)
+  w_t(1174, 1175)
+    conflict gid 1180
+  w_t(1174, 1175)
+    conflict gid 1180
+  w_t(1174, 1178)
+    conflict gid 1173
+  w_t(1175, 1176)
+    conflict gid 1174
+  w_t(1176, 1179)
+  w_t(1177, 1178)
+    conflict gid 1172
+  w_t(1178, 1179)
+  w_t(1179, 1180)
+    conflict gid 1197
+  w_t(1179, 1180)
+    conflict gid 1197
+  w_t(1179, 1183)
+    conflict gid 1180
+  w_t(1180, 1181)
+    conflict gid 1179
+  w_t(1181, 1184)
+  w_t(1182, 1183)
+    conflict gid 1163
+  w_t(1183, 1184)
+  w_t(1184, 1196)
+    conflict gid 1197
+  w_t(1184, 1197)
+    conflict gid 1196
+  w_t(1184, 1197)
+    conflict gid 1196
+  w_t(1185, 1186)
+  w_t(1185, 1186)
+  w_t(1186, 1190)
+    conflict gid 1185
+  w_t(1186, 1191)
+    conflict gid 1185
+  w_t(1186, 1191)
+    conflict gid 1185
+  w_t(1187, 1188)
+  w_t(1187, 1188)
+  w_t(1188, 1189)
+    conflict gid 1187
+  w_t(1188, 1189)
+    conflict gid 1187
+  w_t(1188, 1192)
+    conflict gid 1187
+  w_t(1189, 1190)
+    conflict gid 1188
+  w_t(1190, 1193)
+  w_t(1191, 1192)
+    conflict gid 1186
+  w_t(1192, 1193)
+  w_t(1193, 1194)
+  w_t(1193, 1194)
+  w_t(1194, 1195)
+    conflict gid 1193
+  w_t(1194, 1195)
+    conflict gid 1193
+  w_t(1194, 1198)
+    conflict gid 1193
+  w_t(1195, 1196)
+    conflict gid 1194
+  w_t(1196, 1199)
+  w_t(1197, 1198)
+    conflict gid 1184
+  w_t(1198, 1199)
+  w_t(1199, 1200)
+  w_t(1199, 1200)
+  w_t(1200, 1201)
+    conflict gid 1202
+  w_t(1201, 1202)
+    conflict gid 1205
+  w_t(1201, 1202)
+    conflict gid 1205
+  w_t(1201, 1205)
+  w_t(1202, 1203)
+    conflict gid 1201
+  w_t(1203, 1206)
+  w_t(1204, 1205)
+    conflict gid 1160
+  w_t(1205, 1206)
+  w_t(1206, 1210)
+    conflict gid 1211
+  w_t(1206, 1211)
+  w_t(1206, 1211)
+  w_t(1207, 1208)
+    conflict gid 1209
+  w_t(1208, 1209)
+    conflict gid 1212
+  w_t(1208, 1209)
+    conflict gid 1212
+  w_t(1208, 1212)
+  w_t(1209, 1210)
+    conflict gid 1208
+  w_t(1210, 1213)
+  w_t(1211, 1212)
+    conflict gid 1206
+  w_t(1212, 1213)
+  w_t(1214, 1215)
+  w_t(1214, 1215)
+  w_t(1215, 1219)
+    conflict gid 1214
+  w_t(1215, 1220)
+    conflict gid 1227
+  w_t(1215, 1220)
+    conflict gid 1227
+  w_t(1216, 1217)
+  w_t(1216, 1217)
+  w_t(1217, 1218)
+    conflict gid 1227
+  w_t(1217, 1218)
+    conflict gid 1227
+  w_t(1217, 1221)
+    conflict gid 1216
+  w_t(1218, 1219)
+    conflict gid 1217
+  w_t(1219, 1222)
+  w_t(1220, 1221)
+    conflict gid 1215
+  w_t(1221, 1222)
+  w_t(1222, 1226)
+    conflict gid 1227
+  w_t(1222, 1227)
+    conflict gid 1234
+  w_t(1222, 1227)
+    conflict gid 1234
+  w_t(1223, 1224)
+  w_t(1223, 1224)
+  w_t(1224, 1225)
+    conflict gid 1234
+  w_t(1224, 1225)
+    conflict gid 1234
+  w_t(1224, 1228)
+    conflict gid 1223
+  w_t(1225, 1226)
+    conflict gid 1224
+  w_t(1226, 1229)
+  w_t(1227, 1228)
+    conflict gid 1222
+  w_t(1228, 1229)
+  w_t(1229, 1233)
+    conflict gid 1234
+  w_t(1229, 1234)
+    conflict gid 1248
+  w_t(1229, 1234)
+    conflict gid 1248
+  w_t(1230, 1231)
+  w_t(1231, 1232)
+    conflict gid 1235
+  w_t(1231, 1232)
+    conflict gid 1235
+  w_t(1231, 1235)
+    conflict gid 1233
+  w_t(1232, 1233)
+    conflict gid 1231
+  w_t(1233, 1236)
+  w_t(1234, 1235)
+    conflict gid 1229
+  w_t(1235, 1236)
+  w_t(1236, 1247)
+    conflict gid 1248
+  w_t(1236, 1248)
+    conflict gid 1247
+  w_t(1236, 1248)
+    conflict gid 1247
+  w_t(1237, 1238)
+  w_t(1237, 1238)
+  w_t(1238, 1242)
+    conflict gid 1237
+  w_t(1238, 1243)
+    conflict gid 1246
+  w_t(1238, 1243)
+    conflict gid 1246
+  w_t(1239, 1240)
+  w_t(1239, 1240)
+  w_t(1240, 1241)
+    conflict gid 1246
+  w_t(1240, 1241)
+    conflict gid 1246
+  w_t(1240, 1244)
+    conflict gid 1239
+  w_t(1241, 1242)
+    conflict gid 1240
+  w_t(1242, 1245)
+  w_t(1243, 1244)
+    conflict gid 1238
+  w_t(1244, 1245)
+  w_t(1245, 1246)
+    conflict gid 1249
+  w_t(1245, 1246)
+    conflict gid 1249
+  w_t(1245, 1249)
+    conflict gid 1246
+  w_t(1246, 1247)
+    conflict gid 1245
+  w_t(1247, 1250)
+  w_t(1248, 1249)
+    conflict gid 1236
+  w_t(1249, 1250)
+  w_t(1250, 1252)
+  w_t(1251, 1252)
+        conflict gid 1024
+
+----  Statistic  ----
+Total time usage: 1.35938 s
+#wire: 2304
+2-Way rar alternatives: 948
+RAR wire alternatives: 0
+RAR gate alternatives: 107
+#tar: 999
+#alt: 1055
+
+cir> q -f
+
