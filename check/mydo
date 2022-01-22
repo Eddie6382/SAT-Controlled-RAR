@@ -1,4 +1,4 @@
-cirr tests.fraig/ISCAS85/C880.aag
+cirr ISCAS85/C432.aag
 cirrar
 cirrarw -d /tmp
 q -f
