@@ -1,9 +1,0 @@
-cirr tests.fraig/sim06.aag
-cirr tests.fraig/sim02.aag -replace
-cirr tests.fraig/sim03.aag -replace
-cirr tests.fraig/sim04.aag -replace
-cirr tests.fraig/sim05.aag -replace
-cirr tests.fraig/sim06.aag -replace
-cirr tests.fraig/sim07.aag -replace
-cirp
-cirp

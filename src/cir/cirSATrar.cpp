@@ -42,6 +42,7 @@ void CirMgr::SATRar()
    _MAg_d = new CirMA (this);
 
    int Ntar = 0;
+   int Nwire = 0;
     
    cout << "\n----  Preprocess ----\n";
    genDfsList();
@@ -54,6 +55,7 @@ void CirMgr::SATRar()
       GateList& fanouts = getFanouts(in->getGid());
       for (auto& out: fanouts) {
          if (out->getType() != AIG_GATE) continue;
+         Nwire++;
          pair<unsigned, unsigned> w_t = make_pair(in->getGid(), out->getGid());
          _w_tList.push_back(w_t);
          if (SATRarOnWt(w_t, _w_tList.size()-1, *_MAw_t, *_MAg_d))
@@ -63,6 +65,7 @@ void CirMgr::SATRar()
 
    cout << "\n----  Statistic  ----\n";
    cout << "Total time usage: " << double(clock()-start)/CLOCKS_PER_SEC << " s\n";
+   cout << "#wire: "  << Nwire << "\n";
    cout << "2-Way rar alternatives: " << _repairCat[0] << "\n";
    cout << "RAR wire alternatives: " << _repairCat[1] << "\n";
    cout << "RAR gate alternatives: " << _repairCat[2] << "\n";
@@ -251,9 +254,9 @@ CirMgr::SATRARRepair(pair<BigNum, vector<unsigned>>& repair, string& text)
 
    regex e1 ("(\n"+to_string(w_tSecond*2)+")(\\s\\d+)\\s("+to_string(w_tFirst*2+(int)inv)+")");
    regex e2 ("(\n"+to_string(w_tSecond*2)+")\\s("+to_string(w_tFirst*2+(int)inv)+")");
-   string const1 = to_string(1);
-   text = regex_replace(text, e1, "$1$2 "+const1);
-   text = regex_replace(text, e2, "$1 "+const1);
+   string const_in = (inv)? to_string(1): to_string(0);
+   text = regex_replace(text, e1, "$1$2 "+const_in);
+   text = regex_replace(text, e2, "$1 "+const_in);
 
 // modify g_d structure, and construct g_n
    unsigned gids[decisions.size()];
@@ -274,7 +277,7 @@ CirMgr::SATRARRepair(pair<BigNum, vector<unsigned>>& repair, string& text)
             s_in1 = to_string(decisions[1]);
          }
          else {
-            s_in0 = to_string(gids[i-1]);
+            s_in0 = to_string(gids[i-1]*2);
             s_in1 = to_string(decisions[i]);
          }
          addcircuit += to_string(gids[i]*2) + " " + s_in0 + " " + s_in1 + "\n";

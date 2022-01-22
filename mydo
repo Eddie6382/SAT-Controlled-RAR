@@ -1,0 +1,4 @@
+cirr tests.fraig/ISCAS85/ex01.aag
+cirrar
+cirrarw -d results
+q -f

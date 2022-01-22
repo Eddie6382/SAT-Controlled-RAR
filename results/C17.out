@@ -9,9 +9,9 @@ Done
   w_t(6, 7)
   w_t(6, 7)
   w_t(7, 8)
-    conflict gid 13
+    conflict gid 12
   w_t(7, 11)
-    conflict gid 7
+    conflict gid 6
   w_t(8, 9)
         conflict gid 4
   w_t(8, 12)
@@ -19,6 +19,7 @@ Done
 
 ----  Statistic  ----
 Total time usage: 0 s
+#wire: 8
 2-Way rar alternatives: 2
 RAR wire alternatives: 0
 RAR gate alternatives: 1

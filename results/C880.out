@@ -1,4 +1,4 @@
-cir> cirr tests.fraig/ISCAS85/C880.aag -r
+cir> cirr tests.fraig/ISCAS85/C880.aag
 
 cir> cirrar
 
@@ -44,7 +44,7 @@ Done
   w_t(36, 66)
   w_t(37, 38)
   w_t(38, 39)
-    conflict gid 66
+    conflict gid 65
   w_t(38, 65)
         conflict gid 3
   w_t(38, 65)
@@ -93,13 +93,13 @@ Done
   w_t(67, 68)
   w_t(70, 71)
   w_t(71, 72)
-    conflict gid 194
+    conflict gid 193
   w_t(71, 72)
-    conflict gid 194
+    conflict gid 193
   w_t(71, 193)
-    conflict gid 73
+    conflict gid 72
   w_t(71, 193)
-    conflict gid 73
+    conflict gid 72
   w_t(72, 73)
   w_t(72, 73)
   w_t(73, 74)
@@ -133,152 +133,152 @@ Done
   w_t(96, 97)
   w_t(96, 97)
   w_t(101, 103)
-    conflict gid 111
+    conflict gid 110
   w_t(102, 103)
-    conflict gid 111
+    conflict gid 110
   w_t(103, 109)
-    conflict gid 111
+    conflict gid 110
   w_t(103, 110)
   w_t(103, 110)
   w_t(106, 108)
-    conflict gid 112
+    conflict gid 111
   w_t(107, 108)
-    conflict gid 112
+    conflict gid 111
   w_t(108, 109)
-    conflict gid 112
+    conflict gid 111
   w_t(108, 111)
   w_t(108, 111)
   w_t(109, 113)
   w_t(110, 112)
-    conflict gid 104
+    conflict gid 103
   w_t(111, 112)
-    conflict gid 109
+    conflict gid 108
   w_t(112, 113)
   w_t(113, 114)
   w_t(113, 115)
-    conflict gid 138
+    conflict gid 137
   w_t(114, 116)
-    conflict gid 138
+    conflict gid 137
   w_t(115, 116)
-    conflict gid 138
+    conflict gid 137
   w_t(116, 136)
-    conflict gid 138
+    conflict gid 137
   w_t(116, 137)
   w_t(116, 137)
   w_t(119, 121)
-    conflict gid 129
+    conflict gid 128
   w_t(120, 121)
-    conflict gid 129
+    conflict gid 128
   w_t(121, 127)
-    conflict gid 129
+    conflict gid 128
   w_t(121, 128)
   w_t(121, 128)
   w_t(124, 126)
-    conflict gid 130
+    conflict gid 129
   w_t(125, 126)
-    conflict gid 130
+    conflict gid 129
   w_t(126, 127)
-    conflict gid 130
+    conflict gid 129
   w_t(126, 129)
   w_t(126, 129)
   w_t(127, 131)
   w_t(128, 130)
-    conflict gid 122
+    conflict gid 121
   w_t(129, 130)
-    conflict gid 127
+    conflict gid 126
   w_t(130, 131)
   w_t(131, 133)
   w_t(131, 134)
-    conflict gid 139
+    conflict gid 138
   w_t(133, 135)
-    conflict gid 139
+    conflict gid 138
   w_t(134, 135)
-    conflict gid 139
+    conflict gid 138
   w_t(135, 136)
-    conflict gid 139
+    conflict gid 138
   w_t(135, 138)
   w_t(135, 138)
   w_t(136, 140)
   w_t(137, 139)
-    conflict gid 117
+    conflict gid 116
   w_t(138, 139)
-    conflict gid 136
+    conflict gid 135
   w_t(139, 140)
   w_t(140, 141)
   w_t(140, 141)
   w_t(141, 142)
   w_t(141, 142)
   w_t(145, 147)
-    conflict gid 155
+    conflict gid 154
   w_t(146, 147)
-    conflict gid 155
+    conflict gid 154
   w_t(147, 153)
-    conflict gid 155
+    conflict gid 154
   w_t(147, 154)
   w_t(147, 154)
   w_t(150, 152)
-    conflict gid 156
+    conflict gid 155
   w_t(151, 152)
-    conflict gid 156
+    conflict gid 155
   w_t(152, 153)
-    conflict gid 156
+    conflict gid 155
   w_t(152, 155)
   w_t(152, 155)
   w_t(153, 157)
   w_t(154, 156)
-    conflict gid 148
+    conflict gid 147
   w_t(155, 156)
-    conflict gid 153
+    conflict gid 152
   w_t(156, 157)
   w_t(157, 158)
   w_t(157, 159)
-    conflict gid 182
+    conflict gid 181
   w_t(158, 160)
-    conflict gid 182
+    conflict gid 181
   w_t(159, 160)
-    conflict gid 182
+    conflict gid 181
   w_t(160, 180)
-    conflict gid 182
+    conflict gid 181
   w_t(160, 181)
   w_t(160, 181)
   w_t(163, 165)
-    conflict gid 173
+    conflict gid 172
   w_t(164, 165)
-    conflict gid 173
+    conflict gid 172
   w_t(165, 171)
-    conflict gid 173
+    conflict gid 172
   w_t(165, 172)
   w_t(165, 172)
   w_t(168, 170)
-    conflict gid 174
+    conflict gid 173
   w_t(169, 170)
-    conflict gid 174
+    conflict gid 173
   w_t(170, 171)
-    conflict gid 174
+    conflict gid 173
   w_t(170, 173)
   w_t(170, 173)
   w_t(171, 175)
   w_t(172, 174)
-    conflict gid 166
+    conflict gid 165
   w_t(173, 174)
-    conflict gid 171
+    conflict gid 170
   w_t(174, 175)
   w_t(175, 177)
   w_t(175, 178)
-    conflict gid 183
+    conflict gid 182
   w_t(177, 179)
-    conflict gid 183
+    conflict gid 182
   w_t(178, 179)
-    conflict gid 183
+    conflict gid 182
   w_t(179, 180)
-    conflict gid 183
+    conflict gid 182
   w_t(179, 182)
   w_t(179, 182)
   w_t(180, 184)
   w_t(181, 183)
-    conflict gid 161
+    conflict gid 160
   w_t(182, 183)
-    conflict gid 180
+    conflict gid 179
   w_t(183, 184)
   w_t(184, 185)
   w_t(184, 185)
@@ -293,73 +293,73 @@ Done
   w_t(253, 254)
   w_t(253, 254)
   w_t(254, 255)
-    conflict gid 254
+    conflict gid 253
   w_t(254, 311)
-    conflict gid 254
+    conflict gid 253
   w_t(254, 339)
-    conflict gid 254
+    conflict gid 253
   w_t(254, 364)
-    conflict gid 254
+    conflict gid 253
   w_t(254, 448)
-    conflict gid 254
+    conflict gid 253
   w_t(254, 467)
-    conflict gid 254
+    conflict gid 253
   w_t(254, 492)
-    conflict gid 254
+    conflict gid 253
   w_t(254, 514)
-    conflict gid 254
+    conflict gid 253
   w_t(255, 258)
   w_t(242, 245)
   w_t(191, 192)
   w_t(191, 192)
   w_t(191, 381)
-    conflict gid 191
+    conflict gid 190
   w_t(191, 391)
-    conflict gid 191
+    conflict gid 190
   w_t(191, 402)
-    conflict gid 191
+    conflict gid 190
   w_t(191, 414)
-    conflict gid 191
+    conflict gid 190
   w_t(192, 199)
-        conflict gid 191
+        conflict gid 190
   w_t(192, 264)
-        conflict gid 191
+        conflict gid 190
   w_t(192, 273)
-        conflict gid 191
+        conflict gid 190
   w_t(192, 283)
-        conflict gid 191
+        conflict gid 190
   w_t(192, 456)
-    conflict gid 192
+    conflict gid 191
   w_t(193, 194)
   w_t(193, 194)
   w_t(194, 197)
-    conflict gid 194
+    conflict gid 193
   w_t(194, 203)
-    conflict gid 194
+    conflict gid 193
   w_t(194, 212)
-    conflict gid 194
+    conflict gid 193
   w_t(194, 376)
-    conflict gid 194
+    conflict gid 193
   w_t(194, 379)
-    conflict gid 194
+    conflict gid 193
   w_t(195, 196)
   w_t(196, 197)
   w_t(196, 380)
   w_t(197, 198)
   w_t(198, 199)
-        conflict gid 264
+        conflict gid 193
   w_t(198, 264)
-        conflict gid 199
+        conflict gid 193
   w_t(198, 273)
-        conflict gid 199
+        conflict gid 193
   w_t(198, 283)
-        conflict gid 199
+        conflict gid 193
   w_t(199, 224)
-        conflict gid 199
+        conflict gid 193
   w_t(202, 203)
-    conflict gid 377
+    conflict gid 376
   w_t(202, 376)
-    conflict gid 204
+    conflict gid 203
   w_t(203, 204)
         conflict gid 26
   w_t(204, 205)
@@ -395,7 +395,7 @@ Done
   w_t(215, 216)
         conflict gid 214
   w_t(216, 220)
-    conflict gid 216
+    conflict gid 215
   w_t(217, 218)
         conflict gid 3
   w_t(218, 219)
@@ -403,7 +403,7 @@ Done
   w_t(218, 219)
         conflict gid 3
   w_t(219, 220)
-    conflict gid 219
+    conflict gid 218
   w_t(220, 221)
         conflict gid 216
   w_t(221, 222)
@@ -418,7 +418,7 @@ Done
   w_t(223, 224)
   w_t(224, 225)
   w_t(224, 226)
-    conflict gid 228
+    conflict gid 227
   w_t(224, 244)
   w_t(244, 245)
   w_t(245, 257)
@@ -427,9 +427,9 @@ Done
   w_t(225, 296)
   w_t(225, 323)
   w_t(225, 350)
-    conflict gid 228
+    conflict gid 227
   w_t(226, 227)
-    conflict gid 238
+    conflict gid 237
   w_t(226, 237)
   w_t(226, 237)
   w_t(227, 229)
@@ -447,15 +447,15 @@ Done
   w_t(233, 256)
   w_t(235, 239)
   w_t(237, 238)
-    conflict gid 227
+    conflict gid 226
   w_t(237, 294)
-    conflict gid 227
+    conflict gid 226
   w_t(237, 322)
-    conflict gid 227
+    conflict gid 226
   w_t(237, 349)
-    conflict gid 227
+    conflict gid 226
   w_t(237, 349)
-    conflict gid 227
+    conflict gid 226
   w_t(238, 239)
         conflict gid 236
         conflict gid 236
@@ -479,7 +479,7 @@ Done
   w_t(268, 269)
   w_t(269, 270)
   w_t(269, 271)
-    conflict gid 273
+    conflict gid 272
   w_t(269, 310)
   w_t(310, 312)
   w_t(311, 312)
@@ -487,9 +487,9 @@ Done
   w_t(263, 305)
   w_t(270, 272)
   w_t(270, 422)
-    conflict gid 273
+    conflict gid 272
   w_t(271, 272)
-    conflict gid 308
+    conflict gid 307
   w_t(271, 307)
   w_t(271, 307)
   w_t(272, 301)
@@ -504,15 +504,15 @@ Done
   w_t(276, 277)
   w_t(277, 278)
   w_t(278, 279)
-    conflict gid 281
+    conflict gid 280
   w_t(278, 282)
   w_t(278, 337)
   w_t(282, 291)
-    conflict gid 321
+    conflict gid 320
   w_t(282, 293)
-    conflict gid 296
+    conflict gid 295
   w_t(282, 295)
-    conflict gid 294
+    conflict gid 293
   w_t(282, 320)
         conflict gid 291
   w_t(283, 288)
@@ -521,14 +521,14 @@ Done
   w_t(286, 287)
   w_t(287, 288)
   w_t(288, 289)
-    conflict gid 291
+    conflict gid 290
   w_t(288, 292)
   w_t(288, 362)
   w_t(292, 293)
   w_t(292, 295)
-    conflict gid 294
+    conflict gid 293
   w_t(292, 322)
-    conflict gid 349
+    conflict gid 348
   w_t(292, 323)
         conflict gid 348
         conflict gid 348
@@ -541,35 +541,35 @@ Done
   w_t(297, 300)
         conflict gid 296
   w_t(293, 294)
-        conflict gid 296
-        conflict gid 296
+        conflict gid 237
+        conflict gid 237
   w_t(294, 299)
         conflict gid 237
         conflict gid 237
   w_t(279, 280)
   w_t(279, 280)
   w_t(279, 320)
-    conflict gid 281
-  w_t(280, 281)
     conflict gid 280
   w_t(280, 281)
-    conflict gid 280
+    conflict gid 279
+  w_t(280, 281)
+    conflict gid 279
   w_t(280, 333)
-    conflict gid 280
+    conflict gid 279
   w_t(281, 298)
-    conflict gid 281
+    conflict gid 280
   w_t(289, 290)
   w_t(289, 290)
   w_t(289, 348)
-    conflict gid 291
+    conflict gid 290
   w_t(290, 291)
-    conflict gid 290
+    conflict gid 289
   w_t(290, 321)
-    conflict gid 290
+    conflict gid 289
   w_t(290, 321)
-    conflict gid 290
+    conflict gid 289
   w_t(290, 358)
-    conflict gid 290
+    conflict gid 289
   w_t(291, 298)
         conflict gid 290
         conflict gid 290
@@ -578,9 +578,9 @@ Done
   w_t(299, 300)
   w_t(300, 301)
   w_t(300, 302)
-    conflict gid 423
+    conflict gid 422
   w_t(300, 422)
-    conflict gid 303
+    conflict gid 302
   w_t(301, 303)
   w_t(302, 303)
         conflict gid 302
@@ -590,7 +590,7 @@ Done
   w_t(305, 313)
   w_t(306, 309)
   w_t(307, 308)
-    conflict gid 272
+    conflict gid 271
   w_t(307, 423)
   w_t(307, 423)
   w_t(308, 309)
@@ -614,18 +614,14 @@ Done
   w_t(319, 331)
   w_t(320, 327)
         conflict gid 282
-        conflict gid 189
-        conflict gid 189
   w_t(320, 328)
-        conflict gid 282
-        conflict gid 282
   w_t(320, 332)
   w_t(323, 324)
-        conflict gid 292
+        conflict gid 225
   w_t(324, 326)
         conflict gid 323
   w_t(321, 325)
-    conflict gid 291
+    conflict gid 290
   w_t(322, 325)
         conflict gid 237
         conflict gid 237
@@ -661,14 +657,10 @@ Done
   w_t(347, 356)
   w_t(348, 352)
         conflict gid 292
-        conflict gid 189
-        conflict gid 189
   w_t(348, 353)
-        conflict gid 292
-        conflict gid 292
   w_t(348, 357)
   w_t(349, 351)
-    conflict gid 238
+    conflict gid 237
   w_t(350, 351)
         conflict gid 228
   w_t(351, 352)
@@ -723,32 +715,32 @@ Done
         conflict gid 380
   w_t(382, 383)
   w_t(383, 384)
-    conflict gid 386
+    conflict gid 385
   w_t(383, 431)
   w_t(383, 466)
   w_t(384, 385)
   w_t(384, 385)
   w_t(384, 457)
-    conflict gid 386
+    conflict gid 385
   w_t(385, 386)
   w_t(385, 386)
   w_t(385, 464)
-    conflict gid 385
+    conflict gid 384
   w_t(386, 433)
-    conflict gid 386
+    conflict gid 385
   w_t(422, 424)
         conflict gid 300
   w_t(423, 424)
-    conflict gid 308
+    conflict gid 307
   w_t(424, 427)
-    conflict gid 440
+    conflict gid 439
   w_t(424, 439)
   w_t(424, 440)
-    conflict gid 504
+    conflict gid 503
   w_t(424, 480)
-    conflict gid 440
+    conflict gid 439
   w_t(424, 503)
-    conflict gid 441
+    conflict gid 440
   w_t(410, 412)
   w_t(411, 412)
   w_t(412, 416)
@@ -758,14 +750,14 @@ Done
         conflict gid 380
   w_t(415, 416)
   w_t(416, 417)
-    conflict gid 419
+    conflict gid 418
   w_t(416, 421)
   w_t(416, 447)
   w_t(421, 426)
   w_t(421, 438)
   w_t(421, 479)
   w_t(421, 503)
-    conflict gid 439
+    conflict gid 438
   w_t(387, 389)
   w_t(388, 389)
   w_t(389, 393)
@@ -775,15 +767,15 @@ Done
         conflict gid 380
   w_t(392, 393)
   w_t(393, 394)
-    conflict gid 396
+    conflict gid 395
   w_t(393, 397)
   w_t(393, 491)
   w_t(397, 407)
-    conflict gid 477
+    conflict gid 476
   w_t(397, 419)
-    conflict gid 426
+    conflict gid 425
   w_t(397, 425)
-    conflict gid 420
+    conflict gid 419
   w_t(397, 476)
         conflict gid 407
   w_t(398, 400)
@@ -795,14 +787,14 @@ Done
         conflict gid 380
   w_t(403, 404)
   w_t(404, 405)
-    conflict gid 407
+    conflict gid 406
   w_t(404, 408)
   w_t(404, 513)
   w_t(408, 419)
   w_t(408, 425)
-    conflict gid 420
+    conflict gid 419
   w_t(408, 478)
-    conflict gid 502
+    conflict gid 501
   w_t(408, 479)
         conflict gid 501
         conflict gid 501
@@ -813,21 +805,21 @@ Done
   w_t(426, 427)
         conflict gid 425
   w_t(427, 430)
-        conflict gid 424
+        conflict gid 426
   w_t(417, 418)
   w_t(417, 418)
   w_t(417, 438)
-    conflict gid 419
+    conflict gid 418
   w_t(418, 420)
-    conflict gid 418
+    conflict gid 417
   w_t(418, 445)
-    conflict gid 418
+    conflict gid 417
   w_t(418, 478)
-    conflict gid 418
+    conflict gid 417
   w_t(418, 502)
-    conflict gid 418
+    conflict gid 417
   w_t(418, 502)
-    conflict gid 418
+    conflict gid 417
   w_t(419, 420)
         conflict gid 418
         conflict gid 418
@@ -837,27 +829,27 @@ Done
   w_t(394, 395)
   w_t(394, 395)
   w_t(394, 476)
-    conflict gid 396
-  w_t(395, 396)
     conflict gid 395
   w_t(395, 396)
-    conflict gid 395
+    conflict gid 394
+  w_t(395, 396)
+    conflict gid 394
   w_t(395, 489)
-    conflict gid 395
+    conflict gid 394
   w_t(396, 428)
-    conflict gid 396
+    conflict gid 395
   w_t(405, 406)
   w_t(405, 406)
   w_t(405, 501)
-    conflict gid 407
+    conflict gid 406
   w_t(406, 407)
-    conflict gid 406
+    conflict gid 405
   w_t(406, 477)
-    conflict gid 406
+    conflict gid 405
   w_t(406, 477)
-    conflict gid 406
+    conflict gid 405
   w_t(406, 511)
-    conflict gid 406
+    conflict gid 405
   w_t(407, 428)
         conflict gid 406
         conflict gid 406
@@ -865,12 +857,12 @@ Done
   w_t(428, 429)
   w_t(429, 430)
   w_t(430, 432)
-    conflict gid 460
+    conflict gid 459
   w_t(430, 458)
   w_t(430, 459)
-    conflict gid 433
+    conflict gid 432
   w_t(431, 432)
-    conflict gid 458
+    conflict gid 457
   w_t(431, 457)
   w_t(432, 433)
         conflict gid 430
@@ -950,17 +942,14 @@ Done
   w_t(475, 487)
   w_t(476, 483)
         conflict gid 397
-        conflict gid 189
   w_t(476, 484)
-        conflict gid 397
-        conflict gid 397
   w_t(476, 488)
   w_t(479, 480)
-        conflict gid 408
+        conflict gid 421
   w_t(480, 482)
         conflict gid 479
   w_t(477, 481)
-    conflict gid 407
+    conflict gid 406
   w_t(478, 481)
         conflict gid 418
         conflict gid 418
@@ -993,13 +982,10 @@ Done
   w_t(500, 509)
   w_t(501, 505)
         conflict gid 408
-        conflict gid 189
   w_t(501, 506)
-        conflict gid 408
-        conflict gid 408
   w_t(501, 510)
   w_t(502, 504)
-    conflict gid 419
+    conflict gid 418
   w_t(503, 504)
         conflict gid 424
   w_t(504, 505)
@@ -1027,12 +1013,16 @@ Done
   w_t(520, 521)
 
 ----  Statistic  ----
-Total time usage: 0.1875 s
+Total time usage: 0.171875 s
+#wire: 699
 2-Way rar alternatives: 151
 RAR wire alternatives: 0
-RAR gate alternatives: 170
-#tar: 258
-#alt: 321
+RAR gate alternatives: 156
+#tar: 254
+#alt: 307
+
+cir> cirrarw -d /tmp
+writing files...done
 
 cir> q -f
 
