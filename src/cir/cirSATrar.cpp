@@ -26,9 +26,10 @@ long get_mem_usage() {
 
 /*_________________________________________________________________________________________________
 ________________________________________________________________________________________________@*/
-void CirMgr::SATRar()
+void CirMgr::SATRar(int verb)
 {
    clock_t start = clock();
+   _verbose = verb;
    
    // For Minisat based approach
    _RepairList.clear();
@@ -97,7 +98,7 @@ bool CirMgr::SATRarOnWt(pair<unsigned, unsigned> w_t, int w_tIdx, CirMA& MAw_t, 
    cout << "  w_t(" << w_t.first << ", " << w_t.second << ")\n";
    MAw_t.computeSATMA(w_t.first, w_t.second, 1, 0, 0);
    genFanInCone(getGate(w_t.first));
-   // MAw_t.printSATMA(w_t.first, 2);
+   if (_verbose > 1) MAw_t.printSATMA(w_t.first, 2);
    MAg_d.setCounterpartSolver(&MAw_t, w_t.first);
 
    int i = 0;
@@ -105,9 +106,9 @@ bool CirMgr::SATRarOnWt(pair<unsigned, unsigned> w_t, int w_tIdx, CirMA& MAw_t, 
 
    do {
    // only backtrack to level 𝑖 to find MAs. If no conflict, compute 𝑀𝐴(𝑔_𝑑𝑖)
-      // cout << "    g_d = " << g_d << "\n";
+      if (_verbose > 0) cout << "    g_d = " << g_d << "\n";
       Var conflict_var = MAg_d.computeSATMA(g_d, 0, (i == 0), (i == 0), i);
-      // MAg_d.printSATMA(g_d, 4);
+      if (_verbose > 1) MAg_d.printSATMA(g_d, 4);
 
    // 2-way RAR, make it a wire between conflict_gate and g_d
       
@@ -138,7 +139,7 @@ bool CirMgr::SATRarOnWt(pair<unsigned, unsigned> w_t, int w_tIdx, CirMA& MAw_t, 
             
             ++nDecision;
             decisions.push_back(gid*2 + MAw_t.isNeg(gid));
-            // cout << "      decide " << MAw_t.phase(gid) << gid << "\n";
+            if (_verbose > 1) cout << "      decide " << MAw_t.phase(gid) << gid << "\n";
             conflict_var = MAg_d.decisionGs(gid, MAw_t.isPos(gid));
 
             if (conflict_var != -1) {

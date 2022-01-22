@@ -1,4 +1,4 @@
-cirr tests.fraig/ISCAS85/ex01.aag
-cirrar
-cirrarw -d results
+cirr ISCAS85/ex01.aag
+cirrar -verb 0
+cirrarw -directory results
 q -f

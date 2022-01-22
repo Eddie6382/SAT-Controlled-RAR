@@ -9,6 +9,7 @@
 #include <cassert>
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 #include "cirMgr.h"
 #include "cirGate.h"
 #include "cirCmd.h"
@@ -359,8 +360,17 @@ CirSATRarCmd::exec(const string& option)
    vector<string> options;
    CmdExec::lexOptions(option, options);
 
-   if (!options.empty())
-      return CmdExec::errorOption(CMD_OPT_EXTRA, options[0]);
+   int verb = 0;
+   if (options.empty())
+      verb = 0;
+   else if (myStrNCmp("-Verbose", options[0], 5) == 0) {
+      if (options.size() == 1)
+         return CmdExec::errorOption(CMD_OPT_MISSING, options[0]);
+      if (options.size() > 2)
+         return CmdExec::errorOption(CMD_OPT_EXTRA, options[2]);
+      verb = stoi(options[1]);
+   }
+   else return CmdExec::errorOption(CMD_OPT_ILLEGAL, options[0]);
 
    assert(curCmd != CIRINIT);
    if (curCmd != CIRREAD) {
@@ -368,7 +378,7 @@ CirSATRarCmd::exec(const string& option)
            << endl;
       return CMD_EXEC_ERROR;
    }
-   cirMgr->SATRar();
+   cirMgr->SATRar(verb);
    curCmd = CIRSATRAR;
 
    return CMD_EXEC_DONE;
@@ -377,7 +387,7 @@ CirSATRarCmd::exec(const string& option)
 void
 CirSATRarCmd::usage(ostream& os) const
 {
-   os << "Usage: SATRAR" << endl;
+   os << "Usage: SATRAR [-Verbose] [0,1,2]" << endl;
 }
 
 void

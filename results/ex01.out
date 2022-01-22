@@ -1,4 +1,4 @@
-cir> cirr tests.fraig/ISCAS85/ex01.aag -r
+cir> cirr ISCAS85/ex01.aag
 
 cir> cirrar
 
@@ -23,6 +23,9 @@ RAR wire alternatives: 0
 RAR gate alternatives: 2
 #tar: 1
 #alt: 2
+
+cir> cirrarw -d /tmp
+writing files...done
 
 cir> q -f
 

@@ -31,7 +31,7 @@ class CirMgr
 
 public:
    CirMgr(): _flag(0), _reserved_storage(10), _piList(0), _poList(0), _totGateList(0),
-             _fanoutInfo(0), _simLog(0) { }
+             _fanoutInfo(0), _simLog(0), _verbose(0) { }
    ~CirMgr() { deleteCircuit(); }
 
    // Access functions
@@ -53,7 +53,7 @@ public:
    GateList& getFanouts(unsigned i) const { return _fanoutInfo[i]; }
 
    // Member function about SAT-Rar
-   void SATRar();
+   void SATRar(int);
    bool SATRarOnWt(pair<unsigned, unsigned>, int, CirMA&, CirMA&);
    void SATRarWrite(string& );
    void SATRARRepair(pair<BigNum, vector<unsigned>>& , string& );
@@ -138,6 +138,7 @@ private:
    Graph*              _graph;
    CirMA              *_MAw_t;
    CirMA              *_MAg_d;
+   int                 _verbose;
 
    // SATRar repair
    vector<pair<BigNum, vector<unsigned>>> _RepairList;
