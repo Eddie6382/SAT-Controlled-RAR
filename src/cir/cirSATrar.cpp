@@ -25,6 +25,10 @@ long get_mem_usage() {
 }
 
 /*_________________________________________________________________________________________________
+|
+|  Description:
+|     main description of SAT-Controlled RAR algorithm
+|
 ________________________________________________________________________________________________@*/
 void CirMgr::SATRar(int verb)
 {
@@ -90,6 +94,12 @@ void CirMgr::SATRarWrite(string& dir)
 }
 
 /*_________________________________________________________________________________________________
+|
+|  input: w_t (u, v)
+|  Description:
+|     Given a w_t, for each g_d in w_t's dominators from v to outputs, determine whether (w_t, g_d) has a repairment
+|  output: true if there is a repairment based on wire w_t, #tar++
+|
 ________________________________________________________________________________________________@*/
 bool CirMgr::SATRarOnWt(pair<unsigned, unsigned> w_t, int w_tIdx, CirMA& MAw_t, CirMA& MAg_d)
 {
@@ -97,15 +107,15 @@ bool CirMgr::SATRarOnWt(pair<unsigned, unsigned> w_t, int w_tIdx, CirMA& MAw_t, 
 
    cout << "  w_t(" << w_t.first << ", " << w_t.second << ")\n";
    MAw_t.computeSATMA(w_t.first, w_t.second, 1, 0, 0);
-   genFanInCone(getGate(w_t.first));
-   if (_verbose > 1) MAw_t.printSATMA(w_t.first, 2);
-   MAg_d.setCounterpartSolver(&MAw_t, w_t.first);
-
    if (MAw_t.nDecision() == 0) {
       MAg_d.resetSolver();
       MAw_t.resetSolver();
       return return_val;
    }
+
+   genFanInCone(getGate(w_t.first));
+   if (_verbose > 1) MAw_t.printSATMA(w_t.first, 2);
+   MAg_d.setCounterpartSolver(&MAw_t, w_t.first);
 
    int i = 0;
    unsigned g_d = w_t.second;
@@ -119,6 +129,7 @@ bool CirMgr::SATRarOnWt(pair<unsigned, unsigned> w_t, int w_tIdx, CirMA& MAw_t, 
    // 2-way RAR, make it a wire between conflict_gate and g_d
       
       vector<unsigned> decisions;
+      bool is2RAR = false;
 
       if (conflict_var != -1) {
          unsigned conflict_gid = MAw_t.var2Gid(conflict_var);
@@ -128,10 +139,12 @@ bool CirMgr::SATRarOnWt(pair<unsigned, unsigned> w_t, int w_tIdx, CirMA& MAw_t, 
          _RepairList.push_back(make_pair(hashWtIdxGd(w_tIdx, g_d), decisions));
          return_val = true;
          _repairCat[0]++;
-         break;
+         is2RAR = true;
       }
 
    // Decision making, select g_s belonging Phi_wt - Phi_i
+      if (!is2RAR) {
+
       unsigned nDecision = 0;
 
       for (const auto& gate: _dfsList) {
@@ -165,6 +178,8 @@ bool CirMgr::SATRarOnWt(pair<unsigned, unsigned> w_t, int w_tIdx, CirMA& MAw_t, 
          }
       }
       MAg_d.backtrace(nDecision);
+
+      }
 
    // update g_d for next iteration
       if (MAg_d._dominators.empty()) break;

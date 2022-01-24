@@ -892,12 +892,12 @@ Var Solver::oneStepMA(const vec<Lit>& assumps, bool init=1)
                     conflict.push(~p);
                     if (proof != NULL) conflict_id = unit_id[var(p)];
                 }
-                cancelUntil(0);
+                // cancelUntil(0);
                 return conflict_var; }
             Clause* confl = propagate();
             if (confl != NULL){
                 analyzeFinal(confl), assert(conflict.size() > 0);
-                cancelUntil(0);
+                // cancelUntil(0);
                 return conflict_var;
             }
         }
@@ -920,12 +920,12 @@ Var Solver::oneStepMA(const vec<Lit>& assumps, bool init=1)
                 conflict.push(~p);
                 if (proof != NULL) conflict_id = unit_id[var(p)];
             }
-            cancelUntil(0);
+            // cancelUntil(0);
             return conflict_var; }
         Clause* confl = propagate();
         if (confl != NULL){
             analyzeFinal(confl), assert(conflict.size() > 0);
-            cancelUntil(0);
+            // cancelUntil(0);
             return conflict_var;
         }
         return -1;
