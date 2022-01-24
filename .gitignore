@@ -1,2 +1,3 @@
 results/*.aag
+results/*.out
 results/err_report/*.aag

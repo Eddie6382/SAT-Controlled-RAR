@@ -39,8 +39,8 @@ void CirMgr::SATRar(int verb)
    _repairCat[2] = 0;
    
    
-   _MAw_t = new CirMA (this);
-   _MAg_d = new CirMA (this);
+   if (!_MAw_t) _MAw_t = new CirMA (this);
+   if (!_MAg_d) _MAg_d = new CirMA (this);
 
    int Ntar = 0;
    int Nwire = 0;
