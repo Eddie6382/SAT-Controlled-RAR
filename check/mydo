@@ -1,3 +1,4 @@
 cirr ISCAS85/C880.aag
-cirrar -verb 2
+cirrar
+cirrarw -d /tmp
 q -f

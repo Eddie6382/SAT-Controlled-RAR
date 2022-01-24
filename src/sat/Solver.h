@@ -141,7 +141,7 @@ protected:
     bool simplify(Clause *c) const;
 
 public:
-    Solver() : ok(true), cla_inc(1), cla_decay(1), var_inc(1), var_decay(1), order(assigns, activity), qhead(0), simpDB_assigns(0), simpDB_props(0), c_solver(0), conflict_var(-1), default_params(SearchParams(0.95, 0.999, 0.02)), expensive_ccmin(2), proof(NULL), verbosity(0), progress_estimate(0), conflict_id(ClauseId_NULL)
+    Solver() : ok(true), cla_inc(1), cla_decay(1), var_inc(1), var_decay(1), order(assigns, activity), qhead(0), simpDB_assigns(0), simpDB_props(0), c_solver(0), conflict_var(-1), default_params(SearchParams(0.95, 0.999, 0.02)), expensive_ccmin(2), proof(NULL), verbosity(0), progress_estimate(0), conflict_id(ClauseId_NULL), isSelfConfl(0)
     {
         vec<Lit> dummy(2, lit_Undef);
         propagate_tmpbin = Clause_new(false, dummy);
@@ -225,6 +225,7 @@ public:
     // SATRAR
     Var oneStepMA(const vec<Lit> &, bool);
     Var makeDecision(Lit);
+    bool SelfConfl() { return isSelfConfl; }
     void setCounterpartSolver(Solver *solver, unsigned w_t, vector<unsigned> &dominators, unordered_map<unsigned, Var> &gid2Var)
     {
         for (int i = 0; i < c_IsExcluded.size(); ++i)
@@ -239,6 +240,7 @@ public:
     vec<lbool> model;         // If problem is satisfiable, this vector contains the model (if any).
     vec<Lit> conflict;        // If problem is unsatisfiable under assumptions, this vector represent the conflict clause expressed in the assumptions.
     ClauseId conflict_id;     // (In proof logging mode only.) ID for the clause 'conflict' (for proof traverseral). NOTE! The empty clause is always the last clause derived, but for conflicts under assumption, this is not necessarly true.
+    bool isSelfConfl;
 
     // Printing:
     //

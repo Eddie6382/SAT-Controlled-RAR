@@ -462,8 +462,10 @@ void Solver::analyzeFinal(Clause* confl, bool skip_first)
 |________________________________________________________________________________________________@*/
 bool Solver::enqueue(Lit p, Clause* from)
 {
-    if (value(p) != l_Undef)
+    if (value(p) != l_Undef) {
+        isSelfConfl = (value(p) == l_False);
         return value(p) != l_False;
+    }
     else{
         Var     x = var(p);
         assigns  [x] = toInt(lbool(!sign(p)));
@@ -481,6 +483,7 @@ bool Solver::enqueue(Lit p, Clause* from)
         }
         else
             return true;
+        isSelfConfl = 0;
     }
 }
 

@@ -145,7 +145,7 @@ bool CirMgr::SATRarOnWt(pair<unsigned, unsigned> w_t, int w_tIdx, CirMA& MAw_t, 
             if (conflict_var != -1) {
                unsigned conflict_gid = MAw_t.var2Gid(conflict_var);
                cout << "        conflict gid " << conflict_gid << "\n";
-               if (find(decisions.begin(), decisions.end(), conflict_gid) != decisions.end()) { // RAR wire 
+               if (MAg_d._solver->SelfConfl()) { // RAR wire 
                   _RepairList.push_back(make_pair(hashWtIdxGd(w_tIdx, g_d), decisions));
                   _repairCat[1]++;
                } else { // RAR gate
