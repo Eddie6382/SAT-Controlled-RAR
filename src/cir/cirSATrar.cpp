@@ -101,6 +101,12 @@ bool CirMgr::SATRarOnWt(pair<unsigned, unsigned> w_t, int w_tIdx, CirMA& MAw_t, 
    if (_verbose > 1) MAw_t.printSATMA(w_t.first, 2);
    MAg_d.setCounterpartSolver(&MAw_t, w_t.first);
 
+   if (MAw_t.nDecision() == 0) {
+      MAg_d.resetSolver();
+      MAw_t.resetSolver();
+      return return_val;
+   }
+
    int i = 0;
    unsigned g_d = w_t.second;
 
@@ -213,23 +219,23 @@ CirMgr::SATRARRepair(pair<BigNum, vector<unsigned>>& repair, string& text)
       if (_dfsList[i]->isAig()) ++nAig;
    outfile << "aag " << _numDecl[VARS] << " " << _numDecl[PI] << " "
            << _numDecl[LATCH] << " " << _numDecl[PO] << " "
-           << nAig << endl;
+           << nAig << "\n";
    for (size_t i = 0, n = _numDecl[PI]; i < n; ++i)
-      outfile << (getPi(i)->getGid()*2) << endl;
+      outfile << (getPi(i)->getGid()*2) << "\n";
    for (size_t i = 0, n = _numDecl[PO]; i < n; ++i)
-      outfile << getPo(i)->getIn0().litId() << endl;
+      outfile << getPo(i)->getIn0().litId() << "\n";
    for (size_t i = 0, n = _dfsList.size(); i < n; ++i) {
       CirGate *g = _dfsList[i];
       if (!g->isAig()) continue;
       outfile << g->getGid()*2 << " " << g->getIn0().litId() << " "
-           << g->getIn1().litId() << endl;
+           << g->getIn1().litId() << "\n";
    }
    for (size_t i = 0, n = _numDecl[PI]; i < n; ++i)
       if (getPi(i)->getName())
-         outfile << "i" << i << " " << getPi(i)->getName() << endl;
+         outfile << "i" << i << " " << getPi(i)->getName() << "\n";
    for (size_t i = 0, n = _numDecl[PO]; i < n; ++i)
       if (getPo(i)->getName())
-         outfile << "o" << i << " " << getPo(i)->getName() << endl;
+         outfile << "o" << i << " " << getPo(i)->getName() << "\n";
    outfile << "c\naag repair, redundant wire = (" << w_tFirst << ", " << w_tSecond << ")" << "\n";
    outfile << "            g_d = " << g_d << "\n";
    outfile << "            conflict decisions = ";
@@ -253,11 +259,11 @@ CirMgr::SATRARRepair(pair<BigNum, vector<unsigned>>& repair, string& text)
       inv = getGate(w_tSecond)->getIn1().isInv();
    }
 
-   regex e1 ("(\n"+to_string(w_tSecond*2)+")(\\s\\d+)\\s("+to_string(w_tFirst*2+(int)inv)+")");
-   regex e2 ("(\n"+to_string(w_tSecond*2)+")\\s("+to_string(w_tFirst*2+(int)inv)+")");
+   regex e1 ("(\\n"+to_string(w_tSecond*2)+"\\s)(\\d+\\s)"+to_string(w_tFirst*2+(int)inv)+"(\\n)");
+   regex e2 ("(\\n"+to_string(w_tSecond*2)+"\\s)"+to_string(w_tFirst*2+(int)inv)+"(\\s\\d+\\n)");
    string const_in = (inv)? to_string(1): to_string(0);
-   text = regex_replace(text, e1, "$1$2 "+const_in);
-   text = regex_replace(text, e2, "$1 "+const_in);
+   text = regex_replace(text, e1, "$1$2"+const_in+"$3");
+   text = regex_replace(text, e2, "$1"+const_in+"$2");
 
 // modify g_d structure, and construct g_n
    unsigned gids[decisions.size()];

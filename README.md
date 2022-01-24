@@ -17,6 +17,8 @@ c++ > 11 for ```cirTest```
    ./cirTest [-F] [doFile]
 ```
 
+How to write doFile please refer to Examples
+
 check.py  
 ```
    python3 check.py [args....]
@@ -34,6 +36,11 @@ check.py
    cirrarw -directory results
    q -f
 ```
+
+`cirr`: read circuit in aiger format  
+`cirrar`: do SAT-Rar algorithm on the circuit  
+`cirrarw`: applying all possible repairments on the circuit, for each possible repairment, generate a repaired circuit in .aag in given directory  
+
 **results**
 ```
  /mnt/e/u/O/n/Ric_SAT/SATRar | master *1 !12  ./cirTest -F mydo                                                ok | 01:14:02

@@ -462,28 +462,24 @@ void Solver::analyzeFinal(Clause* confl, bool skip_first)
 |________________________________________________________________________________________________@*/
 bool Solver::enqueue(Lit p, Clause* from)
 {
+    Var     x = var(p);
+    bool inverse_imp = (c_solver != 0) && \
+            (c_IsExcluded[x] == 0) && \
+            (toLbool(c_solver->assigns[x]) != l_Undef) && \
+            (c_solver->assigns[x] != toInt(lbool(!sign(p))));
     if (value(p) != l_Undef) {
         isSelfConfl = (value(p) == l_False);
         return value(p) != l_False;
     }
     else{
-        Var     x = var(p);
         assigns  [x] = toInt(lbool(!sign(p)));
         level    [x] = decisionLevel();
         trail_pos[x] = trail.size();
         reason   [x] = from;
         trail.push(p);
-        if ((c_solver != 0) && \
-            (c_IsExcluded[x] == 0) && \
-            (toLbool(c_solver->assigns[x]) != l_Undef) && \
-            (c_solver->assigns[x] != assigns[x])) 
-        {
-            conflict_var = x;
-            return false;
-        }
-        else
-            return true;
-        isSelfConfl = 0;
+        isSelfConfl = !inverse_imp;
+        conflict_var = (inverse_imp) ? x: -1; 
+        return !inverse_imp;
     }
 }
 
@@ -908,7 +904,10 @@ Var Solver::oneStepMA(const vec<Lit>& assumps, bool init=1)
         return -1;
     }
     else {
-        cancelUntil(decisionLevel()-2);
+        if (decisionLevel() > 2)
+            cancelUntil(decisionLevel()-2);
+        else
+            cancelUntil(0);
         Lit p = assumps.last();
         assert(var(p) < nVars());
         if (!assume(p)){

@@ -1,4 +1,3 @@
-cirr ISCAS85/C880.aag
+cirr ISCAS85/ex01.aag -r
 cirrar
-cirrarw -d /tmp
 q -f

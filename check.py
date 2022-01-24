@@ -87,7 +87,7 @@ def run(args):
                      log_progress(', other errors\n')
             os.chdir('..')
 
-         # os.system('rm -rf ' + tempfile.gettempdir() + '/*')
+         os.system('rm -rf ' + tempfile.gettempdir() + '/*')
 
 
 if __name__ == "__main__":
