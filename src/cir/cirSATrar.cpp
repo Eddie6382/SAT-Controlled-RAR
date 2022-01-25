@@ -52,7 +52,6 @@ void CirMgr::SATRar(int verb)
    cout << "\n----  Preprocess ----\n";
    genDfsList();
    findGlobalDominators();
-   findTransitiveClosure();
    cout << "Done\n----  Run SATrar ----\n";
    
    for (auto& in: _dfsList) {
@@ -100,12 +99,15 @@ void CirMgr::SATRarWrite(string& dir)
 |     Given a w_t, for each g_d in w_t's dominators from v to outputs, determine whether (w_t, g_d) has a repairment
 |  output: true if there is a repairment based on wire w_t, #tar++
 |
+|  Note: genFanoutCone + computeSATMA  should be used in sequence
+|
 ________________________________________________________________________________________________@*/
 bool CirMgr::SATRarOnWt(pair<unsigned, unsigned> w_t, int w_tIdx, CirMA& MAw_t, CirMA& MAg_d)
 {
    bool return_val = false;
 
    cout << "  w_t(" << w_t.first << ", " << w_t.second << ")\n";
+   genFanOutCone(getGate(w_t.first));
    MAw_t.computeSATMA(w_t.first, w_t.second, 1, 0, 0);
    if (MAw_t.nDecision() == 0) {
       MAg_d.resetSolver();
@@ -194,15 +196,16 @@ bool CirMgr::SATRarOnWt(pair<unsigned, unsigned> w_t, int w_tIdx, CirMA& MAw_t, 
 }
 
 void 
-CirMgr::genFanInCone(CirGate *g)
+CirMgr::genFanInCone(CirGate *g_src)
 {
    CirGate::setGlobalRef();
    queue<CirGate* > Q;
-   Q.push(g);
-   g->setToGlobalRef();
+   Q.push(g_src);
+   
    while (!Q.empty()) {
       CirGate* g = Q.front();
       Q.pop();
+      g->setToGlobalRef();
       if (g->getType() != AIG_GATE) continue;
 
       CirGate* in0 = g->getIn0Gate();
@@ -212,8 +215,29 @@ CirMgr::genFanInCone(CirGate *g)
          CirGate *fanin = fanins[i];
          if (!(fanin->isGlobalRef())) {
             Q.push(fanin);
-            fanin->setToGlobalRef();
          }
+      }
+   }
+}
+
+void
+CirMgr::genFanOutCone(CirGate *g_init)
+{
+   CirGate::setGlobalRef();
+   queue<CirGate* > Q;
+   Q.push(g_init);
+   while (!Q.empty()) {
+      CirGate* g = Q.front();
+      Q.pop();
+      g->setToGlobalRef();
+      if (g->getType() != AIG_GATE) continue;
+
+      GateList& fanouts = cirMgr->getFanouts(g->getGid());
+      size_t nFanouts = fanouts.size();
+      for (size_t i=0; i<nFanouts; ++i) {
+         CirGate *fanout = fanouts[i];
+         if (!(fanout->isGlobalRef()))
+            Q.push(fanout);
       }
    }
 }
@@ -349,19 +373,4 @@ CirMgr::findGlobalDominators()
          _globalDominators[gid] = gidDom;
       }
    }
-}
-
-void 
-CirMgr::findTransitiveClosure() {
-   if (_graph != 0) return;
-   if (_dfsList.empty()) genDfsList();
-      
-   _graph = new Graph(getNumTots());
-   for (auto u: _dfsList) {
-      GateList& fanouts = getFanouts(u->getGid());
-      for (auto v: fanouts) {
-         _graph->addEdge(u->getGid(), v->getGid());
-      }
-   }
-   _graph->transitiveClosure();
 }

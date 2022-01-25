@@ -155,6 +155,7 @@ public:
    // Methods about _globalRef_s
    bool isGlobalRef() const { return (_ref == _globalRef_s); }
    bool isInFanin() const { return (_ref == _globalRef_s); }
+   bool isInFanout() const { return (_ref == _globalRef_s); }
    bool isGlobalRef(unsigned diff) const {
                      return ((_ref + diff) == _globalRef_s); }
    void setToGlobalRef() const { _ref = _globalRef_s; }

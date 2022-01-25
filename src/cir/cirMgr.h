@@ -13,7 +13,6 @@
 #include <string>
 #include <fstream>
 #include <iostream>
-#include "cirGraph.h"
 
 using namespace std;
 
@@ -58,15 +57,10 @@ public:
    void SATRarWrite(string& );
    void SATRARRepair(pair<BigNum, vector<unsigned>>& , string& );
    void findGlobalDominators();
-   void findTransitiveClosure();
    inline BigNum hashWtIdxGd(unsigned w_tIdx, unsigned g_d) { return (BigNum)w_tIdx * (BigNum)getNumTots() + (BigNum)g_d; }
    inline unsigned hashToWtIdx(BigNum hashVal) { return (unsigned)(hashVal / (BigNum)getNumTots()); }
    inline unsigned hashToGd(BigNum hashVal) { return (unsigned)(hashVal % (BigNum)getNumTots()); }
    IdList& getDominators(unsigned i) { return _globalDominators.at(i); }
-   bool isTransitive(unsigned u, unsigned v) {
-      assert(u<getNumTots() && v<getNumTots());
-      return (_graph->isTransitive(u, v));
-   }
 
 
    // Member functions about circuit construction
@@ -76,6 +70,7 @@ public:
    void genDfsList();
    // Member functions about circuit fanout cone
    void genFanInCone(CirGate* g);
+   void genFanOutCone(CirGate* g);
 //   void updateUndefList();
    void checkFloatList();
    void checkUnusedList();
@@ -135,7 +130,6 @@ private:
    vector<IdList*>     _fecGrps;  // store litId; FECHash<GatePValue, IdList*>
 //   SimVector           _fecVector;
    ofstream           *_simLog;
-   Graph*              _graph;
    CirMA              *_MAw_t;
    CirMA              *_MAg_d;
    int                 _verbose;

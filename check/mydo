@@ -1,4 +1,4 @@
-cirr ISCAS85/C7552.aag
+cirr ISCAS85/C6288.aag
 cirrar
 cirrarw -d /tmp
 q -f

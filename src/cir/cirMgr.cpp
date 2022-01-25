@@ -244,7 +244,6 @@ CirMgr::readCircuit(const string& fileName)
 void
 CirMgr::deleteCircuit()
 {
-   if (_graph) { delete _graph; _graph=0; }
    if (_MAw_t) {delete _MAw_t; _MAw_t=0;}
    if (_MAg_d) {delete _MAg_d; _MAg_d=0;}
    if (_totGateList)

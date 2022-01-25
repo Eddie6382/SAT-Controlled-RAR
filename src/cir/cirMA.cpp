@@ -99,9 +99,9 @@ CirMA::computeSATMA(unsigned g1, unsigned g2=0, bool init=true, bool copy=false,
             bool isInv0 = g->getIn0().isInv();
             bool isInv1 = g->getIn1().isInv();
 
-            if (!_mgr->isTransitive(g1, In0Gid))
+            if (!_mgr->getGate(In0Gid)->isInFanout())
                _initMA.push_back(make_pair(In0Gid, (isInv0 != 1)));
-            if (!_mgr->isTransitive(g1, In1Gid))
+            if (!_mgr->getGate(In1Gid)->isInFanout())
                _initMA.push_back(make_pair(In1Gid, (isInv1 != 1)));
          }
       }
