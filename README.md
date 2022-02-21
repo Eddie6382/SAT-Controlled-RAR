@@ -1,5 +1,9 @@
 # SAT-Controlled RAR
 
+## Intro
+Application of Boolean Satisfiability (SAT):   
+Implement a program to perform redundancy addition and removal (RAR) algorithm, a circuit restructuring technique using morden SAT techniques. It deliberately insert a redundant wire to the circuit to make the originally non-redundant wire redundant
+
 ## reference
 1. C. -A. Wu, T. -H. Lin, Shao-Lun Huang and C. -Y. Huang, "SAT-Controlled redundancy addition and removal — a novel circuit restructuring technique," 2009 Asia and South Pacific Design Automation Conference, 2009, pp. 191-196, doi: 10.1109/ASPDAC.2009.4796479.
 
@@ -102,7 +106,7 @@ aag repair, redundant wire = (12, 13)
             conflict decisions = 8 9 
 ```
 
-**vertification**  
+**Verify modified circuits**  
 ```
 /mnt/e/u/O/n/Ric_SAT/SATRar | master *1 !15  python3 check.py --check --benchmark_dir ISCAS85 --file_name ex01.aag --result_dir results
 SUCCESS: ISCAS85/ex01.aag
